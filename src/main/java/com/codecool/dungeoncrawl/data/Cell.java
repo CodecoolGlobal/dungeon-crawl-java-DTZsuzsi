@@ -2,6 +2,8 @@ package com.codecool.dungeoncrawl.data;
 
 import com.codecool.dungeoncrawl.data.actors.Actor;
 
+import java.util.Objects;
+
 public class Cell implements Drawable {
     private CellType type;
     private Actor actor;
@@ -46,5 +48,21 @@ public class Cell implements Drawable {
 
     public int getY() {
         return y;
+    }
+
+
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cell cell = (Cell) o;
+        return x == cell.x && y == cell.y && type == cell.type && Objects.equals(actor, cell.actor) && Objects.equals(gameMap, cell.gameMap);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(type, actor, gameMap, x, y);
     }
 }
