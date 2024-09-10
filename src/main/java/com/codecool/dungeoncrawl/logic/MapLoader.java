@@ -53,6 +53,10 @@ public class MapLoader {
                             cell.setType(CellType.FLOOR);
                             new Octopus(cell);
                             break;
+                        case 'B':
+                            cell.setType(CellType.FLOOR);
+                            new Bat(cell);
+                            break;
                         default:
                             throw new RuntimeException("Unrecognized character: '" + line.charAt(x) + "'");
                     }
