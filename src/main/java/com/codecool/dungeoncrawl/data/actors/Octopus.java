@@ -5,6 +5,7 @@ import com.codecool.dungeoncrawl.data.Cell;
 public class Octopus extends Actor {
     public Octopus(Cell cell) {
         super(cell);
+        this.setHealth(20);
     }
 
     @Override
