@@ -6,6 +6,7 @@ public class Bat extends Actor {
     public Bat(Cell cell) {
         super(cell);
         this.setHealth(3);
+        this.setAttack(1);
     }
 
     @Override

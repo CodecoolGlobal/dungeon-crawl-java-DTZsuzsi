@@ -6,6 +6,7 @@ public class DogFighter extends Actor {
     public DogFighter(Cell cell) {
         super(cell);
         this.setHealth(8);
+        this.setAttack(5);
     }
 
     @Override

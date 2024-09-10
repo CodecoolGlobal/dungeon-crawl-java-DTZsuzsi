@@ -6,6 +6,7 @@ public class Octopus extends Actor {
     public Octopus(Cell cell) {
         super(cell);
         this.setHealth(20);
+        this.setAttack(10);
     }
 
     @Override

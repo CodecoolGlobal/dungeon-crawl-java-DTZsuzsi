@@ -8,6 +8,11 @@ public abstract class Actor implements Drawable {
     private Cell cell;
     private int health = 10;
     private Action action;
+    private int attack=5;
+
+    public void setAttack(int attack) {
+        this.attack = attack;
+    }
 
     public Actor(Cell cell) {
         this.cell = cell;
