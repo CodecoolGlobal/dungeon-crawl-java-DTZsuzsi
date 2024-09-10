@@ -5,6 +5,7 @@ import com.codecool.dungeoncrawl.data.Cell;
 public class Skeleton extends Actor {
     public Skeleton(Cell cell) {
         super(cell);
+        this.setHealth(9);
     }
 
     @Override
