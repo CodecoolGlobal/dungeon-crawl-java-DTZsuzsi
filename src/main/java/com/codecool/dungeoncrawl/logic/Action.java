@@ -6,9 +6,12 @@ import com.codecool.dungeoncrawl.data.actors.Actor;
 public class Action {
    private Actor actor;
    private Cell cell;
+   private GameLogic gameLogic;
     public Action(Cell cell) {
         this.cell=cell;
-        this.actor = cell.getActor();}
+        this.actor = cell.getActor();
+//        this.gameLogic=new GameLogic();
+    }
     public void attack(Cell nextCell){
 
         Actor enemy=nextCell.getActor();
@@ -29,5 +32,13 @@ public class Action {
            nextCell.setActor(null);
         }
 
+    }
+
+    public void changingMap(){
+        gameLogic.loadNextMap();
+    }
+
+    public void meetingYoda(){
+        actor.setHealth(actor.getHealth()+5);
     }
 }
