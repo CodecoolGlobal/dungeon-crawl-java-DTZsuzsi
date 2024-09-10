@@ -10,6 +10,9 @@ public abstract class Actor implements Drawable {
     private Action action;
     private int attack=5;
 
+    public int getAttack(){
+        return attack;
+    }
     public void setAttack(int attack) {
         this.attack = attack;
     }
