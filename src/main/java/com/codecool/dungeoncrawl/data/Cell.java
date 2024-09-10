@@ -1,6 +1,7 @@
 package com.codecool.dungeoncrawl.data;
 
 import com.codecool.dungeoncrawl.data.actors.Actor;
+import com.codecool.dungeoncrawl.data.items.Item;
 
 import java.util.Objects;
 
@@ -9,6 +10,8 @@ public class Cell implements Drawable {
     private Actor actor;
     private GameMap gameMap;
     private int x, y;
+
+    private Item item;
 
     public Cell(GameMap gameMap, int x, int y, CellType type) {
         this.gameMap = gameMap;
@@ -37,9 +40,23 @@ public class Cell implements Drawable {
         return gameMap.getCell(x + dx, y + dy);
     }
 
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
+
     @Override
     public String getTileName() {
-        return type.getTileName();
+        if (actor != null) {
+            return actor.getTileName();
+        } else if (item != null) {
+            return item.getTileName();
+        } else {
+            return type.getTileName();
+        }
     }
 
     public int getX() {

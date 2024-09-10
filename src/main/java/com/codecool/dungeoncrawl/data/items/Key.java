@@ -1,22 +1,14 @@
 package com.codecool.dungeoncrawl.data.items;
 
-public class Key extends Items {
-    private boolean isCollected;
+import com.codecool.dungeoncrawl.data.Cell;
 
-    public Key(boolean isCollected) {
-        this.isCollected = false;
-    }
-
-    public boolean isCollected() {
-        return isCollected;
+public class Key extends Item {
+    public Key(Cell cell) {
+        super(cell);
     }
 
     @Override
-    public int increaseHealth() {
-        if (isCollected) {
-            return 1;
-        } else {
-            return 0;
-        }
+    public String getTileName() {
+        return "key";
     }
 }

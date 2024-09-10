@@ -1,5 +1,15 @@
 package com.codecool.dungeoncrawl.data.items;
 
-public class Sword extends Items {
+import com.codecool.dungeoncrawl.data.Cell;
 
+public class Sword extends Item {
+
+    public Sword(Cell cell) {
+        super(cell);
+    }
+
+    @Override
+    public String getTileName() {
+        return "sword";
+    }
 }
