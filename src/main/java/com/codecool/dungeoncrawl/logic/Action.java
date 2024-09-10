@@ -38,7 +38,28 @@ public class Action {
         gameLogic.loadNextMap();
     }
 
+    public void monsterMoving(Actor actor){
+
+    }
+
     public void meetingYoda(){
         actor.setHealth(actor.getHealth()+5);
+    }
+
+    public void findingSomething(Cell nextCell) {
+        if (nextCell.getActor()!=null){
+            System.out.println("attack");
+            if (nextCell.getActor().getTileName()=="yoda"){
+                meetingYoda();
+            }
+            else {
+                attack(nextCell);
+            }
+        }
+
+        if (nextCell.getItem()!=null&& nextCell.getItem().getTileName()=="exitStairs"){
+            System.out.println("stairs");
+            changingMap();
+        }
     }
 }

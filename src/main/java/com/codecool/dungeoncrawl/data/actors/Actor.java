@@ -26,27 +26,17 @@ public abstract class Actor implements Drawable {
 
     public void move(int dx, int dy) {
      Cell nextCell = cell.getNeighbor(dx, dy);
-if (nextCell.getActor()!=null){
-    System.out.println("attack");
-    if (nextCell.getActor().getTileName()=="yoda"){
-        action.meetingYoda();
-    }
-    else {
-        action.attack(nextCell);
-    }
-}
-
-
-if (nextCell.getItem()!=null&&nextCell.getItem().getTileName()=="exitStairs"){
-    System.out.println("stairs");
-    action.changingMap();
-}
+       if(nextCell.getActor()!=null||nextCell.getItem()!=null) {
+           action.findingSomething(nextCell);
+       }
         if (isTheNeighborGood(dx, dy)){
 
         cell.setActor(null);
         nextCell.setActor(this);
         cell = nextCell;}
     }
+
+
 
     public boolean isTheNeighborGood(int dx, int dy) {
        Cell nextCell = cell.getNeighbor(dx, dy);
