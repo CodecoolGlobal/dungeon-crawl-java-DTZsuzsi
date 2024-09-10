@@ -6,6 +6,7 @@ import com.codecool.dungeoncrawl.data.GameMap;
 import com.codecool.dungeoncrawl.data.actors.DogFighter;
 import com.codecool.dungeoncrawl.data.actors.Player;
 import com.codecool.dungeoncrawl.data.actors.Skeleton;
+import com.codecool.dungeoncrawl.data.actors.Yoda;
 
 import java.io.InputStream;
 import java.util.Scanner;
@@ -46,6 +47,10 @@ public class MapLoader {
                         case 'D':
                             cell.setType(CellType.FLOOR);
                             new DogFighter(cell);
+                            break;
+                        case'Y':
+                            cell.setType(CellType.FLOOR);
+                            new Yoda(cell);
                             break;
                         default:
                             throw new RuntimeException("Unrecognized character: '" + line.charAt(x) + "'");
