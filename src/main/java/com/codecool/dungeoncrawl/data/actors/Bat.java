@@ -9,10 +9,7 @@ public class Bat extends Actor {
 
     }
 
-    @Override
-    public void automaticMove() {
-        this.move(2,2);
-    }
+
 
     @Override
     public String getTileName() {

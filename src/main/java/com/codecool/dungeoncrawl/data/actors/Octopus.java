@@ -10,10 +10,7 @@ public class Octopus extends Actor {
 
     }
 
-    @Override
-    public void automaticMove() {
-        move(0,0);
-    }
+
 
     @Override
     public String getTileName() {

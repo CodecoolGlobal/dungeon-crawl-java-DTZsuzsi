@@ -19,7 +19,6 @@ public class Action {
 
         Actor enemy=nextCell.getActor();
 
-
         while(enemy.getHealth()>=0&&actor.getHealth()>=0){
             enemy.setHealth(enemy.getHealth()-5);
             actor.setHealth(actor.getHealth()-2);
@@ -53,17 +52,12 @@ public class Action {
         gameLogic.loadNextMap();
     }
 
-    public void monsterMoving(Actor actor, int x, int y){
-actor.automaticMove();
-    }
-
     public void meetingYoda(){
         actor.setHealth(actor.getHealth()+5);
     }
 
-    public void findingSomething(Cell nextCell) {
-        if (nextCell.getActor()!=null){
-            System.out.println("attack");
+    public void meetingOtherActor(Cell nextCell) {
+        if (actor instanceof Player && nextCell.getActor()!=null){
             if (nextCell.getActor().getTileName()=="yoda"){
                 meetingYoda();
             }

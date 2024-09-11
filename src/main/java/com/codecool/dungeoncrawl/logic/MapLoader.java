@@ -10,7 +10,7 @@ import java.io.InputStream;
 import java.util.Scanner;
 
 public class MapLoader {
-    public static GameMap loadMap(String fileName, GameLogic gameLogic) {
+    public static GameMap loadMap(String fileName,  GameLogic gameLogic) {
         InputStream is = MapLoader.class.getResourceAsStream(fileName);
         System.out.println(is);
         Scanner scanner = new Scanner(is);

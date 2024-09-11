@@ -2,15 +2,14 @@ package com.codecool.dungeoncrawl.data.actors;
 
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.Drawable;
-import com.codecool.dungeoncrawl.data.items.Item;
 import com.codecool.dungeoncrawl.logic.Action;
 import com.codecool.dungeoncrawl.logic.GameLogic;
 
 public abstract class Actor implements Drawable {
     private Cell cell;
-    private int health = 10;
+    private int health ;
     private Action action;
-    private int attack=5;
+    private int attack;
     private GameLogic gameLogic;
 
     public int getAttack(){
@@ -33,9 +32,9 @@ public abstract class Actor implements Drawable {
 
      Cell nextCell = cell.getNeighbor(dx, dy);
        if(nextCell.getActor()!=null||nextCell.getItem()!=null) {
-           action.findingSomething(nextCell);
+           action.meetingOtherActor(nextCell);
        }
-        if (isTheNeighborGood(dx, dy)){
+        if (checkIfYouCanMoveToNextCell(dx, dy)){
 
             cell.setActor(null);
             nextCell.setActor(this);
@@ -48,13 +47,9 @@ public abstract class Actor implements Drawable {
         }
     }
 
-public  abstract void automaticMove();
-
-    public boolean isTheNeighborGood(int dx, int dy) {
+    public boolean checkIfYouCanMoveToNextCell(int dx, int dy) {
         Cell nextCell = cell.getNeighbor(dx, dy);
-        if (nextCell.getY() < 2 || nextCell.getX() < 2) {
-            return false;
-        }
+
 
         if (nextCell.getType().getTileName() == "wall") {
             return false;
