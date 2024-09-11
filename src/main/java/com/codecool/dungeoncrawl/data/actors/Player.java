@@ -1,31 +1,27 @@
 package com.codecool.dungeoncrawl.data.actors;
 
 import com.codecool.dungeoncrawl.data.Cell;
+import com.codecool.dungeoncrawl.logic.Game;
+import com.codecool.dungeoncrawl.logic.GameLogic;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Player extends Actor {
-    public Player(Cell cell) {
-        super(cell);
+    public Player(Cell cell, GameLogic gameLogic) {
+        super(cell,10,5,gameLogic );
+    }
+
+    @Override
+    public void automaticMove() {
+        move(0,0);
     }
 
     public String getTileName() {
         return "player";
     }
 
-//    public void attack(){
-//        List<Cell> neighboringCells=new ArrayList<>();
-//        for (int i=-1; i<=1;i++){
-//            for (int j=-1; j<=1;j++){
-//                Cell cell=getCell();
-//                neighboringCells.add(cell.getNeighbor(i,j));
-//            }
-//        }
-//        for (Cell cell:neighboringCells){
-//            if (cell.getActor()!=null)
-//        }
-//    }
+
 
 
 }

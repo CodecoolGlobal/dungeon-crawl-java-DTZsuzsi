@@ -3,32 +3,44 @@ package com.codecool.dungeoncrawl.data.actors;
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.Drawable;
 import com.codecool.dungeoncrawl.logic.Action;
+import com.codecool.dungeoncrawl.logic.GameLogic;
 
 public abstract class Actor implements Drawable {
     private Cell cell;
     private int health = 10;
     private Action action;
+    private int attack=5;
+    private GameLogic gameLogic;
 
-    public Actor(Cell cell) {
+    public int getAttack(){
+        return attack;
+    }
+    public void setAttack(int attack) {
+        this.attack = attack;
+    }
+
+    public Actor(Cell cell, int health, int attack, GameLogic gameLogic) {
         this.cell = cell;
         this.cell.setActor(this);
-        this.action=new Action(cell);
+        this.action=new Action(cell, gameLogic);
+        this.health = health;
+        this.attack=attack;
 
     }
 
     public void move(int dx, int dy) {
      Cell nextCell = cell.getNeighbor(dx, dy);
-if (nextCell.getActor()!=null){
-    System.out.println("attack");
-    action.attack(nextCell);
-}
-
+       if(nextCell.getActor()!=null||nextCell.getItem()!=null) {
+           action.findingSomething(nextCell);
+       }
         if (isTheNeighborGood(dx, dy)){
 
         cell.setActor(null);
         nextCell.setActor(this);
         cell = nextCell;}
     }
+
+public  abstract void automaticMove();
 
     public boolean isTheNeighborGood(int dx, int dy) {
        Cell nextCell = cell.getNeighbor(dx, dy);

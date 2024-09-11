@@ -1,11 +1,17 @@
 package com.codecool.dungeoncrawl.data.actors;
 
 import com.codecool.dungeoncrawl.data.Cell;
+import com.codecool.dungeoncrawl.logic.GameLogic;
 
 public class DogFighter extends Actor {
-    public DogFighter(Cell cell) {
-        super(cell);
-        this.setHealth(8);
+    public DogFighter(Cell cell, GameLogic gameLogic) {
+        super(cell,8,5, gameLogic);
+
+    }
+
+    @Override
+    public void automaticMove() {
+        move(1,1);
     }
 
     @Override
