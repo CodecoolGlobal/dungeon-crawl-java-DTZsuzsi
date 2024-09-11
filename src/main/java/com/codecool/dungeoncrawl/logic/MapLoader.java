@@ -82,6 +82,10 @@ public class MapLoader {
                         case '%':
                             cell.setType(CellType.FOREST);
                             break;
+                        case 'b':
+                            cell.setType(CellType.FLOOR);
+                            new Bear(cell,15,21,gameLogic);
+                            break;
                         default:
                             throw new RuntimeException("Unrecognized character: '" + line.charAt(x) + "'");
                     }
