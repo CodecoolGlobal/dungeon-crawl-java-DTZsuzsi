@@ -32,10 +32,10 @@ public class Tiles {
         tileMap.put("yoda", new Tile(29, 2));
         tileMap.put("octopus", new Tile(25, 8));
         tileMap.put("bat", new Tile(26, 8));
-        tileMap.put("sword", new Tile(0, 30));
+        tileMap.put("mace", new Tile(4, 26));
         tileMap.put("key", new Tile(16, 23));
         tileMap.put("door", new Tile(3, 9));
-        tileMap.put("helmet", new Tile(5, 22));
+        tileMap.put("helmet", new Tile(4, 22));
         tileMap.put("exitStairs", new Tile(2, 6));
     }
 
