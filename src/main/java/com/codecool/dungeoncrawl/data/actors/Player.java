@@ -1,5 +1,6 @@
 package com.codecool.dungeoncrawl.data.actors;
 import com.codecool.dungeoncrawl.data.Cell;
+import com.codecool.dungeoncrawl.data.items.Item;
 import com.codecool.dungeoncrawl.logic.Game;
 import com.codecool.dungeoncrawl.logic.GameLogic;
 
