@@ -1,7 +1,6 @@
 package com.codecool.dungeoncrawl.data.actors;
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.items.Item;
-import com.codecool.dungeoncrawl.logic.Game;
 import com.codecool.dungeoncrawl.logic.GameLogic;
 
 import java.util.ArrayList;
@@ -33,9 +32,12 @@ public class Player extends Actor {
         return inventory;
     }
 
-    public void displayInventoryItemsToConsole() {
+    public String displayInventoryItems() {
+        StringBuilder inventoryString = new StringBuilder();
         for (Item item : inventory) {
-            System.out.println(item.getTileName());
+            inventoryString.append(" ").append(item.getTileName()).append("\n");
         }
+        System.out.println(inventoryString);
+        return inventoryString.toString();
     }
 }

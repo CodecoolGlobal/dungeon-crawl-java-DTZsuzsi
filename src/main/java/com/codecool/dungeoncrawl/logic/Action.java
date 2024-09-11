@@ -41,12 +41,11 @@ public class Action {
         Cell currentCell = player.getCell();
         Item item = currentCell.getItem();
 
-        if (item != null){
+        if (item != null && item.isPickable()){
             player.addPickedUpItem(item);
             currentCell.setItem(null);
             System.out.println("Picked up: " + item.getTileName());
             System.out.println("Inventory: ");
-            player.displayInventoryItemsToConsole();
         }
 }
 

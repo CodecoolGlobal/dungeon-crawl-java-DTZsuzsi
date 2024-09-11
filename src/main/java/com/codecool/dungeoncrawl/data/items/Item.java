@@ -5,10 +5,12 @@ import com.codecool.dungeoncrawl.data.Drawable;
 
 public abstract class Item implements Drawable {
     private Cell cell;
+    private boolean isPickable;
 
-    public Item(Cell cell) {
+    public Item(Cell cell, boolean isPickable) {
         this.cell = cell;
         this.cell.setItem(this);
+        this.isPickable = isPickable;
     }
 
     public Cell getCell() {
@@ -17,5 +19,7 @@ public abstract class Item implements Drawable {
 
     public abstract String getTileName();
 
-
+    public boolean isPickable() {
+        return isPickable;
+    }
 }
