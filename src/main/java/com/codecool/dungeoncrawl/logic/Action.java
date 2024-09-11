@@ -2,6 +2,8 @@ package com.codecool.dungeoncrawl.logic;
 
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.actors.Actor;
+import com.codecool.dungeoncrawl.data.actors.Player;
+import com.codecool.dungeoncrawl.data.items.Item;
 
 public class Action {
    private Actor actor;
@@ -29,5 +31,17 @@ public class Action {
            nextCell.setActor(null);
         }
 
+    }
+
+    public void pickUpItem(Player player){
+        Cell currentCell = player.getCell();
+        Item item = currentCell.getItem();
+
+        if (item != null){
+            player.addPickedUpItem(item);
+            currentCell.setItem(null);
+            System.out.println("Picked up :" + item.getTileName());
+            player.displayInventoryToConsole();
+        }
     }
 }

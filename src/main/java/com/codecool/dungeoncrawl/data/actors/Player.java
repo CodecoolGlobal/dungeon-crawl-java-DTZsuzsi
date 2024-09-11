@@ -1,18 +1,38 @@
 package com.codecool.dungeoncrawl.data.actors;
 
 import com.codecool.dungeoncrawl.data.Cell;
+import com.codecool.dungeoncrawl.data.items.Item;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Player extends Actor {
+
+    private List<Item> inventory;
+
     public Player(Cell cell) {
         super(cell);
+        inventory = new ArrayList<>();
     }
 
     public String getTileName() {
         return "player";
     }
+
+    public void addPickedUpItem(Item item) {
+        inventory.add(item);
+    }
+
+    public List<Item> getInventory() {
+        return inventory;
+    }
+
+    public void displayInventoryToConsole() {
+        for (Item item : inventory) {
+            System.out.println(item);
+        }
+    }
+
 
 //    public void attack(){
 //        List<Cell> neighboringCells=new ArrayList<>();
