@@ -10,9 +10,10 @@ public class GameLogic {
     private GameMap map;
 
 
-    public GameLogic() {
-        this.map = MapLoader.loadMap("/map.txt", this);
-        this.player = new Player(new Cell(map, 5, 5, CellType.FLOOR), this);
+    public GameLogic(Cell cell) {
+        this.player = new Player(cell, this);
+
+        this.map = MapLoader.loadMap("/map.txt", this,player);
 
     }
 
@@ -49,6 +50,7 @@ public class GameLogic {
     }
 
     public void loadNextMap() {
-        this.map = MapLoader.loadMap("/map2.txt", this);
+        System.out.println("hi");
+        this.map = MapLoader.loadMap("/map2.txt", this, player);
     }
 }

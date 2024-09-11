@@ -10,7 +10,7 @@ import java.io.InputStream;
 import java.util.Scanner;
 
 public class MapLoader {
-    public static GameMap loadMap(String fileName,  GameLogic gameLogic) {
+    public static GameMap loadMap(String fileName,  GameLogic gameLogic, Player player) {
         InputStream is = MapLoader.class.getResourceAsStream(fileName);
         System.out.println(is);
         Scanner scanner = new Scanner(is);
@@ -77,8 +77,10 @@ public class MapLoader {
                             new Helmet(cell);
                             break;
                         case 'e':
-                            cell.setType(CellType.FLOOR);
-                            new ExitStairs(cell);
+                            cell.setType(CellType.STAIRS);
+                            break;
+                        case '%':
+                            cell.setType(CellType.FOREST);
                             break;
                         default:
                             throw new RuntimeException("Unrecognized character: '" + line.charAt(x) + "'");

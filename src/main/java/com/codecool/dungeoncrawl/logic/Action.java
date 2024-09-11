@@ -49,26 +49,28 @@ public class Action {
 }
 
     public void changingMap(){
+        System.out.println("hi before");
         gameLogic.loadNextMap();
     }
 
-    public void meetingYoda(){
-        actor.setHealth(actor.getHealth()+5);
+    public void meetingYodaAndHeal(int HealthPlus){
+        actor.setHealth(actor.getHealth()+HealthPlus);
     }
 
     public void meetingOtherActor(Cell nextCell) {
+        if (nextCell.getItem()!=null&& nextCell.getItem().getTileName()=="exitStairs"){
+            System.out.println("stairs");
+            changingMap();
+        }
+
         if (actor instanceof Player && nextCell.getActor()!=null){
             if (nextCell.getActor().getTileName()=="yoda"){
-                meetingYoda();
+                meetingYodaAndHeal(5);
             }
             else {
                 attack(nextCell);
             }
         }
 
-        if (nextCell.getItem()!=null&& nextCell.getItem().getTileName()=="exitStairs"){
-            System.out.println("stairs");
-            changingMap();
-        }
     }
 }
