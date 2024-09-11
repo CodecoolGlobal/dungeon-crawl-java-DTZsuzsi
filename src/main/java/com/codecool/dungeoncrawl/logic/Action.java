@@ -46,7 +46,6 @@ public class Action {
             currentCell.setItem(null);
             System.out.println("Picked up: " + item.getTileName());
             System.out.println("Inventory: ");
-            player.displayInventoryItemsToConsole();
         }
 }
 

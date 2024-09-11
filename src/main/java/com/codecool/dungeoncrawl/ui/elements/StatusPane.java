@@ -13,6 +13,8 @@ public class StatusPane {
     private Label healthValueLabel;
     private Label attackTextLabel;
     private Label attackValueLabel;
+    private Label inventoryTextLabel;
+    private Label inventoryValueLabel;
 
     public StatusPane() {
         ui = new GridPane();
@@ -20,6 +22,8 @@ public class StatusPane {
         healthValueLabel = new Label();
         attackTextLabel=new Label("Attack Power: ");
         attackValueLabel=new Label();
+        inventoryTextLabel=new Label("Inventory: ");
+        inventoryValueLabel=new Label();
     }
 
     public BorderPane build() {
@@ -31,6 +35,8 @@ public class StatusPane {
         ui.add(healthValueLabel, 1, 0);
         ui.add(attackTextLabel, 0, 1);
         ui.add(attackValueLabel, 1, 1);
+        ui.add(inventoryTextLabel, 0, 2);
+        ui.add(inventoryValueLabel, 0, 3);
 
         BorderPane borderPane = new BorderPane();
         borderPane.setRight(ui);
@@ -41,4 +47,7 @@ public class StatusPane {
         healthValueLabel.setText(text);
     }
     public void setAttackValue(String text) {attackValueLabel.setText(text);}
+    public void setInventoryValue(String text) {inventoryValueLabel.setText(text);}
+
+
 }
