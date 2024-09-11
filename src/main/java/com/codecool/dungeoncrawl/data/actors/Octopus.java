@@ -1,11 +1,18 @@
 package com.codecool.dungeoncrawl.data.actors;
 
 import com.codecool.dungeoncrawl.data.Cell;
+import com.codecool.dungeoncrawl.logic.Game;
+import com.codecool.dungeoncrawl.logic.GameLogic;
 
 public class Octopus extends Actor {
-    public Octopus(Cell cell) {
-        super(cell);
-        this.setHealth(20);
+    public Octopus(Cell cell, GameLogic gameLogic) {
+        super(cell,20,10, gameLogic);
+
+    }
+
+    @Override
+    public void automaticMove() {
+        move(0,0);
     }
 
     @Override
