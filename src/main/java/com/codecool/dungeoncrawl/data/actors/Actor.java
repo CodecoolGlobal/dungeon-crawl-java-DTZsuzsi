@@ -34,6 +34,10 @@ public abstract class Actor implements Drawable {
        if(nextCell.getActor()!=null) {
            action.meetingOtherActor(nextCell);
        }
+       if(nextCell.getType().getTileName()=="stairs"){
+           System.out.println("stairs");
+           action.changingMap();
+       }
         if (checkIfYouCanMoveToNextCell(dx, dy)){
             cell.setActor(null);
             nextCell.setActor(this);
@@ -65,6 +69,10 @@ public abstract class Actor implements Drawable {
 
     public void setHealth(int health) {
         this.health = health;
+    }
+
+    public void setCell(Cell cell) {
+        this.cell = cell;
     }
 
     public Cell getCell() {
