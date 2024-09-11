@@ -10,9 +10,11 @@ import java.io.InputStream;
 import java.util.Scanner;
 
 public class MapLoader {
-    public static GameMap loadMap(String fileName) {
+    public static GameMap loadMap(String fileName, GameLogic gameLogic) {
         InputStream is = MapLoader.class.getResourceAsStream(fileName);
+        System.out.println(is);
         Scanner scanner = new Scanner(is);
+
         int width = scanner.nextInt();
         int height = scanner.nextInt();
 
@@ -36,27 +38,27 @@ public class MapLoader {
                             break;
                         case 's':
                             cell.setType(CellType.FLOOR);
-                            new Skeleton(cell);
+                            new Skeleton(cell, gameLogic);
                             break;
                         case '@':
                             cell.setType(CellType.FLOOR);
-                            map.setPlayer(new Player(cell));
+                            map.setPlayer(new Player(cell, gameLogic));
                             break;
                         case 'D':
                             cell.setType(CellType.FLOOR);
-                            new DogFighter(cell);
+                            new DogFighter(cell,gameLogic);
                             break;
                         case 'Y':
                             cell.setType(CellType.FLOOR);
-                            new Yoda(cell);
+                            new Yoda(cell,gameLogic);
                             break;
                         case 'O':
                             cell.setType(CellType.FLOOR);
-                            new Octopus(cell);
+                            new Octopus(cell,gameLogic);
                             break;
                         case 'B':
                             cell.setType(CellType.FLOOR);
-                            new Bat(cell);
+                            new Bat(cell, gameLogic);
                             break;
                         case 'S':
                             cell.setType(CellType.FLOOR);

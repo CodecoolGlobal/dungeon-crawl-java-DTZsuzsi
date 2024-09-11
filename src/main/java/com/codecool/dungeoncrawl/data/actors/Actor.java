@@ -3,12 +3,14 @@ package com.codecool.dungeoncrawl.data.actors;
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.Drawable;
 import com.codecool.dungeoncrawl.logic.Action;
+import com.codecool.dungeoncrawl.logic.GameLogic;
 
 public abstract class Actor implements Drawable {
     private Cell cell;
     private int health = 10;
     private Action action;
     private int attack=5;
+    private GameLogic gameLogic;
 
     public int getAttack(){
         return attack;
@@ -17,10 +19,10 @@ public abstract class Actor implements Drawable {
         this.attack = attack;
     }
 
-    public Actor(Cell cell, int health, int attack) {
+    public Actor(Cell cell, int health, int attack, GameLogic gameLogic) {
         this.cell = cell;
         this.cell.setActor(this);
-        this.action=new Action(cell);
+        this.action=new Action(cell, gameLogic);
         this.health = health;
         this.attack=attack;
 

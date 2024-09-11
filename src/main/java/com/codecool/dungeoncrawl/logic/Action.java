@@ -7,9 +7,10 @@ public class Action {
    private Actor actor;
    private Cell cell;
    private GameLogic gameLogic;
-    public Action(Cell cell) {
+    public Action(Cell cell, GameLogic gameLogic) {
         this.cell=cell;
         this.actor = cell.getActor();
+        this.gameLogic=gameLogic;
 
     }
     public void attack(Cell nextCell){

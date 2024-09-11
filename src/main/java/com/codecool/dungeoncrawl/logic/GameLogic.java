@@ -8,7 +8,7 @@ public class GameLogic {
 
 
     public GameLogic() {
-        this.map = MapLoader.loadMap("map.txt");
+        this.map = MapLoader.loadMap("/map.txt",this);
 
 
     }
@@ -39,6 +39,6 @@ public class GameLogic {
     }
 
     public void  loadNextMap(){
-        this.map = MapLoader.loadMap("/map2.txt");
+        this.map = MapLoader.loadMap("/map2.txt", this);
     }
 }
