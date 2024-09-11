@@ -16,7 +16,7 @@ public class GameLogic {
     public GameLogic(Cell cell) {
         this.player = new Player(cell, this);
 
-        this.map = MapLoader.loadMap("/map3.txt", this,player);
+        this.map = MapLoader.loadMap("/map.txt", this,player);
 
     }
 

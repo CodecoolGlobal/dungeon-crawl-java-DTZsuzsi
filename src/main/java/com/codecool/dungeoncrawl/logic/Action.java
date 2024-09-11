@@ -4,6 +4,7 @@ import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.actors.Actor;
 import com.codecool.dungeoncrawl.data.actors.Player;
 import com.codecool.dungeoncrawl.data.items.Item;
+import javafx.scene.control.Alert;
 
 public class Action {
    private Actor actor;
@@ -26,8 +27,7 @@ public class Action {
             System.out.println(enemy.getHealth());
         }
         if (actor.getHealth()<=0){
-            System.out.println("Game over");
-            System.exit(0);
+            showGameOverPopup();
         }
 
         if (enemy.getHealth()<=0){
@@ -72,5 +72,18 @@ public class Action {
             }
         }
 
+    }
+
+    private void showGameOverPopup() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Game Over");
+        alert.setHeaderText(null);
+        alert.setContentText("Game Over! Better luck next time.");
+
+        // Show the alert and wait for the user to close it
+        alert.showAndWait();
+
+        // Optionally exit the game after the user closes the pop-up
+        System.exit(0);
     }
 }
