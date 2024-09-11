@@ -40,8 +40,9 @@ public class Action {
         if (item != null){
             player.addPickedUpItem(item);
             currentCell.setItem(null);
-            System.out.println("Picked up :" + item.getTileName());
-            player.displayInventoryToConsole();
+            System.out.println("Picked up: " + item.getTileName());
+            System.out.println("Inventory: ");
+            player.displayInventoryItemsToConsole();
         }
     }
 }

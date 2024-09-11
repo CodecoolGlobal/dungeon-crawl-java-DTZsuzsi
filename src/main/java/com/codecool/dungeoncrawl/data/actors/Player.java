@@ -27,9 +27,9 @@ public class Player extends Actor {
         return inventory;
     }
 
-    public void displayInventoryToConsole() {
+    public void displayInventoryItemsToConsole() {
         for (Item item : inventory) {
-            System.out.println(item);
+            System.out.println(item.getTileName());
         }
     }
 
