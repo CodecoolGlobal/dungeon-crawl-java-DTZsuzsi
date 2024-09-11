@@ -4,9 +4,13 @@ import com.codecool.dungeoncrawl.data.Cell;
 
 public class Skeleton extends Actor {
     public Skeleton(Cell cell) {
-        super(cell);
-        this.setHealth(9);
-        this.setAttack(4);
+        super(cell,9,4);
+
+    }
+
+    @Override
+    public void automaticMove() {
+        move(1,1);
     }
 
     @Override

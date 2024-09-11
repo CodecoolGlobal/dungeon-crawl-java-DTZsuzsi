@@ -4,9 +4,13 @@ import com.codecool.dungeoncrawl.data.Cell;
 
 public class Bat extends Actor {
     public Bat(Cell cell) {
-        super(cell);
-        this.setHealth(3);
-        this.setAttack(1);
+        super(cell,3,1);
+
+    }
+
+    @Override
+    public void automaticMove() {
+        this.move(2,2);
     }
 
     @Override

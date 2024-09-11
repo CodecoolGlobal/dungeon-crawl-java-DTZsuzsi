@@ -8,7 +8,7 @@ public class GameLogic {
 
 
     public GameLogic() {
-        this.map = MapLoader.loadMap("/map.txt");
+        this.map = MapLoader.loadMap("map.txt");
 
 
     }

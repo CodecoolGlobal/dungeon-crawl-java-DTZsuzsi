@@ -17,10 +17,12 @@ public abstract class Actor implements Drawable {
         this.attack = attack;
     }
 
-    public Actor(Cell cell) {
+    public Actor(Cell cell, int health, int attack) {
         this.cell = cell;
         this.cell.setActor(this);
         this.action=new Action(cell);
+        this.health = health;
+        this.attack=attack;
 
     }
 
@@ -36,7 +38,7 @@ public abstract class Actor implements Drawable {
         cell = nextCell;}
     }
 
-
+public  abstract void automaticMove();
 
     public boolean isTheNeighborGood(int dx, int dy) {
        Cell nextCell = cell.getNeighbor(dx, dy);

@@ -4,9 +4,13 @@ import com.codecool.dungeoncrawl.data.Cell;
 
 public class DogFighter extends Actor {
     public DogFighter(Cell cell) {
-        super(cell);
-        this.setHealth(8);
-        this.setAttack(5);
+        super(cell,8,5);
+
+    }
+
+    @Override
+    public void automaticMove() {
+        move(1,1);
     }
 
     @Override

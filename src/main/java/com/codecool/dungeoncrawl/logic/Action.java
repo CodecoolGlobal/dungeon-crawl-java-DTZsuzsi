@@ -10,7 +10,7 @@ public class Action {
     public Action(Cell cell) {
         this.cell=cell;
         this.actor = cell.getActor();
-//        this.gameLogic=new GameLogic();
+
     }
     public void attack(Cell nextCell){
 
@@ -38,8 +38,8 @@ public class Action {
         gameLogic.loadNextMap();
     }
 
-    public void monsterMoving(Actor actor){
-
+    public void monsterMoving(Actor actor, int x, int y){
+actor.automaticMove();
     }
 
     public void meetingYoda(){
