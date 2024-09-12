@@ -84,4 +84,6 @@ public  abstract void automaticMove();
     public int getY() {
         return cell.getY();
     }
+
+
 }

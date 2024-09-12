@@ -37,7 +37,14 @@ public class Player extends Actor {
         for (Item item : inventory) {
             inventoryString.append(" ").append(item.getTileName()).append("\n");
         }
-        System.out.println(inventoryString);
         return inventoryString.toString();
+    }
+
+    public boolean isItemInInventory(Item item) {
+       return inventory.contains(item);
+    }
+
+    public void removeItem(Item item) {
+        inventory.remove(item);
     }
 }
