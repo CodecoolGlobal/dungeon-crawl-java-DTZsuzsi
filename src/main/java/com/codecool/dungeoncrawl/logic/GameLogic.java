@@ -14,6 +14,8 @@ public class GameLogic {
     private GameMap map;
     private String mapFileName;
     private GameStartSound gameStartSound;
+    private GameNewMapLoaderSound gameNewMapLoaderSound;
+
 
 
 
@@ -75,15 +77,15 @@ public class GameLogic {
         if (mapFileName.equals("/map.txt")) {
             mapFileName = "/map2.txt";
             this.map = MapLoader.loadMapWithPlayer("/map2.txt",  myPlayer);
-            gameStartSound = new GameStartSound("/sound/get_ready_to_the_next_fight_sielxm3d-83870.mp3");
-            gameStartSound.play();
+            gameNewMapLoaderSound = new GameNewMapLoaderSound("/sound/get_ready_to_the_next_fight_sielxm3d-83870.mp3");
+            gameNewMapLoaderSound.play();
 //        map.setPlayer(player);
         }
         else {
             mapFileName = "/map3.txt";
             this.map = MapLoader.loadMapWithPlayer("/map3.txt",  myPlayer);
-            gameStartSound = new GameStartSound("/sound/get_ready_to_the_next_fight_sielxm3d-83870.mp3");
-            gameStartSound.play();
+            gameNewMapLoaderSound = new GameNewMapLoaderSound("/sound/get_ready_to_the_next_fight_sielxm3d-83870.mp3");
+            gameNewMapLoaderSound.play();
         }
 
 
