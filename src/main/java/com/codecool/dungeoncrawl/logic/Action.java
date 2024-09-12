@@ -27,7 +27,7 @@ public class Action {
         if (item != null && item.isPickable()){
             if (item instanceof Mace) {
                 player.setAttack(player.getAttack() + 5);
-            } else if (item instanceof Helmet) {
+            } else if (item instanceof Helmet || item instanceof  Potion) {
                 player.setHealth(player.getHealth() + 3);
             }
             player.addPickedUpItem(item);

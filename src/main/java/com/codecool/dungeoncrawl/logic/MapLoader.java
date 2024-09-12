@@ -6,10 +6,7 @@ import com.codecool.dungeoncrawl.data.GameMap;
 import com.codecool.dungeoncrawl.data.actors.*;
 import com.codecool.dungeoncrawl.data.actors.npc.allies.Yoda;
 import com.codecool.dungeoncrawl.data.actors.npc.monsters.*;
-import com.codecool.dungeoncrawl.data.items.Door;
-import com.codecool.dungeoncrawl.data.items.Helmet;
-import com.codecool.dungeoncrawl.data.items.Key;
-import com.codecool.dungeoncrawl.data.items.Mace;
+import com.codecool.dungeoncrawl.data.items.*;
 
 import java.io.InputStream;
 import java.util.Scanner;
@@ -94,6 +91,10 @@ public class MapLoader {
                         case 'w':
                             cell.setType(CellType.FLOOR);
                             new Wizard(cell, 30, 2);
+                            break;
+                        case 'p':
+                            cell.setType(CellType.FLOOR);
+                            new Potion(cell, true);
                             break;
                         default:
                             throw new RuntimeException("Unrecognized character: '" + line.charAt(x) + "'");
@@ -184,6 +185,10 @@ public class MapLoader {
                         case 'w':
                             cell.setType(CellType.FLOOR);
                             new Wizard(cell, 30, 2);
+                            break;
+                        case 'p':
+                            cell.setType(CellType.FLOOR);
+                            new Potion(cell,true);
                             break;
                         default:
                             throw new RuntimeException("Unrecognized character: '" + line.charAt(x) + "'");

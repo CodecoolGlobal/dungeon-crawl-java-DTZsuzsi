@@ -7,6 +7,7 @@ public enum CellType {
     FOREST("forest"),
     STAIRS("stairs");
 
+
     private final String tileName;
 
     CellType(String tileName) {
