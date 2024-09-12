@@ -17,27 +17,23 @@ public class Wizard extends Monsters {
 
     @Override
     public void interact(Player player) {
-        Cell enemyCell=this.getCell();
-
         while(this.getHealth()>=0&&player.getHealth()>=0){
-            this.setHealth(this.getHealth()-5);
-            player.setHealth(player.getHealth()-2);
-            System.out.println(player.getHealth());
-            System.out.println(this.getHealth());
+            this.setHealth(this.getHealth()-player.getAttack());
+            player.setHealth(player.getHealth()-this.getAttack());
         }
         if (player.getHealth()<=0){
             this.action.showPopup("Game over", "Sorry, you've died! Game over!");        }
 
         if (this.getHealth()<=0){
-            enemyCell.setActor(null);
-            enemyCell.setActor(player);
+            this.getCell().setActor(null);
 
         }
     }
 
     @Override
     public void automaticMove() {
+        if (this.getHealth()>=0){
         Random random = new Random();
-        this.monsterMove(random.nextInt(3) - 1, 0);
+        this.monsterMove(random.nextInt(3) - 1, 0);}
     }
 }

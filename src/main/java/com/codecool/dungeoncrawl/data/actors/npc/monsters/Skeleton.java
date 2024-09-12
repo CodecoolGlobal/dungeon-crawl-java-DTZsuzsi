@@ -22,8 +22,8 @@ public class Skeleton extends Monsters {
         Cell enemyCell=this.getCell();
 
         while(this.getHealth()>=0&&player.getHealth()>=0){
-            this.setHealth(this.getHealth()-5);
-            player.setHealth(player.getHealth()-2);
+            this.setHealth(this.getHealth()-player.getAttack());
+            player.setHealth(player.getHealth()-this.getAttack());
 
         }
         if (player.getHealth()<=0){
