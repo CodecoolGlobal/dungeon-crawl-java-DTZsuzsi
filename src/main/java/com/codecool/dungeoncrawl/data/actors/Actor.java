@@ -46,7 +46,9 @@ public abstract class Actor implements Drawable {
 
             if (this instanceof Player) {
                 Player player = (Player) this;
+                action.findADoor(nextCell);
                 action.pickUpItem(player);
+
             }
         }
     }
