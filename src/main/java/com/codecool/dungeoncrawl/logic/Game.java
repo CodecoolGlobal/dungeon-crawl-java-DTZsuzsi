@@ -29,7 +29,7 @@ public class Game extends Application {
         this.keyHandlers = Set.of(new Up(), new Down(), new Left(), new Right());
         this.gameMap=new GameMap(25,25,CellType.FLOOR);
         this.cell=new Cell(gameMap, 5,5, CellType.FLOOR);
-        this.logic = new GameLogic(cell);
+        this.logic = new GameLogic();
         this.ui = new UI(logic, keyHandlers);
         ui.setUpPain(primaryStage);
 

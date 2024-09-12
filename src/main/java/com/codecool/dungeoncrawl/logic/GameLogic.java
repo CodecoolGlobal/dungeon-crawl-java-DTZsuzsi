@@ -8,17 +8,15 @@ import java.util.List;
 import java.util.Random;
 
 public class GameLogic {
-    private final Player player; //gameMap már tárolja a playert
     private GameMap map;
     private String mapFileName;
 
 
 
 
-    public GameLogic(Cell cell) {
-        this.player = new Player(cell);
+    public GameLogic() {
         this.mapFileName = "/map.txt";
-        this.map = MapLoader.loadMap("/map.txt",  player);
+        this.map = MapLoader.loadMap("/map.txt");
 
     }
 
@@ -65,14 +63,16 @@ public class GameLogic {
     }
 
     public void loadNextMap() {
+      Player myPlayer=map.getPlayer();
+
         if (mapFileName=="/map.txt") {
             mapFileName = "/map2.txt";
-            this.map = MapLoader.loadMap("/map2.txt",  player);
+            this.map = MapLoader.loadMapWithPlayer("/map2.txt",  myPlayer);
 //        map.setPlayer(player);
         }
         else {
             mapFileName = "/map3.txt";
-            this.map = MapLoader.loadMap("/map3.txt",  player);
+            this.map = MapLoader.loadMapWithPlayer("/map3.txt",  myPlayer);
         }
 
 
