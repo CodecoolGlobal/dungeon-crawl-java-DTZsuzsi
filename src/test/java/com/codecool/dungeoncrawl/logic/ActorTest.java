@@ -1,5 +1,6 @@
 package com.codecool.dungeoncrawl.logic;
 
+import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.CellType;
 import com.codecool.dungeoncrawl.data.GameMap;
 import com.codecool.dungeoncrawl.data.actors.Player;
@@ -10,7 +11,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ActorTest {
     GameMap gameMap = new GameMap(3, 3, CellType.FLOOR);
-    GameLogic gameLogic = new GameLogic();
+    Cell cell = new Cell(gameMap,1,1,CellType.FLOOR);
+    GameLogic gameLogic = new GameLogic(cell);
 
     @Test
     void moveUpdatesCells() {

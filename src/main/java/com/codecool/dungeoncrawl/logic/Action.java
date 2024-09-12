@@ -3,7 +3,11 @@ package com.codecool.dungeoncrawl.logic;
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.actors.Actor;
 import com.codecool.dungeoncrawl.data.actors.Player;
+
+import com.codecool.dungeoncrawl.data.items.Item;
+import javafx.scene.control.Alert;
 import com.codecool.dungeoncrawl.data.items.*;
+
 
 public class Action {
    private Actor actor;
@@ -19,7 +23,6 @@ public class Action {
 
         Actor enemy=nextCell.getActor();
 
-
         while(enemy.getHealth()>=0&&actor.getHealth()>=0){
             enemy.setHealth(enemy.getHealth()-5);
             actor.setHealth(actor.getHealth()-2);
@@ -27,8 +30,7 @@ public class Action {
             System.out.println(enemy.getHealth());
         }
         if (actor.getHealth()<=0){
-            System.out.println("Game over");
-            System.exit(0);
+            showGameOverPopup();
         }
 
         if (enemy.getHealth()<=0){
@@ -54,39 +56,56 @@ public class Action {
 }
 
     public void changingMap(){
+        System.out.println("hi before");
         gameLogic.loadNextMap();
     }
 
-    public void monsterMoving(Actor actor, int x, int y){
-actor.automaticMove();
+    public void meetingYodaAndHeal(int HealthPlus){
+        actor.setHealth(actor.getHealth()+HealthPlus);
     }
 
-    public void meetingYoda(){
-        actor.setHealth(actor.getHealth()+5);
-    }
+    public void meetingOtherActor(Cell nextCell) {
+        if (nextCell.getItem()!=null&& nextCell.getItem().getTileName()=="exitStairs"){
+            System.out.println("stairs");
+            changingMap();
+        }
 
-    public void findingSomething(Cell nextCell) {
-        if (nextCell.getActor()!=null){
-            System.out.println("attack");
+        if (actor instanceof Player && nextCell.getActor()!=null){
             if (nextCell.getActor().getTileName()=="yoda"){
-                meetingYoda();
+                meetingYodaAndHeal(5);
             }
             else {
                 attack(nextCell);
             }
         }
 
-        if (nextCell.getItem()!=null&& nextCell.getItem().getTileName()=="exitStairs"){
-            System.out.println("stairs");
-            changingMap();
-        }
 
-        if (nextCell.getItem()!=null && nextCell.getItem().getTileName().equals("door") && actor instanceof Player){
-            Item key = new Key();
-            Player player = (Player) actor;
-            if (player.isItemInInventory(key)) {
-                player.removeItem(key);
-            }
-        }
+    }
+
+    private void showGameOverPopup() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Game Over");
+        alert.setHeaderText(null);
+        alert.setContentText("Game Over! Better luck next time.");
+
+        // Show the alert and wait for the user to close it
+        alert.showAndWait();
+
+        // Optionally exit the game after the user closes the pop-up
+        System.exit(0);
+
+      //  if (nextCell.getItem()!=null&& nextCell.getItem().getTileName()=="exitStairs"){
+        //    System.out.println("stairs");
+          //  changingMap();
+        //}
+
+     //   if (nextCell.getItem()!=null && nextCell.getItem().getTileName().equals("door") && actor instanceof Player){
+       //     Item key = new Key();
+         //   Player player = (Player) actor;
+           // if (player.isItemInInventory(key)) {
+             //   player.removeItem(key);
+            //}
+        //}
+
     }
 }

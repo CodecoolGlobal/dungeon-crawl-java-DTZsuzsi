@@ -15,10 +15,7 @@ public class Player extends Actor {
         inventory = new ArrayList<>();
     }
 
-    @Override
-    public void automaticMove() {
-        move(0,0);
-    }
+
 
     public String getTileName() {
         return "player";

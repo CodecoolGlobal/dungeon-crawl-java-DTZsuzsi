@@ -1,19 +1,15 @@
 package com.codecool.dungeoncrawl.data.actors;
 
 import com.codecool.dungeoncrawl.data.Cell;
-import com.codecool.dungeoncrawl.logic.Game;
 import com.codecool.dungeoncrawl.logic.GameLogic;
 
-public class Octopus extends Actor {
-    public Octopus(Cell cell, GameLogic gameLogic) {
-        super(cell,20,10, gameLogic);
-
+public class Bear extends Actor {
+    public Bear(Cell cell, int health, int attack, GameLogic gameLogic) {
+        super(cell, health, attack, gameLogic);
     }
-
-
 
     @Override
     public String getTileName() {
-        return "octopus";
+        return "bear";
     }
 }

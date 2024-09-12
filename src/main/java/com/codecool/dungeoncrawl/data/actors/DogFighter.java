@@ -9,10 +9,7 @@ public class DogFighter extends Actor {
 
     }
 
-    @Override
-    public void automaticMove() {
-        move(1,1);
-    }
+
 
     @Override
     public String getTileName() {

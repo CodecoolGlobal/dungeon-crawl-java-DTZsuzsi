@@ -8,10 +8,7 @@ public class Yoda extends Actor {
         super(cell,10,10, gameLogic);
     }
 
-    @Override
-    public void automaticMove() {
-        move(0,0);
-    }
+
 
     @Override
     public String getTileName() {
