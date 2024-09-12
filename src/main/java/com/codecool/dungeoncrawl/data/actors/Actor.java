@@ -2,6 +2,7 @@ package com.codecool.dungeoncrawl.data.actors;
 
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.Drawable;
+import com.codecool.dungeoncrawl.data.interactions.Interaction;
 import com.codecool.dungeoncrawl.logic.Action;
 import com.codecool.dungeoncrawl.logic.GameLogic;
 
@@ -11,6 +12,7 @@ public abstract class Actor implements Drawable {
     private Action action;
     private int attack;
     private GameLogic gameLogic;
+    private Interaction interaction;
 
     public int getAttack(){
         return attack;
@@ -19,12 +21,13 @@ public abstract class Actor implements Drawable {
         this.attack = attack;
     }
 
-    public Actor(Cell cell, int health, int attack, GameLogic gameLogic) {
+    public Actor(Cell cell, int health, int attack, GameLogic gameLogic, Interaction interaction) {
         this.cell = cell;
         this.cell.setActor(this);
         this.action=new Action(cell, gameLogic);
         this.health = health;
         this.attack=attack;
+        this.interaction=interaction;
 
     }
 
@@ -62,7 +65,9 @@ public abstract class Actor implements Drawable {
         return true;
     }
 
-
+public void makeInteraction(Player player, Actor otherActor) {
+        this.interaction.interact(player, otherActor);
+}
     public int getHealth() {
         return health;
     }

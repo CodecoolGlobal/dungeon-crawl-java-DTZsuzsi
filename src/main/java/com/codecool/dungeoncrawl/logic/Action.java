@@ -19,25 +19,7 @@ public class Action {
         this.gameLogic=gameLogic;
 
     }
-    public void attack(Cell nextCell){
 
-        Actor enemy=nextCell.getActor();
-
-        while(enemy.getHealth()>=0&&actor.getHealth()>=0){
-            enemy.setHealth(enemy.getHealth()-5);
-            actor.setHealth(actor.getHealth()-2);
-            System.out.println(actor.getHealth());
-            System.out.println(enemy.getHealth());
-        }
-        if (actor.getHealth()<=0){
-            showGameOverPopup();
-        }
-
-        if (enemy.getHealth()<=0){
-           nextCell.setActor(null);
-        }
-
-    }
 
     public void pickUpItem(Player player){
         Cell currentCell = player.getCell();
@@ -60,9 +42,7 @@ public class Action {
         gameLogic.loadNextMap();
     }
 
-    public void meetingYodaAndHeal(int HealthPlus){
-        actor.setHealth(actor.getHealth()+HealthPlus);
-    }
+
 
     public void meetingOtherActor(Cell nextCell) {
         if (nextCell.getItem()!=null&& nextCell.getItem().getTileName()=="exitStairs"){
@@ -71,41 +51,23 @@ public class Action {
         }
 
         if (actor instanceof Player && nextCell.getActor()!=null){
-            if (nextCell.getActor().getTileName()=="yoda"){
-                meetingYodaAndHeal(5);
-            }
-            else {
-                attack(nextCell);
-            }
+            Player player=(Player) actor;
+            Actor otherActor=nextCell.getActor();
+            otherActor.makeInteraction(player,otherActor);
         }
 
 
     }
 
-    private void showGameOverPopup() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Game Over");
-        alert.setHeaderText(null);
-        alert.setContentText("Game Over! Better luck next time.");
-
-        // Show the alert and wait for the user to close it
-        alert.showAndWait();
-
-        // Optionally exit the game after the user closes the pop-up
-        System.exit(0);
-
-      //  if (nextCell.getItem()!=null&& nextCell.getItem().getTileName()=="exitStairs"){
-        //    System.out.println("stairs");
-          //  changingMap();
-        //}
-
-     //   if (nextCell.getItem()!=null && nextCell.getItem().getTileName().equals("door") && actor instanceof Player){
-       //     Item key = new Key();
-         //   Player player = (Player) actor;
-           // if (player.isItemInInventory(key)) {
-             //   player.removeItem(key);
-            //}
-        //}
-
+    public void findADoor(Cell nextCell){
+           if (nextCell.getItem()!=null && nextCell.getItem().getTileName().equals("door") && actor instanceof Player){
+             Item key = new Key();
+           Player player = (Player) actor;
+         if (player.isItemInInventory(key)) {
+           player.removeItem(key);
+        }
+        }
     }
+
+
 }

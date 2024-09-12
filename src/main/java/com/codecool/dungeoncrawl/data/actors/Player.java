@@ -1,5 +1,7 @@
 package com.codecool.dungeoncrawl.data.actors;
 import com.codecool.dungeoncrawl.data.Cell;
+import com.codecool.dungeoncrawl.data.interactions.Interaction;
+import com.codecool.dungeoncrawl.data.interactions.MovingWalls;
 import com.codecool.dungeoncrawl.data.items.Item;
 import com.codecool.dungeoncrawl.logic.GameLogic;
 
@@ -11,7 +13,7 @@ public class Player extends Actor {
     private List<Item> inventory;
 
     public Player(Cell cell, GameLogic gameLogic) {
-        super(cell,10,5,gameLogic );
+        super(cell,10,5,gameLogic, new MovingWalls("movingWalls"));
         inventory = new ArrayList<>();
     }
 
