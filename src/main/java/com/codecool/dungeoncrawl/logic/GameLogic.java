@@ -13,13 +13,15 @@ import java.util.Random;
 public class GameLogic {
     private GameMap map;
     private String mapFileName;
-
+    private GameStartSound gameStartSound;
 
 
 
     public GameLogic() {
         this.mapFileName = "/map.txt";
         this.map = MapLoader.loadMap("/map.txt");
+        gameStartSound = new GameStartSound("/sound/free-music-in-my-mind-remake-26367.mp3");
+        gameStartSound.play();
 
     }
 
@@ -67,15 +69,21 @@ public class GameLogic {
 
     public void loadNextMap() {
       Player myPlayer=map.getPlayer();
+      gameStartSound.stop();
 
-        if (mapFileName=="/map.txt") {
+
+        if (mapFileName.equals("/map.txt")) {
             mapFileName = "/map2.txt";
             this.map = MapLoader.loadMapWithPlayer("/map2.txt",  myPlayer);
+            gameStartSound = new GameStartSound("/sound/get_ready_to_the_next_fight_sielxm3d-83870.mp3");
+            gameStartSound.play();
 //        map.setPlayer(player);
         }
         else {
             mapFileName = "/map3.txt";
             this.map = MapLoader.loadMapWithPlayer("/map3.txt",  myPlayer);
+            gameStartSound = new GameStartSound("/sound/get_ready_to_the_next_fight_sielxm3d-83870.mp3");
+            gameStartSound.play();
         }
 
 
