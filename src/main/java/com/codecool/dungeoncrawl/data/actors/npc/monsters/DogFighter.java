@@ -3,6 +3,8 @@ package com.codecool.dungeoncrawl.data.actors.npc.monsters;
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.actors.Player;
 
+import java.util.Random;
+
 public class DogFighter extends Monsters {
     public DogFighter(Cell cell) {
         super(cell,8,5);
@@ -37,6 +39,7 @@ public class DogFighter extends Monsters {
 
     @Override
     public void automaticMove() {
-
+        Random random = new Random();
+        this.monsterMove(0, random.nextInt(3) - 1);
     }
 }

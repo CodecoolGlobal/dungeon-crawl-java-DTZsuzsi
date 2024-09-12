@@ -3,6 +3,8 @@ package com.codecool.dungeoncrawl.data.actors.npc.monsters;
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.actors.Player;
 
+import java.util.Random;
+
 public class Wizard extends Monsters {
     public Wizard(Cell cell, int health, int attack) {
         super(cell, health, attack);
@@ -34,6 +36,7 @@ public class Wizard extends Monsters {
 
     @Override
     public void automaticMove() {
-
+        Random random = new Random();
+        this.monsterMove(random.nextInt(3) - 1, 0);
     }
 }
