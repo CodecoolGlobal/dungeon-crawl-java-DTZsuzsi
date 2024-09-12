@@ -30,6 +30,10 @@ public class Action {
             } else if (item instanceof Helmet || item instanceof  Potion) {
                 player.setHealth(player.getHealth() + 3);
             }
+            else if(item instanceof Crown){
+                showPopup("Winning", "Congratulations! You won!");
+
+            }
             player.addPickedUpItem(item);
             currentCell.setItem(null);
         }
@@ -50,11 +54,11 @@ public class Action {
         }
     }
 
-    public void showGameOverPopup() {
+    public void showPopup(String title, String text) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Game Over");
+        alert.setTitle(title);
         alert.setHeaderText(null);
-        alert.setContentText("Game Over! Better luck next time.");
+        alert.setContentText(text);
         alert.showAndWait();
         System.exit(0);
     }

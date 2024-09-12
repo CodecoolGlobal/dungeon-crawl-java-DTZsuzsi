@@ -24,16 +24,14 @@ public class Bear extends Monsters {
             System.out.println(this.getHealth());
         }
         if (player.getHealth()<=0){
-            this.action.showGameOverPopup();
-        }
+            this.action.showPopup("Game over", "Sorry, you've died! Game over!");        }
 
         if (this.getHealth()<=0){
             enemyCell.setActor(null);
         }
     }
-
+//TODO: implement
     @Override
     public void automaticMove() {
-
     }
 }

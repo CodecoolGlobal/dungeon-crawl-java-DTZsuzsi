@@ -3,6 +3,8 @@ package com.codecool.dungeoncrawl.data.actors.npc.monsters;
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.actors.Player;
 
+import java.util.Random;
+
 public class DogFighter extends Monsters {
     public DogFighter(Cell cell) {
         super(cell,8,5);
@@ -27,8 +29,7 @@ public class DogFighter extends Monsters {
             System.out.println(this.getHealth());
         }
         if (player.getHealth()<=0){
-            this.action.showGameOverPopup();
-        }
+            this.action.showPopup("Game over", "Sorry, you've died! Game over!");        }
 
         if (this.getHealth()<=0){
             enemyCell.setActor(null);
@@ -37,6 +38,7 @@ public class DogFighter extends Monsters {
 
     @Override
     public void automaticMove() {
-
+        Random random = new Random();
+        this.monsterMove(0, random.nextInt(3) - 1);
     }
 }
