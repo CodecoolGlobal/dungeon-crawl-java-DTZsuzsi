@@ -2,6 +2,7 @@ package com.codecool.dungeoncrawl.data.actors;
 
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.Drawable;
+import com.codecool.dungeoncrawl.data.items.Key;
 import com.codecool.dungeoncrawl.logic.Action;
 
 public abstract class Actor implements Drawable {
@@ -55,6 +56,12 @@ public abstract class Actor implements Drawable {
             return false;
         } else if (nextCell.getActor() != null) {
             return false;
+        } else if (nextCell.getTileName().equals("door") && this instanceof Player) {
+            Player player = (Player) this;
+            Key key = new Key();
+            if (!player.isItemInInventory(key)) {
+                return false;
+            }
         }
         return true;
     }

@@ -14,40 +14,39 @@ import javafx.util.Duration;
 
 
 public class Action {
-   private Actor actor;
-   private Cell cell;
-   private WinnerSound winnerSound;
+    private Actor actor;
+    private Cell cell;
+    private WinnerSound winnerSound;
 
     public Action(Cell cell) {
-        this.cell=cell;
+        this.cell = cell;
         this.actor = cell.getActor();
     }
 
 
-    public void pickUpItem(Player player){
+    public void pickUpItem(Player player) {
         Cell currentCell = player.getCell();
         Item item = currentCell.getItem();
 
-        if (item != null && item.isPickable()){
+        if (item != null && item.isPickable()) {
             if (item instanceof Mace) {
                 player.setAttack(player.getAttack() + 5);
             } else if (item instanceof Helmet || item instanceof Potion) {
                 player.setHealth(player.getHealth() + 3);
-            }
-            else if(item instanceof Crown){
+            } else if (item instanceof Crown) {
                 showPopup("Winning", "Congratulations! You won!");
 
             }
             player.addPickedUpItem(item);
             currentCell.setItem(null);
         }
-}
+    }
 
 
     public void meetingOtherActor(Cell nextCell) {
 
 
-        if (actor instanceof Player && nextCell.getActor()!=null) {
+        if (actor instanceof Player && nextCell.getActor() != null) {
             Player player = (Player) actor;
             if (nextCell.getActor() instanceof Ally) {
                 ((Ally) nextCell.getActor()).interact(player);
@@ -76,13 +75,13 @@ public class Action {
         timeline.play();  // Start the timer
     }
 
-    public void findADoor(Cell nextCell){
-           if (nextCell.getItem()!=null && nextCell.getItem().getTileName().equals("door") && actor instanceof Player){
-             Item key = new Key();
-           Player player = (Player) actor;
-         if (player.isItemInInventory(key)) {
-           player.removeItem(key);
-        }
+    public void findADoor(Cell nextCell) {
+        if (nextCell.getItem() != null && nextCell.getItem().getTileName().equals("door") && actor instanceof Player) {
+            Item key = new Key();
+            Player player = (Player) actor;
+            if (player.isItemInInventory(key)) {
+                player.removeItem(key);
+            }
         }
     }
 }
