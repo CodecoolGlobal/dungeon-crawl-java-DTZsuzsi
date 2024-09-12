@@ -3,22 +3,23 @@ package com.codecool.dungeoncrawl.logic;
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.GameMap;
 import com.codecool.dungeoncrawl.data.actors.*;
+import com.codecool.dungeoncrawl.data.actors.npc.monsters.DogFighter;
+import com.codecool.dungeoncrawl.data.actors.npc.monsters.Monsters;
+import com.codecool.dungeoncrawl.data.actors.npc.monsters.Skeleton;
 
 import java.util.List;
 import java.util.Random;
 
 public class GameLogic {
-    private final Player player; //gameMap már tárolja a playert
     private GameMap map;
     private String mapFileName;
 
 
 
 
-    public GameLogic(Cell cell) {
-        this.player = new Player(cell, this);
+    public GameLogic() {
         this.mapFileName = "/map.txt";
-        this.map = MapLoader.loadMap("/map.txt", this, player);
+        this.map = MapLoader.loadMap("/map.txt");
 
     }
 
@@ -51,11 +52,11 @@ public class GameLogic {
     }
 
     public void enemyMovingAutomatically() {
-        Random random = new Random();
+
         List<Actor> actors = map.getActors();
         for (Actor actor : actors) {
-            if (actor instanceof Bat || actor instanceof Skeleton || actor instanceof DogFighter) {
-                actor.move(random.nextInt(3) - 1, random.nextInt(3) - 1);
+            if (actor instanceof Monsters) {
+                ((Monsters) actor).automaticMove();
             }
         }
     }
@@ -65,14 +66,16 @@ public class GameLogic {
     }
 
     public void loadNextMap() {
+      Player myPlayer=map.getPlayer();
+
         if (mapFileName=="/map.txt") {
             mapFileName = "/map2.txt";
-            this.map = MapLoader.loadMap("/map2.txt", this, player);
+            this.map = MapLoader.loadMapWithPlayer("/map2.txt",  myPlayer);
 //        map.setPlayer(player);
         }
         else {
             mapFileName = "/map3.txt";
-            this.map = MapLoader.loadMap("/map3.txt", this, player);
+            this.map = MapLoader.loadMapWithPlayer("/map3.txt",  myPlayer);
         }
 
 

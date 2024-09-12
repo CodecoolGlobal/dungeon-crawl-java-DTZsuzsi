@@ -61,4 +61,10 @@ public class GameMap {
     public int getHeight() {
         return height;
     }
+
+    public boolean isPlayerOnStairs(){
+        if (player.getCell().getType()==CellType.STAIRS)
+            return true;
+        else{return false;}
+    }
 }

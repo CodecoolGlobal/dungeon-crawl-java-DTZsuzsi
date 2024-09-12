@@ -1,6 +1,7 @@
 package com.codecool.dungeoncrawl.data;
 
 import com.codecool.dungeoncrawl.data.actors.Actor;
+import com.codecool.dungeoncrawl.data.actors.npc.NPC;
 import com.codecool.dungeoncrawl.data.items.Item;
 
 import java.util.Objects;
@@ -34,6 +35,9 @@ public class Cell implements Drawable {
 
     public Actor getActor() {
         return actor;
+    }
+    public NPC getNPC() {
+        return (NPC) actor;
     }
 
     public Cell getNeighbor(int dx, int dy) {
