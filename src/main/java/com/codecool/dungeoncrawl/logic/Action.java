@@ -6,13 +6,17 @@ import com.codecool.dungeoncrawl.data.actors.Player;
 import com.codecool.dungeoncrawl.data.actors.npc.allies.Ally;
 import com.codecool.dungeoncrawl.data.actors.npc.monsters.Monsters;
 import com.codecool.dungeoncrawl.data.items.Item;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.scene.control.Alert;
 import com.codecool.dungeoncrawl.data.items.*;
+import javafx.util.Duration;
 
 
 public class Action {
    private Actor actor;
    private Cell cell;
+   private WinnerSound winnerSound;
 
     public Action(Cell cell) {
         this.cell=cell;
@@ -27,7 +31,7 @@ public class Action {
         if (item != null && item.isPickable()){
             if (item instanceof Mace) {
                 player.setAttack(player.getAttack() + 5);
-            } else if (item instanceof Helmet || item instanceof  Potion) {
+            } else if (item instanceof Helmet || item instanceof Potion) {
                 player.setHealth(player.getHealth() + 3);
             }
             else if(item instanceof Crown){
@@ -60,7 +64,16 @@ public class Action {
         alert.setHeaderText(null);
         alert.setContentText(text);
         alert.showAndWait();
-        System.exit(0);
+        winnerSound = new WinnerSound("/sound/free-music-in-my-mind-remake-26367.mp3");
+        winnerSound.play();
+        // Create a Timeline to delay the exit, giving the sound time to play
+        Timeline timeline = new Timeline(new KeyFrame(
+                Duration.seconds(14),  // Adjust the duration based on how long you want to wait
+                event -> System.exit(0)  // Exit the program after the sound plays
+        ));
+
+        timeline.setCycleCount(1);  // Play the timeline only once
+        timeline.play();  // Start the timer
     }
 
     public void findADoor(Cell nextCell){
