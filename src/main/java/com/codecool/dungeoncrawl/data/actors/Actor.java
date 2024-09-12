@@ -2,15 +2,13 @@ package com.codecool.dungeoncrawl.data.actors;
 
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.Drawable;
-import com.codecool.dungeoncrawl.data.interactions.Interaction;
 import com.codecool.dungeoncrawl.logic.Action;
 
 public abstract class Actor implements Drawable {
     private Cell cell;
     private int health ;
-    private Action action;
+    protected Action action;
     private int attack;
-    private Interaction interaction;
 
     public int getAttack(){
         return attack;
@@ -19,13 +17,12 @@ public abstract class Actor implements Drawable {
         this.attack = attack;
     }
 
-    public Actor(Cell cell, int health, int attack,  Interaction interaction) {
+    public Actor(Cell cell, int health, int attack) {
         this.cell = cell;
         this.cell.setActor(this);
         this.action=new Action(cell);
         this.health = health;
         this.attack=attack;
-        this.interaction=interaction;
 
     }
 
@@ -35,10 +32,7 @@ public abstract class Actor implements Drawable {
        if(nextCell.getActor()!=null) {
            action.meetingOtherActor(nextCell);
        }
-//       if(nextCell.getType().getTileName()=="stairs"){
-//           System.out.println("stairs");
-//           action.changingMap();
-//       }
+
         if (checkIfYouCanMoveToNextCell(dx, dy)){
             cell.setActor(null);
             nextCell.setActor(this);
@@ -65,9 +59,7 @@ public abstract class Actor implements Drawable {
         return true;
     }
 
-public void makeInteraction(Player player, Actor otherActor) {
-        this.interaction.interact(player, otherActor);
-}
+
     public int getHealth() {
         return health;
     }

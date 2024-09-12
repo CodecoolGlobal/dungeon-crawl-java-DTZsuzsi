@@ -4,6 +4,8 @@ import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.CellType;
 import com.codecool.dungeoncrawl.data.GameMap;
 import com.codecool.dungeoncrawl.data.actors.*;
+import com.codecool.dungeoncrawl.data.actors.npc.allies.Yoda;
+import com.codecool.dungeoncrawl.data.actors.npc.monsters.*;
 import com.codecool.dungeoncrawl.data.items.Door;
 import com.codecool.dungeoncrawl.data.items.Helmet;
 import com.codecool.dungeoncrawl.data.items.Key;

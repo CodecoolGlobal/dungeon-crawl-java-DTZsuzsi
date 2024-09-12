@@ -4,6 +4,9 @@ import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.actors.Actor;
 import com.codecool.dungeoncrawl.data.actors.Player;
 
+import com.codecool.dungeoncrawl.data.actors.npc.NPC;
+import com.codecool.dungeoncrawl.data.actors.npc.allies.Ally;
+import com.codecool.dungeoncrawl.data.actors.npc.monsters.Monsters;
 import com.codecool.dungeoncrawl.data.items.Item;
 import javafx.scene.control.Alert;
 import com.codecool.dungeoncrawl.data.items.*;
@@ -45,16 +48,29 @@ public class Action {
 
 
     public void meetingOtherActor(Cell nextCell) {
-//        if (nextCell.getItem()!=null&& nextCell.getItem().getTileName()=="exitStairs"){
-//            System.out.println("stairs");
-//            changingMap();
-//        }
 
-        if (actor instanceof Player && nextCell.getActor()!=null){
-            Player player=(Player) actor;
-            Actor otherActor=nextCell.getActor();
-            otherActor.makeInteraction(player,otherActor);
+
+        if (actor instanceof Player && nextCell.getActor()!=null) {
+            Player player = (Player) actor;
+            if (nextCell.getActor() instanceof Ally) {
+                ((Ally) nextCell.getActor()).interact(player);
+            }
+            if (nextCell.getActor() instanceof Monsters) {
+                ((Monsters) nextCell.getActor()).interact(player);
+            }
+
         }
+
+    }
+
+    public void showGameOverPopup() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Game Over");
+        alert.setHeaderText(null);
+        alert.setContentText("Game Over! Better luck next time.");
+        alert.showAndWait();
+        System.exit(0);
+
 
 
     }

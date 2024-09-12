@@ -4,7 +4,7 @@ import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.CellType;
 import com.codecool.dungeoncrawl.data.GameMap;
 import com.codecool.dungeoncrawl.data.actors.Player;
-import com.codecool.dungeoncrawl.data.actors.Skeleton;
+import com.codecool.dungeoncrawl.data.actors.npc.monsters.Skeleton;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -46,8 +46,8 @@ class ActorTest {
 
     @Test
     void cannotMoveIntoAnotherActor() {
-        Player player = new Player(gameMap.getCell(1, 1), gameLogic);
-        Skeleton skeleton = new Skeleton(gameMap.getCell(2, 1), gameLogic);
+        Player player = new Player(gameMap.getCell(1, 1));
+        Skeleton skeleton = new Skeleton(gameMap.getCell(2, 1));
         player.move(1, 0);
 
         assertEquals(1, player.getX());
