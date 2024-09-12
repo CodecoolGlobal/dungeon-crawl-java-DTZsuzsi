@@ -30,6 +30,8 @@ public class Wizard extends Monsters {
 
         if (this.getHealth()<=0){
             enemyCell.setActor(null);
+            enemyCell.setActor(player);
+
         }
     }
 

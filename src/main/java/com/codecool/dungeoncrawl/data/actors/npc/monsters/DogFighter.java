@@ -33,6 +33,8 @@ public class DogFighter extends Monsters {
 
         if (this.getHealth()<=0){
             enemyCell.setActor(null);
+            enemyCell.setActor(player);
+
         }
     }
 
