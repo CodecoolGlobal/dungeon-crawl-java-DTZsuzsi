@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Random;
 
 public class GameLogic {
-    private final Player player;
+    private final Player player; //gameMap már tárolja a playert
     private GameMap map;
     private String mapFileName;
 
@@ -18,13 +18,11 @@ public class GameLogic {
     public GameLogic(Cell cell) {
         this.player = new Player(cell, this);
         this.mapFileName = "/map.txt";
-        this.map = MapLoader.loadMap(mapFileName, this, player);
+        this.map = MapLoader.loadMap("/map.txt", this, player);
 
     }
 
-    public String getMapFileName() {
-        return mapFileName;
-    }
+
     public double getMapWidth() {
         return map.getWidth();
     }
@@ -69,10 +67,11 @@ public class GameLogic {
     public void loadNextMap() {
         if (mapFileName=="/map.txt") {
             mapFileName = "/map2.txt";
-            this.map = MapLoader.loadMap(mapFileName, this, player);
+            this.map = MapLoader.loadMap("/map2.txt", this, player);
 //        map.setPlayer(player);
         }
-        if (mapFileName=="/map2.txt") {
+        else {
+            mapFileName = "/map3.txt";
             this.map = MapLoader.loadMap("/map3.txt", this, player);
         }
 

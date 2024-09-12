@@ -10,12 +10,12 @@ import javafx.stage.Stage;
 
         @Override
         public void start(Stage primaryStage) {
-            // Call this method when the game is over
+
             showGameOverPopup();
         }
 
         private void showGameOverPopup() {
-            // Create an Alert of type INFORMATION
+
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Game Over");
             alert.setHeaderText(null);
