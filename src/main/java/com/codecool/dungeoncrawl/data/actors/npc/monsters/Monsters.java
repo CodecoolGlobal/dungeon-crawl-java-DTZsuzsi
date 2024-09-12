@@ -6,7 +6,7 @@ import com.codecool.dungeoncrawl.data.actors.Interaction;
 import com.codecool.dungeoncrawl.data.actors.Player;
 import com.codecool.dungeoncrawl.data.actors.npc.NPC;
 
-public abstract class Monsters extends Actor implements Interaction {
+public abstract class Monsters extends NPC implements Interaction {
 
     public Monsters(Cell cell, int health, int attack) {
         super(cell, health, attack);
