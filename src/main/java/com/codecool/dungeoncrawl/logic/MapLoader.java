@@ -96,6 +96,10 @@ public class MapLoader {
                             cell.setType(CellType.FLOOR);
                             new Potion(cell, true);
                             break;
+                        case 'c':
+                            cell.setType(CellType.FLOOR);
+                            new Crown(cell, true);
+                            break;
                         default:
                             throw new RuntimeException("Unrecognized character: '" + line.charAt(x) + "'");
                     }
@@ -189,6 +193,10 @@ public class MapLoader {
                         case 'p':
                             cell.setType(CellType.FLOOR);
                             new Potion(cell,true);
+                            break;
+                        case 'c':
+                            cell.setType(CellType.FLOOR);
+                            new Crown(cell, true);
                             break;
                         default:
                             throw new RuntimeException("Unrecognized character: '" + line.charAt(x) + "'");

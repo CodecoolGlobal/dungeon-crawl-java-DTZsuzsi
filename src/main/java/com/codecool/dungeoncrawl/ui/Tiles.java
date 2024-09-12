@@ -42,6 +42,7 @@ public class Tiles {
         tileMap.put("wizard", new Tile(24, 1));
         tileMap.put("helmet", new Tile(4, 22));
         tileMap.put("potion", new Tile(26, 23));
+        tileMap.put("crown", new Tile(12,24));
        
 
     }
