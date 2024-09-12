@@ -3,8 +3,11 @@ package com.codecool.dungeoncrawl.logic;
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.actors.Actor;
 import com.codecool.dungeoncrawl.data.actors.Player;
+
 import com.codecool.dungeoncrawl.data.items.Item;
 import javafx.scene.control.Alert;
+import com.codecool.dungeoncrawl.data.items.*;
+
 
 public class Action {
    private Actor actor;
@@ -41,10 +44,14 @@ public class Action {
         Item item = currentCell.getItem();
 
         if (item != null && item.isPickable()){
+            if (item instanceof Mace) {
+                player.setAttack(player.getAttack() + 5);
+            } else if (item instanceof Helmet) {
+                player.setHealth(player.getHealth() + 3);
+            }
             player.addPickedUpItem(item);
             currentCell.setItem(null);
-            System.out.println("Picked up: " + item.getTileName());
-            System.out.println("Inventory: ");
+//            player.displayInventoryItems();
         }
 }
 
@@ -72,6 +79,7 @@ public class Action {
             }
         }
 
+
     }
 
     private void showGameOverPopup() {
@@ -85,5 +93,19 @@ public class Action {
 
         // Optionally exit the game after the user closes the pop-up
         System.exit(0);
+
+      //  if (nextCell.getItem()!=null&& nextCell.getItem().getTileName()=="exitStairs"){
+        //    System.out.println("stairs");
+          //  changingMap();
+        //}
+
+     //   if (nextCell.getItem()!=null && nextCell.getItem().getTileName().equals("door") && actor instanceof Player){
+       //     Item key = new Key();
+         //   Player player = (Player) actor;
+           // if (player.isItemInInventory(key)) {
+             //   player.removeItem(key);
+            //}
+        //}
+
     }
 }

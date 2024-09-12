@@ -60,9 +60,9 @@ public class MapLoader {
                             cell.setType(CellType.FLOOR);
                             new Bat(cell, gameLogic);
                             break;
-                        case 'S':
+                        case 'M':
                             cell.setType(CellType.FLOOR);
-                            new Sword(cell);
+                            new Mace(cell);
                             break;
                         case 'K':
                             cell.setType(CellType.FLOOR);
