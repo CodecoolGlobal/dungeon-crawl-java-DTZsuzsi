@@ -34,4 +34,9 @@ public class Skeleton extends Monsters {
             enemyCell.setActor(null);
         }
     }
+
+    @Override
+    public void automaticMove() {
+
+    }
 }

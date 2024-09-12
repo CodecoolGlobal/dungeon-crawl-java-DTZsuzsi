@@ -51,15 +51,15 @@ public class GameLogic {
         return map.getPlayer().displayInventoryItems();
     }
 
-//    public void enemyMovingAutomatically() {
-//        Random random = new Random();
-//        List<Actor> actors = map.getActors();
-//        for (Actor actor : actors) {
-//            if (actor instanceof Monsters.Bat || actor instanceof Skeleton || actor instanceof DogFighter) {
-//                actor.move(random.nextInt(3) - 1, random.nextInt(3) - 1);
-//            }
-//        }
-//    }
+    public void enemyMovingAutomatically() {
+
+        List<Actor> actors = map.getActors();
+        for (Actor actor : actors) {
+            if (actor instanceof Monsters) {
+                ((Monsters) actor).automaticMove();
+            }
+        }
+    }
 
     public GameMap getMap() {
         return map;

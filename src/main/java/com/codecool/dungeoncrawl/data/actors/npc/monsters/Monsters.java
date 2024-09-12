@@ -19,4 +19,23 @@ public abstract class Monsters extends Actor implements Interaction {
 
     @Override
     public abstract void interact(Player player);
+
+    public void monsterMove(int dx, int dy){
+
+        Cell nextCell = getCell().getNeighbor(dx, dy);
+        Cell currentCell = getCell();
+        if (nextCell.getActor() instanceof Player){
+            interact((Player) nextCell.getActor());
+        }
+        if (checkIfYouCanMoveToNextCell(dx,dy)){
+            currentCell.setActor(null);
+            nextCell.setActor(this);
+            this.setCell(nextCell);
+        }
+    }
+    public abstract void automaticMove();
+
+
+
+
 }

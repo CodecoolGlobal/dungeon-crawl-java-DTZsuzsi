@@ -34,4 +34,9 @@ public class Octopus extends Monsters {
             enemyCell.setActor(null);
         }
     }
+
+    @Override
+    public void automaticMove() {
+
+    }
 }

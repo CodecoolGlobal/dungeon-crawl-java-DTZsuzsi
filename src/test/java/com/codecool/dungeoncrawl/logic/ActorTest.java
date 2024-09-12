@@ -12,11 +12,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class ActorTest {
     GameMap gameMap = new GameMap(3, 3, CellType.FLOOR);
     Cell cell = new Cell(gameMap,1,1,CellType.FLOOR);
-    GameLogic gameLogic = new GameLogic(cell);
+    GameLogic gameLogic = new GameLogic();
 
     @Test
     void moveUpdatesCells() {
-        Player player = new Player(gameMap.getCell(1, 1), gameLogic);
+        Player player = new Player(gameMap.getCell(1, 1));
         player.move(1, 0);
 
         assertEquals(2, player.getX());

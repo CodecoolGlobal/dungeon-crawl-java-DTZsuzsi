@@ -34,4 +34,9 @@ public class DogFighter extends Monsters {
             enemyCell.setActor(null);
         }
     }
+
+    @Override
+    public void automaticMove() {
+
+    }
 }

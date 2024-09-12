@@ -3,6 +3,8 @@ package com.codecool.dungeoncrawl.data.actors.npc.monsters;
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.actors.Player;
 
+import java.util.Random;
+
 public  class Bat extends Monsters {
     public Bat(Cell cell) {
         super(cell,3,1);
@@ -34,7 +36,13 @@ public  class Bat extends Monsters {
             enemyCell.setActor(null);
         }
     }
+
+    @Override
+    public void automaticMove() {
+        Random random = new Random();
+        this.monsterMove(random.nextInt(3)-1,random.nextInt(3)-1);
     }
+}
 
 
 

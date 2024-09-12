@@ -3,8 +3,6 @@ package com.codecool.dungeoncrawl.logic;
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.actors.Actor;
 import com.codecool.dungeoncrawl.data.actors.Player;
-
-import com.codecool.dungeoncrawl.data.actors.npc.NPC;
 import com.codecool.dungeoncrawl.data.actors.npc.allies.Ally;
 import com.codecool.dungeoncrawl.data.actors.npc.monsters.Monsters;
 import com.codecool.dungeoncrawl.data.items.Item;
@@ -19,8 +17,6 @@ public class Action {
     public Action(Cell cell) {
         this.cell=cell;
         this.actor = cell.getActor();
-
-
     }
 
 
@@ -36,15 +32,8 @@ public class Action {
             }
             player.addPickedUpItem(item);
             currentCell.setItem(null);
-//            player.displayInventoryItems();
         }
 }
-
-//    public void changingMap(){
-//        System.out.println("hi before");
-//        gameLogic.loadNextMap();
-//    }
-
 
 
     public void meetingOtherActor(Cell nextCell) {
@@ -58,9 +47,7 @@ public class Action {
             if (nextCell.getActor() instanceof Monsters) {
                 ((Monsters) nextCell.getActor()).interact(player);
             }
-
         }
-
     }
 
     public void showGameOverPopup() {
@@ -70,9 +57,6 @@ public class Action {
         alert.setContentText("Game Over! Better luck next time.");
         alert.showAndWait();
         System.exit(0);
-
-
-
     }
 
     public void findADoor(Cell nextCell){
@@ -84,6 +68,4 @@ public class Action {
         }
         }
     }
-
-
 }

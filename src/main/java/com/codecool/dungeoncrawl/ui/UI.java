@@ -48,7 +48,7 @@ public class UI {
         if (logic.getMap().isPlayerOnStairs()){
             logic.loadNextMap();
         }
-        //logic.enemyMovingAutomatically();
+        logic.enemyMovingAutomatically();
         refresh();
     }
 
