@@ -5,13 +5,11 @@ import com.codecool.dungeoncrawl.data.actors.Player;
 
 import java.util.Random;
 
-public  class Bat extends Monsters {
+public class Bat extends Monsters {
     public Bat(Cell cell) {
-        super(cell,3,1);
+        super(cell, 3, 1);
 
     }
-
-
 
     @Override
     public String getTileName() {
@@ -20,19 +18,18 @@ public  class Bat extends Monsters {
 
     @Override
     public void interact(Player player) {
-        Cell enemyCell=this.getCell();
+        Cell enemyCell = this.getCell();
 
-        while(this.getHealth()>=0&&player.getHealth()>=0){
-            this.setHealth(this.getHealth()-5);
-            player.setHealth(player.getHealth()-2);
-            System.out.println(player.getHealth());
-            System.out.println(this.getHealth());
+        while (this.getHealth() >= 0 && player.getHealth() >= 0) {
+            this.setHealth(this.getHealth() - 5);
+            player.setHealth(player.getHealth() - 2);
+
         }
-        if (player.getHealth()<=0){
+        if (player.getHealth() <= 0) {
             this.action.showGameOverPopup();
         }
 
-        if (this.getHealth()<=0){
+        if (this.getHealth() <= 0) {
             enemyCell.setActor(null);
         }
     }
@@ -40,7 +37,7 @@ public  class Bat extends Monsters {
     @Override
     public void automaticMove() {
         Random random = new Random();
-        this.monsterMove(random.nextInt(3)-1,random.nextInt(3)-1);
+        this.monsterMove(random.nextInt(3) - 1, random.nextInt(3) - 1);
     }
 }
 
