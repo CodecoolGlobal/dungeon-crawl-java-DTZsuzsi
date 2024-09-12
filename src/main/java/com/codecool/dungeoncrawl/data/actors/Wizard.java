@@ -5,8 +5,8 @@ import com.codecool.dungeoncrawl.data.interactions.Attack;
 import com.codecool.dungeoncrawl.logic.GameLogic;
 
 public class Wizard extends Actor {
-    public Wizard(Cell cell, int health, int attack, GameLogic gameLogic) {
-        super(cell, health, attack, gameLogic, new Attack("attack"));
+    public Wizard(Cell cell, int health, int attack) {
+        super(cell, health, attack,  new Attack("attack"));
     }
 
     @Override

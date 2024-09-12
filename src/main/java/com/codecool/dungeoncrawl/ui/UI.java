@@ -44,6 +44,10 @@ public class UI {
         for (KeyHandler keyHandler : keyHandlers) {
             keyHandler.perform(keyEvent, logic.getMap());
         }
+
+        if (logic.getMap().isPlayerOnStairs()){
+            logic.loadNextMap();
+        }
         //logic.enemyMovingAutomatically();
         refresh();
     }

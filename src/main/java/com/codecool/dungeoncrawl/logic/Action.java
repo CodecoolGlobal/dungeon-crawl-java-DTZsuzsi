@@ -12,11 +12,11 @@ import com.codecool.dungeoncrawl.data.items.*;
 public class Action {
    private Actor actor;
    private Cell cell;
-   private GameLogic gameLogic;
-    public Action(Cell cell, GameLogic gameLogic) {
+
+    public Action(Cell cell) {
         this.cell=cell;
         this.actor = cell.getActor();
-        this.gameLogic=gameLogic;
+
 
     }
 
@@ -37,18 +37,18 @@ public class Action {
         }
 }
 
-    public void changingMap(){
-        System.out.println("hi before");
-        gameLogic.loadNextMap();
-    }
+//    public void changingMap(){
+//        System.out.println("hi before");
+//        gameLogic.loadNextMap();
+//    }
 
 
 
     public void meetingOtherActor(Cell nextCell) {
-        if (nextCell.getItem()!=null&& nextCell.getItem().getTileName()=="exitStairs"){
-            System.out.println("stairs");
-            changingMap();
-        }
+//        if (nextCell.getItem()!=null&& nextCell.getItem().getTileName()=="exitStairs"){
+//            System.out.println("stairs");
+//            changingMap();
+//        }
 
         if (actor instanceof Player && nextCell.getActor()!=null){
             Player player=(Player) actor;

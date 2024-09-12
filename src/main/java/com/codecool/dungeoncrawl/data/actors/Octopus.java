@@ -6,8 +6,8 @@ import com.codecool.dungeoncrawl.logic.Game;
 import com.codecool.dungeoncrawl.logic.GameLogic;
 
 public class Octopus extends Actor {
-    public Octopus(Cell cell, GameLogic gameLogic) {
-        super(cell,20,10, gameLogic, new Attack("attack"));
+    public Octopus(Cell cell) {
+        super(cell,20,10,  new Attack("attack"));
 
     }
 

@@ -10,7 +10,7 @@ import java.io.InputStream;
 import java.util.Scanner;
 
 public class MapLoader {
-    public static GameMap loadMap(String fileName,  GameLogic gameLogic, Player player) {
+    public static GameMap loadMap(String fileName,   Player player) {
         InputStream is = MapLoader.class.getResourceAsStream(fileName);
         System.out.println(is);
         Scanner scanner = new Scanner(is);
@@ -38,27 +38,27 @@ public class MapLoader {
                             break;
                         case 's':
                             cell.setType(CellType.FLOOR);
-                            new Skeleton(cell, gameLogic);
+                            new Skeleton(cell);
                             break;
                         case '@':
                             cell.setType(CellType.FLOOR);
-                            map.setPlayer(new Player(cell, gameLogic));
+                            map.setPlayer(new Player(cell));
                             break;
                         case 'D':
                             cell.setType(CellType.FLOOR);
-                            new DogFighter(cell,gameLogic);
+                            new DogFighter(cell);
                             break;
                         case 'Y':
                             cell.setType(CellType.FLOOR);
-                            new Yoda(cell,gameLogic);
+                            new Yoda(cell);
                             break;
                         case 'O':
                             cell.setType(CellType.FLOOR);
-                            new Octopus(cell,gameLogic);
+                            new Octopus(cell);
                             break;
                         case 'B':
                             cell.setType(CellType.FLOOR);
-                            new Bat(cell, gameLogic);
+                            new Bat(cell);
                             break;
                         case 'M':
                             cell.setType(CellType.FLOOR);
@@ -84,11 +84,11 @@ public class MapLoader {
                             break;
                         case 'b':
                             cell.setType(CellType.FLOOR);
-                            new Bear(cell,15,21,gameLogic);
+                            new Bear(cell,15,21);
                             break;
                         case 'w':
                             cell.setType(CellType.FLOOR);
-                            new Wizard(cell, 30,2,gameLogic);
+                            new Wizard(cell, 30,2);
                             break;
                         default:
                             throw new RuntimeException("Unrecognized character: '" + line.charAt(x) + "'");

@@ -16,9 +16,9 @@ public class GameLogic {
 
 
     public GameLogic(Cell cell) {
-        this.player = new Player(cell, this);
+        this.player = new Player(cell);
         this.mapFileName = "/map.txt";
-        this.map = MapLoader.loadMap("/map.txt", this, player);
+        this.map = MapLoader.loadMap("/map.txt",  player);
 
     }
 
@@ -67,12 +67,12 @@ public class GameLogic {
     public void loadNextMap() {
         if (mapFileName=="/map.txt") {
             mapFileName = "/map2.txt";
-            this.map = MapLoader.loadMap("/map2.txt", this, player);
+            this.map = MapLoader.loadMap("/map2.txt",  player);
 //        map.setPlayer(player);
         }
         else {
             mapFileName = "/map3.txt";
-            this.map = MapLoader.loadMap("/map3.txt", this, player);
+            this.map = MapLoader.loadMap("/map3.txt",  player);
         }
 
 

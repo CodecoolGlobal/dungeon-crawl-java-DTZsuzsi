@@ -5,8 +5,8 @@ import com.codecool.dungeoncrawl.data.interactions.Healing;
 import com.codecool.dungeoncrawl.logic.GameLogic;
 
 public class Yoda extends Actor {
-    public Yoda(Cell cell, GameLogic gameLogic) {
-        super(cell,10,10, gameLogic, new Healing("healing",5));
+    public Yoda(Cell cell) {
+        super(cell,10,10, new Healing("healing",5));
     }
 
 
