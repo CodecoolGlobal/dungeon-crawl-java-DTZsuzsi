@@ -9,8 +9,5 @@ public abstract class Ally extends NPC {
         super(cell, health, attack);
     }
 
-    @Override
-    public abstract void interact(Player player);
-
 
 }

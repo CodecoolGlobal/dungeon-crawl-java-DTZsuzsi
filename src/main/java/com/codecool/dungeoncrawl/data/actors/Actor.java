@@ -5,10 +5,10 @@ import com.codecool.dungeoncrawl.data.Drawable;
 import com.codecool.dungeoncrawl.logic.Action;
 
 public abstract class Actor implements Drawable {
-    private Cell cell;
-    private int health ;
+    protected Cell cell;
+    protected int health ;
     protected Action action;
-    private int attack;
+    protected int attack;
 
     public int getAttack(){
         return attack;
@@ -50,7 +50,7 @@ public abstract class Actor implements Drawable {
     public boolean checkIfYouCanMoveToNextCell(int dx, int dy) {
         Cell nextCell = cell.getNeighbor(dx, dy);
 
-
+//TODO: celltype
         if (nextCell.getType().getTileName() == "wall"||nextCell.getType().getTileName()=="forest" ||
                 nextCell.getType().getTileName()=="bossWall"
         ) {

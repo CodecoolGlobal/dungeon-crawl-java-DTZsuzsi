@@ -4,8 +4,7 @@ import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.actors.Actor;
 import com.codecool.dungeoncrawl.data.actors.Player;
 import com.codecool.dungeoncrawl.data.actors.npc.NPC;
-import com.codecool.dungeoncrawl.data.actors.npc.allies.Ally;
-import com.codecool.dungeoncrawl.data.actors.npc.monsters.Monsters;
+
 import com.codecool.dungeoncrawl.data.items.Item;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -36,7 +35,8 @@ public class Action {
                 player.setHealth(player.getHealth() + 3);
             }
             else if(item instanceof Crown){
-                showPopup("Winning", "Congratulations! You won!");
+                player.setAttack(player.getAttack()+90);
+//                showPopup("Winning", "Congratulations! You won!");
 
             }
             player.addPickedUpItem(item);
