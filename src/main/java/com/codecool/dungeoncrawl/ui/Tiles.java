@@ -43,7 +43,11 @@ public class Tiles {
         tileMap.put("helmet", new Tile(4, 22));
         tileMap.put("potion", new Tile(26, 23));
         tileMap.put("crown", new Tile(12,24));
-       
+        tileMap.put("boss", new Tile(28, 6));
+        tileMap.put("bossWall", new Tile(19, 17));
+        tileMap.put("bossFloor", new Tile(12, 18));
+        tileMap.put("bossSkeleton", new Tile(24,7));
+
 
     }
 

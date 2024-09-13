@@ -51,7 +51,9 @@ public abstract class Actor implements Drawable {
         Cell nextCell = cell.getNeighbor(dx, dy);
 
 
-        if (nextCell.getType().getTileName() == "wall"||nextCell.getType().getTileName()=="forest") {
+        if (nextCell.getType().getTileName() == "wall"||nextCell.getType().getTileName()=="forest" ||
+                nextCell.getType().getTileName()=="bossWall"
+        ) {
             return false;
         } else if (nextCell.getActor() != null) {
             return false;

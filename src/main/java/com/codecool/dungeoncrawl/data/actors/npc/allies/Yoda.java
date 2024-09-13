@@ -10,7 +10,7 @@ public class Yoda extends Ally {
     public Yoda(Cell cell)
 
     {
-        super(cell,10,10);
+        super(cell,90000000,10);
         this.HealthPlus = 5;
     }
 

@@ -17,22 +17,22 @@ public class Skeleton extends Monsters {
         return "skeleton";
     }
 
-    @Override
-    public void interact(Player player) {
-        Cell enemyCell=this.getCell();
-
-        while(this.getHealth()>=0&&player.getHealth()>=0){
-            this.setHealth(this.getHealth()-player.getAttack());
-            player.setHealth(player.getHealth()-this.getAttack());
-
-        }
-        if (player.getHealth()<=0){
-            this.action.showPopup("Game over", "Sorry, you've died! Game over!");        }
-
-        if (this.getHealth()<=0){
-            enemyCell.setActor(null);
-        }
-    }
+//    @Override
+//    public void interact(Player player) {
+//        Cell enemyCell=this.getCell();
+//
+//        while(this.getHealth()>=0&&player.getHealth()>=0){
+//            this.setHealth(this.getHealth()-player.getAttack());
+//            player.setHealth(player.getHealth()-this.getAttack());
+//
+//        }
+//        if (player.getHealth()<=0){
+//            this.action.showPopup("Game over", "Sorry, you've died! Game over!");        }
+//
+//        if (this.getHealth()<=0){
+//            enemyCell.setActor(null);
+//        }
+//    }
 //TODO:implement later!
     @Override
     public void automaticMove() {
