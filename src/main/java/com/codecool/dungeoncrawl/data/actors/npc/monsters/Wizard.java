@@ -5,8 +5,8 @@ import com.codecool.dungeoncrawl.data.Cell;
 import java.util.Random;
 
 public class Wizard extends Monsters {
-    public Wizard(Cell cell, int health, int attack) {
-        super(cell, health, attack);
+    public Wizard(Cell cell) {
+        super(cell, 20, 10);
     }
 
     @Override
