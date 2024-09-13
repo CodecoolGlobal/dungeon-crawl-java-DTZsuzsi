@@ -50,10 +50,8 @@ public abstract class Actor implements Drawable {
     public boolean checkIfYouCanMoveToNextCell(int dx, int dy) {
         Cell nextCell = cell.getNeighbor(dx, dy);
 
-//TODO: celltype
-        if (nextCell.getType().getTileName() == "wall"||nextCell.getType().getTileName()=="forest" ||
-                nextCell.getType().getTileName()=="bossWall"
-        ) {
+        if (!nextCell.getType().isWalkable())
+         {
             return false;
         } else if (nextCell.getActor() != null) {
             return false;
