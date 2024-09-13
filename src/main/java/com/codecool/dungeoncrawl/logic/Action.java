@@ -66,14 +66,13 @@ public class Action {
         alert.showAndWait();
         winnerSound = new WinnerSound("/sound/free-music-in-my-mind-remake-26367.mp3");
         winnerSound.play();
-        // Create a Timeline to delay the exit, giving the sound time to play
         Timeline timeline = new Timeline(new KeyFrame(
-                Duration.seconds(14),  // Adjust the duration based on how long you want to wait
-                event -> System.exit(0)  // Exit the program after the sound plays
+                Duration.seconds(14),
+                event -> System.exit(0)
         ));
 
-        timeline.setCycleCount(1);  // Play the timeline only once
-        timeline.play();  // Start the timer
+        timeline.setCycleCount(1);
+        timeline.play();
     }
 
     public void findADoor(Cell nextCell){
