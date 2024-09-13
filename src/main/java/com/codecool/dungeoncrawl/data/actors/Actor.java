@@ -52,16 +52,10 @@ public abstract class Actor implements Drawable {
         Cell nextCell = cell.getNeighbor(dx, dy);
 
 
-        if (nextCell.getType().getTileName() == "wall"||nextCell.getType().getTileName()=="forest") {
+        if (!nextCell.isWalkable()) {
             return false;
         } else if (nextCell.getActor() != null) {
             return false;
-        } else if (nextCell.getTileName().equals("door") && this instanceof Player) {
-            Player player = (Player) this;
-            Key key = new Key();
-            if (!player.isItemInInventory(key)) {
-                return false;
-            }
         }
         return true;
     }

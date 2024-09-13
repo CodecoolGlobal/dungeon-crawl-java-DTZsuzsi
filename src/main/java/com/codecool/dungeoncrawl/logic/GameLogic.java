@@ -3,12 +3,9 @@ package com.codecool.dungeoncrawl.logic;
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.GameMap;
 import com.codecool.dungeoncrawl.data.actors.*;
-import com.codecool.dungeoncrawl.data.actors.npc.monsters.DogFighter;
 import com.codecool.dungeoncrawl.data.actors.npc.monsters.Monsters;
-import com.codecool.dungeoncrawl.data.actors.npc.monsters.Skeleton;
 
 import java.util.List;
-import java.util.Random;
 
 public class GameLogic {
     private GameMap map;
@@ -16,7 +13,7 @@ public class GameLogic {
     private GameStartSound gameStartSound;
     private GameNewMapLoaderSound gameNewMapLoaderSound;
 
-
+    private final static List<String> MAP_NAMES = List.of("map.txt", "map2.txt", "map3.txt");
 
 
     public GameLogic() {
@@ -70,24 +67,13 @@ public class GameLogic {
     }
 
     public void loadNextMap() {
-      Player myPlayer=map.getPlayer();
-      gameStartSound.stop();
+        Player myPlayer=map.getPlayer();
+        gameStartSound.stop();
 
-
-        if (mapFileName.equals("/map.txt")) {
-            mapFileName = "/map2.txt";
-            this.map = MapLoader.loadMapWithPlayer("/map2.txt",  myPlayer);
-            gameNewMapLoaderSound = new GameNewMapLoaderSound("/sound/get_ready_to_the_next_fight_sielxm3d-83870.mp3");
-            gameNewMapLoaderSound.play();
-//        map.setPlayer(player);
-        }
-        else {
-            mapFileName = "/map3.txt";
-            this.map = MapLoader.loadMapWithPlayer("/map3.txt",  myPlayer);
-            gameNewMapLoaderSound = new GameNewMapLoaderSound("/sound/get_ready_to_the_next_fight_sielxm3d-83870.mp3");
-            gameNewMapLoaderSound.play();
-        }
-
-
+        var currMapIndex = MAP_NAMES.indexOf(mapFileName) + 1;
+        mapFileName = MAP_NAMES.get(currMapIndex + 1);
+        this.map = MapLoader.loadMapWithPlayer(mapFileName,  myPlayer);
+        gameNewMapLoaderSound = new GameNewMapLoaderSound("/sound/get_ready_to_the_next_fight_sielxm3d-83870.mp3");
+        gameNewMapLoaderSound.play();
     }
 }

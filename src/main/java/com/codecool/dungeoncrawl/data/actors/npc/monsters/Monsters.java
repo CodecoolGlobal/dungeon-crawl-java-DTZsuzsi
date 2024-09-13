@@ -18,24 +18,36 @@ public abstract class Monsters extends NPC implements Interaction {
     }
 
     @Override
-    public abstract void interact(Player player);
+    public void interact(Player player) {
+        while (this.getHealth() >= 0 && player.getHealth() >= 0) {
+            this.setHealth(this.getHealth() - player.getAttack());
+            player.setHealth(player.getHealth() - this.getAttack());
+            System.out.println(player.getHealth());
+            System.out.println(this.getHealth());
+        }
+        if (player.getHealth() <= 0) {
+            this.action.showPopup("Game over", "Sorry, you've died! Game over!");
+        }
+        if (this.getHealth() < 0) {
+            this.getCell().setActor(null);
+        }
+    }
 
-    public void monsterMove(int dx, int dy){
+    public void monsterMove(int dx, int dy) {
 
         Cell nextCell = getCell().getNeighbor(dx, dy);
         Cell currentCell = getCell();
-        if (nextCell.getActor() instanceof Player){
+        if (nextCell.getActor() instanceof Player) {
             interact((Player) nextCell.getActor());
         }
-        if (checkIfYouCanMoveToNextCell(dx,dy)){
+        if (checkIfYouCanMoveToNextCell(dx, dy)) {
             currentCell.setActor(null);
             nextCell.setActor(this);
             this.setCell(nextCell);
         }
     }
+
     public abstract void automaticMove();
-
-
 
 
 }

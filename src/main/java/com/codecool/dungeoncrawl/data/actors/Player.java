@@ -1,6 +1,8 @@
 package com.codecool.dungeoncrawl.data.actors;
 import com.codecool.dungeoncrawl.data.Cell;
+import com.codecool.dungeoncrawl.data.CellType;
 import com.codecool.dungeoncrawl.data.items.Item;
+import com.codecool.dungeoncrawl.data.items.Key;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,5 +44,20 @@ public class Player extends Actor {
 
     public void removeItem(Item item) {
         inventory.remove(item);
+    }
+
+    @Override
+    public boolean checkIfYouCanMoveToNextCell(int dx, int dy) {
+        if (!super.checkIfYouCanMoveToNextCell(dx, dy)) {
+            return false;
+        }
+        Cell nextCell = getCell().getNeighbor(dx, dy);
+        if (nextCell.hasDoor()) {
+            Key key = new Key();
+            if (!isItemInInventory(key)) {
+                return false;
+            }
+        }
+        return true;
     }
 }

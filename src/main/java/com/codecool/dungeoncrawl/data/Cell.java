@@ -2,6 +2,7 @@ package com.codecool.dungeoncrawl.data;
 
 import com.codecool.dungeoncrawl.data.actors.Actor;
 import com.codecool.dungeoncrawl.data.actors.npc.NPC;
+import com.codecool.dungeoncrawl.data.items.Door;
 import com.codecool.dungeoncrawl.data.items.Item;
 
 import java.util.Objects;
@@ -86,4 +87,10 @@ public class Cell implements Drawable {
     public int hashCode() {
         return Objects.hash(type, actor, gameMap, x, y);
     }
+
+    public boolean hasDoor() {
+        return item instanceof Door;
+    }
+
+    public boolean isWalkable() {return false;}
 }

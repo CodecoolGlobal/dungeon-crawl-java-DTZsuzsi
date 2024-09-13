@@ -3,6 +3,7 @@ package com.codecool.dungeoncrawl.logic;
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.actors.Actor;
 import com.codecool.dungeoncrawl.data.actors.Player;
+import com.codecool.dungeoncrawl.data.actors.npc.NPC;
 import com.codecool.dungeoncrawl.data.actors.npc.allies.Ally;
 import com.codecool.dungeoncrawl.data.actors.npc.monsters.Monsters;
 import com.codecool.dungeoncrawl.data.items.Item;
@@ -48,11 +49,8 @@ public class Action {
 
         if (actor instanceof Player && nextCell.getActor() != null) {
             Player player = (Player) actor;
-            if (nextCell.getActor() instanceof Ally) {
-                ((Ally) nextCell.getActor()).interact(player);
-            }
-            if (nextCell.getActor() instanceof Monsters) {
-                ((Monsters) nextCell.getActor()).interact(player);
+            if (nextCell.getActor() instanceof NPC npc) {
+                npc.interact(player);
             }
         }
     }
