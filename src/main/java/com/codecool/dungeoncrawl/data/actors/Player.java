@@ -47,4 +47,23 @@ public class Player extends Actor {
     public void receiveHealth(int healthPlus) {
         this.health += healthPlus;
     }
+
+    public void move(int dx, int dy) {
+
+        Cell nextCell = cell.getNeighbor(dx, dy);
+        if(nextCell.getActor()!=null) {
+            action.meetingOtherActor(nextCell);
+        }
+
+        if (checkIfYouCanMoveToNextCell(dx, dy)){
+            cell.setActor(null);
+            nextCell.setActor(this);
+            cell = nextCell;
+
+                action.findADoor(nextCell);
+                action.pickUpItem(this);
+
+            }
+        }
+
 }
