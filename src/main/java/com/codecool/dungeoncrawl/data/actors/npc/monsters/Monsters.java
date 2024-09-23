@@ -36,7 +36,7 @@ public abstract class Monsters extends NPC implements Interaction {
         if (nextCell.getActor() instanceof Player) {
             interact((Player) nextCell.getActor());
         }
-        if (checkIfYouCanMoveToNextCell(dx, dy)) {
+        if (nextCell.isWalkable()) {
             cell.setActor(null);
             nextCell.setActor(this);
             this.setCell(nextCell);

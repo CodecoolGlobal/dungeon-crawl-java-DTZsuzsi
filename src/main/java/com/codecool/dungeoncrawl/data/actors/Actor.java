@@ -26,19 +26,6 @@ public abstract class Actor implements Drawable {
 
     }
 
-//
-    public boolean checkIfYouCanMoveToNextCell(int dx, int dy) {
-        Cell nextCell = cell.getNeighbor(dx, dy);
-
-        if (!nextCell.getType().isWalkable())
-         {
-            return false;
-        } else if (nextCell.getActor() != null) {
-            return false;
-        }
-        return true;
-    }
-
 
     public int getHealth() {
         return health;

@@ -55,7 +55,7 @@ public class Player extends Actor {
             action.meetingOtherActor(nextCell);
         }
 
-        if (checkIfYouCanMoveToNextCell(dx, dy)){
+        if (nextCell.isWalkable()){
             cell.setActor(null);
             nextCell.setActor(this);
             cell = nextCell;
