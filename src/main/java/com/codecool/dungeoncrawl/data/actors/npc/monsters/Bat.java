@@ -7,8 +7,10 @@ import com.codecool.dungeoncrawl.data.actors.npc.NPC;
 import java.util.Random;
 
 public class Bat extends Monsters {
+    private static final int BASIC_HEALTH=3;
+    private static final int BASIC_ATTACK=1;
     public Bat(Cell cell) {
-        super(cell, 3, 1);
+        super(cell, BASIC_HEALTH, BASIC_ATTACK);
 
     }
 

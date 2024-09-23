@@ -5,8 +5,11 @@ import com.codecool.dungeoncrawl.data.CellType;
 import com.codecool.dungeoncrawl.data.actors.Player;
 
 public class Octopus extends Monsters {
+    private static final int BASIC_HEALTH=20;
+    private static final int BASIC_ATTACK=10;
     public Octopus(Cell cell) {
-        super(cell,20,10);
+
+        super(cell,BASIC_HEALTH,BASIC_ATTACK);
 
     }
 
@@ -15,7 +18,7 @@ public class Octopus extends Monsters {
         return "octopus";
     }
 
-//
+
 //TODO: implement later!
     @Override
     public void automaticMove() {

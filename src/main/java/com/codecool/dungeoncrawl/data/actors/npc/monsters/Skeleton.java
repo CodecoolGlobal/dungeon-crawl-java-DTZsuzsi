@@ -5,8 +5,11 @@ import com.codecool.dungeoncrawl.data.CellType;
 import com.codecool.dungeoncrawl.data.actors.Player;
 
 public class Skeleton extends Monsters {
+    private static final int BASIC_HEALTH=9;
+    private static final int BASIC_ATTACK=4;
+
     public Skeleton(Cell cell) {
-        super(cell,9,4);
+        super(cell,BASIC_HEALTH,BASIC_ATTACK);
 
     }
 

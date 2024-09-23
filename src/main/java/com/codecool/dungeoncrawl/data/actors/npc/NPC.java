@@ -12,7 +12,7 @@ public abstract class NPC extends Actor implements Interaction {
 
     @Override
     public String getTileName() {
-        return "";
+        return "NPC";
     }
 
     @Override

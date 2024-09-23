@@ -6,8 +6,10 @@ import com.codecool.dungeoncrawl.data.actors.Player;
 import java.util.Random;
 
 public class DogFighter extends Monsters {
+    private static final int BASIC_HEALTH=8;
+    private static final int BASIC_ATTACK=5;
     public DogFighter(Cell cell) {
-        super(cell,8,5);
+        super(cell,BASIC_HEALTH, BASIC_ATTACK);
 
     }
 

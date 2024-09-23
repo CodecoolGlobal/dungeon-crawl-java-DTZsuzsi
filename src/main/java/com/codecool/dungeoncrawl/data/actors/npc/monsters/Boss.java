@@ -4,8 +4,10 @@ import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.actors.Player;
 
 public class Boss extends Monsters {
+    private static final int BASIC_HEALTH=3;
+    private static final int BASIC_ATTACK=1;
     public Boss(Cell cell) {
-        super(cell, 250, 158);
+        super(cell, BASIC_HEALTH, BASIC_ATTACK);
     }
 
     @Override

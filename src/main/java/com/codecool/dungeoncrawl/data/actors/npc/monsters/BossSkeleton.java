@@ -6,8 +6,10 @@ import com.codecool.dungeoncrawl.data.actors.Player;
 import java.util.Random;
 
 public class BossSkeleton extends Monsters{
+    private static final int BASIC_HEALTH=3;
+    private static final int BASIC_ATTACK=3;
     public BossSkeleton(Cell cell) {
-        super(cell, 3, 3);
+        super(cell, BASIC_HEALTH, BASIC_ATTACK);
     }
 
     @Override
