@@ -7,7 +7,9 @@ public enum CellType {
     FOREST("forest",false),
     STAIRS("stairs",true),
     BOSSFLOOR("bossFloor",true),
-    BOSSWALL("bossWall",false);
+    BOSSWALL("bossWall",false),
+    CLOSED_DOOR("closedDoor",false),
+    OPEN_DOOR("openDoor",true);
 
 
 

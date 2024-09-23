@@ -16,12 +16,10 @@ import javafx.util.Duration;
 public class Action {
    private Actor actor;
    private Cell cell;
-   private SoundPlayer winnerSound;
 
     public Action(Cell cell) {
         this.cell=cell;
         this.actor = cell.getActor();
-        this.winnerSound=new SoundPlayer(SOUND_TYPES.WINNER);
     }
 
 
@@ -37,7 +35,6 @@ public class Action {
             }
             else if(item instanceof Crown){
                 player.setAttack(player.getAttack()+90);
-//                showPopup("Winning", "Congratulations! You won!");
 
             }
             player.addPickedUpItem(item);
@@ -64,7 +61,6 @@ public class Action {
         alert.setHeaderText(null);
         alert.setContentText(text);
         alert.showAndWait();
-        winnerSound.play();
         Timeline timeline = new Timeline(new KeyFrame(
                 Duration.seconds(14),
                 event -> System.exit(0)

@@ -15,11 +15,11 @@ public class GameLogic {
 
 private SoundPlayer gameStartSound;
 private SoundPlayer gameNewMapLoaderSound;
-    private List<String> mapFileNames = List.of("/map.txt", "/map2.txt", "/map3.txt", "/map4.txt");
+    private List<String> mapFileNames = List.of("/map1.txt", "/map2.txt", "/map3.txt", "/map4.txt");
 
 
     public GameLogic() {
-        this.mapFileName = "/map.txt";
+        this.mapFileName = "/map1.txt";
         this.map = MapLoader.loadMap(mapFileName, null);
         this. gameStartSound = new SoundPlayer(SOUND_TYPES.START);
         gameStartSound.play();
@@ -76,7 +76,11 @@ private SoundPlayer gameNewMapLoaderSound;
         mapFileName = mapFileNames.get(currentIndex + 1);
         this.map = MapLoader.loadMap(mapFileName, myPlayer);
         gameNewMapLoaderSound.play();
+    }
 
-
+    public void meetDoor(){
+if (getMap().isPlayerNextClosedDoor()){
+    getMap().nextToDoor();
+}
     }
 }
