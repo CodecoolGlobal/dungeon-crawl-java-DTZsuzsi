@@ -6,7 +6,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
-    public class GameOverPopup extends Application {
+    public class Popup extends Application {
 
         @Override
         public void start(Stage primaryStage) {

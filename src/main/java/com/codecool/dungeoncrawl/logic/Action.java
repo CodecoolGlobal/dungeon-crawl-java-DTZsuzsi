@@ -16,11 +16,12 @@ import javafx.util.Duration;
 public class Action {
    private Actor actor;
    private Cell cell;
-   private WinnerSound winnerSound;
+   private SoundPlayer winnerSound;
 
     public Action(Cell cell) {
         this.cell=cell;
         this.actor = cell.getActor();
+        this.winnerSound=new SoundPlayer(SOUND_TYPES.WINNER);
     }
 
 
@@ -63,7 +64,6 @@ public class Action {
         alert.setHeaderText(null);
         alert.setContentText(text);
         alert.showAndWait();
-        winnerSound = new WinnerSound("/sound/free-music-in-my-mind-remake-26367.mp3");
         winnerSound.play();
         Timeline timeline = new Timeline(new KeyFrame(
                 Duration.seconds(14),

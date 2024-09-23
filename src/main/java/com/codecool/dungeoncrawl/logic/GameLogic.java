@@ -11,16 +11,19 @@ import java.util.List;
 public class GameLogic {
     private GameMap map;
     private String mapFileName;
-    private GameStartSound gameStartSound;
-    private GameNewMapLoaderSound gameNewMapLoaderSound;
+
+
+private SoundPlayer gameStartSound;
+private SoundPlayer gameNewMapLoaderSound;
     private List<String> mapFileNames = List.of("/map.txt", "/map2.txt", "/map3.txt", "/map4.txt");
 
 
     public GameLogic() {
         this.mapFileName = "/map.txt";
         this.map = MapLoader.loadMap(mapFileName, null);
-        gameStartSound = new GameStartSound("/sound/free-music-in-my-mind-remake-26367.mp3");
+        this. gameStartSound = new SoundPlayer(SOUND_TYPES.START);
         gameStartSound.play();
+        this.gameNewMapLoaderSound = new SoundPlayer(SOUND_TYPES.NEW_MAP);
 
     }
 
@@ -72,7 +75,6 @@ public class GameLogic {
         int currentIndex = mapFileNames.indexOf(mapFileName);
         mapFileName = mapFileNames.get(currentIndex + 1);
         this.map = MapLoader.loadMap(mapFileName, myPlayer);
-        gameNewMapLoaderSound = new GameNewMapLoaderSound("/sound/get_ready_to_the_next_fight_sielxm3d-83870.mp3");
         gameNewMapLoaderSound.play();
 
 
