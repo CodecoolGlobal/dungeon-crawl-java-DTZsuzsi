@@ -43,4 +43,8 @@ public class Player extends Actor {
     public void removeItem(Item item) {
         inventory.remove(item);
     }
+
+    public void receiveHealth(int healthPlus) {
+        this.health += healthPlus;
+    }
 }

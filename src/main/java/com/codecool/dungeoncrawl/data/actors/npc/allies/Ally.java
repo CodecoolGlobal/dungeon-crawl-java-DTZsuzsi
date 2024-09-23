@@ -1,7 +1,6 @@
 package com.codecool.dungeoncrawl.data.actors.npc.allies;
 
 import com.codecool.dungeoncrawl.data.Cell;
-import com.codecool.dungeoncrawl.data.actors.Player;
 import com.codecool.dungeoncrawl.data.actors.npc.NPC;
 
 public abstract class Ally extends NPC {
