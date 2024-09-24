@@ -71,7 +71,7 @@ public class GameMap {
     }
 
     public boolean isPlayerNextClosedDoor(){
-       List<Cell> neighbors=getNeighbors();
+       List<Cell> neighbors=player.getCell().getNeighbors();
        for (Cell cell: neighbors) {
            if ( cell.getType()==CellType.CLOSED_DOOR){
                System.out.println("hi door");
@@ -83,24 +83,12 @@ public class GameMap {
     }
 
 
-    public List<Cell> getNeighbors() {
-        Cell cell=player.getCell();
-        List<Cell> neighbors=new ArrayList<>();
-        neighbors.add(cell.getNeighbor(-1,-1));
-        neighbors.add(cell.getNeighbor(0,-1));
-        neighbors.add(cell.getNeighbor(0,1));
-        neighbors.add(cell.getNeighbor(1,1));
-        neighbors.add(cell.getNeighbor(1,-1));
-        neighbors.add(cell.getNeighbor(-1,0));
-        neighbors.add(cell.getNeighbor(1,0));
-        neighbors.add(cell.getNeighbor(-1,1));
-    return neighbors;
-    }
+
     public void nextToDoor(){
         List<Item> inventory=player.getInventory().getItems();
         Item key=null;
         if (player.hasKey()){
-        List<Cell> neighbors=getNeighbors();
+        List<Cell> neighbors=player.getCell().getNeighbors();
         for (Cell cell: neighbors) {
             if (cell.getType().equals(CellType.CLOSED_DOOR))
             {cell.setType(CellType.OPEN_DOOR);

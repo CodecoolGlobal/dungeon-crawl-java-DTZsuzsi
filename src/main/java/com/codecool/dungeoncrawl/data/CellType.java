@@ -9,7 +9,8 @@ public enum CellType {
     BOSSFLOOR("bossFloor",true),
     BOSSWALL("bossWall",false),
     CLOSED_DOOR("closedDoor",false),
-    OPEN_DOOR("openDoor",true);
+    OPEN_DOOR("openDoor",true),
+    HOUSE("house",false);
 //TODO celltype saving
 
 
