@@ -5,7 +5,7 @@ import com.codecool.dungeoncrawl.data.actors.Player;
 
 public class Helmet extends Item implements HealthPlus {
     private int healthPlus;
-    private int BASIC_HEALTH_PLUS=20;
+    private final static int BASIC_HEALTH_PLUS=20;
     public Helmet(Cell cell) {
         super(cell, true);
         this.healthPlus = BASIC_HEALTH_PLUS;

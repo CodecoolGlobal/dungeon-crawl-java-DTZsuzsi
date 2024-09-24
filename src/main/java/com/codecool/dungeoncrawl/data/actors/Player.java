@@ -75,4 +75,8 @@ public class Player extends Actor {
     public List<Item> getItems() {
         return inventory;
     }
+
+    public void receiveAttackPlus(int attackPlus){
+        this.attack+=attackPlus;
+    }
 }
