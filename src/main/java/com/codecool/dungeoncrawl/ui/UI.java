@@ -53,6 +53,8 @@ public class UI {
         }
         logic.enemyMovingAutomatically();
         refresh();
+
+        //TODO: starts save here
     }
 
     public void refresh() {

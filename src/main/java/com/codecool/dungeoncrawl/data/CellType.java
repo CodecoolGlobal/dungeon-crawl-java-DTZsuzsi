@@ -10,7 +10,7 @@ public enum CellType {
     BOSSWALL("bossWall",false),
     CLOSED_DOOR("closedDoor",false),
     OPEN_DOOR("openDoor",true);
-
+//TODO celltype saving
 
 
 

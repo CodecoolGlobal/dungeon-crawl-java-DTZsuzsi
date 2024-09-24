@@ -4,8 +4,8 @@ import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.actors.Player;
 
 public class Boss extends Monsters {
-    private static final int BASIC_HEALTH=3;
-    private static final int BASIC_ATTACK=1;
+    private static final int BASIC_HEALTH=250;
+    private static final int BASIC_ATTACK=158;
     public Boss(Cell cell) {
         super(cell, BASIC_HEALTH, BASIC_ATTACK);
     }
