@@ -41,6 +41,9 @@ public class Action {
             if (item.isPickable()){
                 player.getInventory().addItem(item);
             }
+            if (item instanceof ChangingPlayerForm){
+                ((ChangingPlayerForm) item).changePlayer(player);
+            }
             currentCell.setItem(null);
         }}
 

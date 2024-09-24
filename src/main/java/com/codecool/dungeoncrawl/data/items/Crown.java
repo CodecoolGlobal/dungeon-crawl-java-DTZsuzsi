@@ -1,9 +1,10 @@
 package com.codecool.dungeoncrawl.data.items;
 
 import com.codecool.dungeoncrawl.data.Cell;
+import com.codecool.dungeoncrawl.data.actors.PLAYER_FORM_TYPES;
 import com.codecool.dungeoncrawl.data.actors.Player;
 
-public class Crown extends Item implements HealthPlus {
+public class Crown extends Item implements HealthPlus, ChangingPlayerForm {
     private int healthPlus;
     private final static int BASIC_HEALTH_PLUS=100;
 
@@ -20,5 +21,10 @@ public class Crown extends Item implements HealthPlus {
     @Override
     public void heal(Player player) {
         player.receiveHealth(healthPlus);
+    }
+
+    @Override
+    public void changePlayer(Player player) {
+        player.setForm(PLAYER_FORM_TYPES.PLAYER_SUPER);
     }
 }

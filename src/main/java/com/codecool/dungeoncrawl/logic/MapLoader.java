@@ -89,6 +89,10 @@ public class MapLoader {
                             cell.setType(CellType.FLOOR);
                             new Helmet(cell);
                             break;
+                        case '+':
+                            cell.setType(CellType.FLOOR);
+                            new Shield(cell);
+                            break;
                         case 'e':
                             cell.setType(CellType.STAIRS);
                             break;

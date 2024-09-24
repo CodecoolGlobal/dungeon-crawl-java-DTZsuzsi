@@ -14,17 +14,19 @@ public class Player extends Actor {
     private Friend friend;
     private final static int BASIC_HEALTH=10;
     private final static int BASIC_ATTACK=5;
+    private PLAYER_FORM_TYPES form;
 
 
     public Player(Cell cell) {
         super(cell, BASIC_HEALTH, BASIC_ATTACK);
         inventory = new Inventory();
         this.friend = null;
+        this.form=PLAYER_FORM_TYPES.PLAYER_BASIC;
 
     }
 
     public String getTileName() {
-        return "player";
+        return form.getTileName();
     }
 
 
@@ -78,4 +80,14 @@ public class Player extends Actor {
         return friend;
     }
 
+    public void setForm(PLAYER_FORM_TYPES newForm) {
+        this.form = newForm;
+//        this.cell.setActor(this);
+
+
+    }
+
+    public PLAYER_FORM_TYPES getForm() {
+        return form;
+    }
 }
