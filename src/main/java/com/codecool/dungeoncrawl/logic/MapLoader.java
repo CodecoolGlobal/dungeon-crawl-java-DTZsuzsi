@@ -5,6 +5,7 @@ import com.codecool.dungeoncrawl.data.CellType;
 import com.codecool.dungeoncrawl.data.GameMap;
 import com.codecool.dungeoncrawl.data.actors.*;
 import com.codecool.dungeoncrawl.data.actors.npc.allies.Friend;
+import com.codecool.dungeoncrawl.data.actors.npc.allies.ShopKeeper;
 import com.codecool.dungeoncrawl.data.actors.npc.allies.Yoda;
 import com.codecool.dungeoncrawl.data.actors.npc.monsters.*;
 import com.codecool.dungeoncrawl.data.items.*;
@@ -138,6 +139,13 @@ public class MapLoader {
                         case '-':
                             cell.setType(CellType.FLOOR);
                             new BigSword(cell);
+                            break;
+                        case '(':
+                            cell.setType(CellType.HOUSE);
+                            break;
+                        case 'V':
+                            cell.setType(CellType.FLOOR);
+                            new ShopKeeper(cell);
                             break;
                         default:
                             throw new RuntimeException("Unrecognized character: '" + line.charAt(x) + "'");
