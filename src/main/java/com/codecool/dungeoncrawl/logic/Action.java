@@ -29,7 +29,7 @@ public class Action {
         Cell currentCell = player.getCell();
         Item item = currentCell.getItem();
 
-        if (item != null && item.isPickable()) {
+        if (item != null ) {
             if (item instanceof HealthPlus) {
                 ((HealthPlus) item).heal(player);
             }
@@ -37,6 +37,11 @@ public class Action {
             if (item instanceof AttackPlus) {
                 ((AttackPlus) item).attackPlus(player);
             }
+
+            if (item.isPickable()){
+                player.getInventory().addItem(item);
+            }
+            currentCell.setItem(null);
         }}
 
     public void meetingOtherActor(Cell nextCell) {
