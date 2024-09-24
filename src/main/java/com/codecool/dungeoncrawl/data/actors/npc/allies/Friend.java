@@ -42,7 +42,7 @@ public class Friend extends Ally implements Follow {
     @Override
     public void follow(Player player, int dx, int dy) {
         Cell nextCell=cell.getNeighbor(dx, dy);
-        if (nextCell.isWalkable()) {
+        if (nextCell.isWalkable()&&nextCell.getActor()!=player) {
            cell.setActor(null);
             nextCell.setActor(this);
            cell=nextCell;

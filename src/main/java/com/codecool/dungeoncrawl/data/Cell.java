@@ -1,6 +1,7 @@
 package com.codecool.dungeoncrawl.data;
 
 import com.codecool.dungeoncrawl.data.actors.Actor;
+import com.codecool.dungeoncrawl.data.actors.Follow;
 import com.codecool.dungeoncrawl.data.actors.npc.NPC;
 import com.codecool.dungeoncrawl.data.items.Item;
 
@@ -91,8 +92,14 @@ public class Cell implements Drawable {
 
 
 public boolean isWalkable(){
-        return this.isWalkable=type.isWalkable()&&
-                actor==null;
+        if (this.isWalkable=type.isWalkable()&&
+                actor instanceof Follow){
+            return true;
+        }
+       else if (this.isWalkable=type.isWalkable()&& actor==null){
+           return true;
+        }
+        return false;
 }
 
     @Override

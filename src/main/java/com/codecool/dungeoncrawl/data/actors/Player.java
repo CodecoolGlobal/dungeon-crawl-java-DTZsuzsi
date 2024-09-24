@@ -54,12 +54,7 @@ public class Player extends Actor {
             action.pickUpItem(this);
 
             if (friend != null) {
-//                Cell nextCellFriend=friend.getCell().getNeighbor(dx, dy);
-//                if (nextCellFriend.isWalkable()) {
-//                    friend.getCell().setActor(null);
-//                    nextCellFriend.setActor(friend);
-//                    friend.setCell(nextCellFriend);
-//                }
+
                 friend.follow(this, dx, dy);
             }
         }
@@ -77,7 +72,6 @@ public class Player extends Actor {
 
     public void meetFriend(Friend friend) {
         this.friend = friend;
-        System.out.println("hi friend");
     }
 
     public Friend getFriend(){
