@@ -17,9 +17,15 @@ public abstract class Item implements Drawable {
         this.isPickable = isPickable;
     }
 
+   public Item(boolean pickable) {
+        this.isPickable = pickable;
+   }
+
     public Cell getCell() {
         return cell;
     }
+
+
 
     public abstract String getTileName();
 
