@@ -1,4 +1,4 @@
-package com.codecool.dungeoncrawl.data.items;
+package com.codecool.dungeoncrawl.data.items.attacking;
 
 import com.codecool.dungeoncrawl.data.actors.Player;
 

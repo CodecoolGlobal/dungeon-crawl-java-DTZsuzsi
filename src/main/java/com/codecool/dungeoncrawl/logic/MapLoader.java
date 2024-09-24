@@ -4,9 +4,17 @@ import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.CellType;
 import com.codecool.dungeoncrawl.data.GameMap;
 import com.codecool.dungeoncrawl.data.actors.*;
+import com.codecool.dungeoncrawl.data.actors.npc.allies.Friend;
+import com.codecool.dungeoncrawl.data.actors.npc.allies.ShopKeeper;
 import com.codecool.dungeoncrawl.data.actors.npc.allies.Yoda;
 import com.codecool.dungeoncrawl.data.actors.npc.monsters.*;
 import com.codecool.dungeoncrawl.data.items.*;
+import com.codecool.dungeoncrawl.data.items.Healers.Crown;
+import com.codecool.dungeoncrawl.data.items.Healers.Helmet;
+import com.codecool.dungeoncrawl.data.items.Healers.Potion;
+import com.codecool.dungeoncrawl.data.items.Healers.Shield;
+import com.codecool.dungeoncrawl.data.items.attacking.BigSword;
+import com.codecool.dungeoncrawl.data.items.attacking.Mace;
 
 import java.io.InputStream;
 import java.util.Scanner;
@@ -50,6 +58,9 @@ public class MapLoader {
                             else{
                                 map.setPlayer(player);
                                 player.setCell(cell);
+                                if (player.getFriend()!=null) {
+                                    player.getFriend().setCell(cell.getNeighbor(-1, 0));
+                                }
                             }
                             break;
                         case 'D':
@@ -87,6 +98,10 @@ public class MapLoader {
                             cell.setType(CellType.FLOOR);
                             new Helmet(cell);
                             break;
+                        case '+':
+                            cell.setType(CellType.FLOOR);
+                            new Shield(cell);
+                            break;
                         case 'e':
                             cell.setType(CellType.STAIRS);
                             break;
@@ -109,6 +124,10 @@ public class MapLoader {
                             cell.setType(CellType.FLOOR);
                             new Crown(cell, true);
                             break;
+                        case 'F':
+                            cell.setType(CellType.FLOOR);
+                            new Friend(cell);
+                            break;
                         case 'G':
                             cell.setType(CellType.BOSSWALL);
                             break;
@@ -118,6 +137,17 @@ public class MapLoader {
                         case '!':
                             cell.setType(CellType.FLOOR);
                             new Boss(cell);
+                            break;
+                        case '-':
+                            cell.setType(CellType.FLOOR);
+                            new BigSword(cell);
+                            break;
+                        case '(':
+                            cell.setType(CellType.HOUSE);
+                            break;
+                        case 'V':
+                            cell.setType(CellType.FLOOR);
+                            new ShopKeeper(cell);
                             break;
                         default:
                             throw new RuntimeException("Unrecognized character: '" + line.charAt(x) + "'");

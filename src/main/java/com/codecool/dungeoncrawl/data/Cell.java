@@ -1,9 +1,12 @@
 package com.codecool.dungeoncrawl.data;
 
 import com.codecool.dungeoncrawl.data.actors.Actor;
+import com.codecool.dungeoncrawl.data.actors.Follow;
 import com.codecool.dungeoncrawl.data.actors.npc.NPC;
 import com.codecool.dungeoncrawl.data.items.Item;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Cell implements Drawable {
@@ -46,6 +49,20 @@ public class Cell implements Drawable {
         return gameMap.getCell(x + dx, y + dy);
     }
 
+    public List<Cell> getNeighbors() {
+        Cell cell=this;
+        List<Cell> neighbors=new ArrayList<>();
+        neighbors.add(cell.getNeighbor(-1,-1));
+        neighbors.add(cell.getNeighbor(0,-1));
+        neighbors.add(cell.getNeighbor(0,1));
+        neighbors.add(cell.getNeighbor(1,1));
+        neighbors.add(cell.getNeighbor(1,-1));
+        neighbors.add(cell.getNeighbor(-1,0));
+        neighbors.add(cell.getNeighbor(1,0));
+        neighbors.add(cell.getNeighbor(-1,1));
+        return neighbors;
+    }
+
     public Item getItem() {
         return item;
     }
@@ -75,8 +92,14 @@ public class Cell implements Drawable {
 
 
 public boolean isWalkable(){
-        return this.isWalkable=type.isWalkable()&&
-                actor==null;
+        if (this.isWalkable=type.isWalkable()&&
+                actor instanceof Follow){
+            return true;
+        }
+       else if (this.isWalkable=type.isWalkable()&& actor==null){
+           return true;
+        }
+        return false;
 }
 
     @Override

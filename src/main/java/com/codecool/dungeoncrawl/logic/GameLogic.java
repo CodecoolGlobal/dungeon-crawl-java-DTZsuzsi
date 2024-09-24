@@ -51,6 +51,12 @@ private SoundPlayer gameNewMapLoaderSound;
         return Integer.toString(map.getPlayer().getAttack());
     }
 
+    public String getFriendMessages(){
+        if (map.getPlayer().getFriend()!=null)
+        {return map.getPlayer().getFriend().getMessage();}
+        return " ";
+    }
+
     public String getPlayerInventory() {
         return map.getPlayer().getInventory().displayInventoryItems();
     }

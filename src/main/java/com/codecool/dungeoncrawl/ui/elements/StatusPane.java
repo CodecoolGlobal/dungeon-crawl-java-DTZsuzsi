@@ -6,7 +6,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 
 public class StatusPane {
-    public static final int RIGHT_PANEL_WIDTH = 200;
+    public static final int RIGHT_PANEL_WIDTH = 250;
     public static final int RIGHT_PANEL_PADDING = 10;
     private GridPane ui;
     private Label healthTextLabel;
@@ -15,6 +15,8 @@ public class StatusPane {
     private Label attackValueLabel;
     private Label inventoryTextLabel;
     private Label inventoryValueLabel;
+    private Label friendTextLabel;
+    private Label friendValueLabel;
 
     public StatusPane() {
         ui = new GridPane();
@@ -24,6 +26,10 @@ public class StatusPane {
         attackValueLabel=new Label();
         inventoryTextLabel=new Label("Inventory: ");
         inventoryValueLabel=new Label();
+        friendTextLabel =new Label("Friends: ");
+        friendValueLabel=new Label();
+
+
     }
 
     public BorderPane build() {
@@ -37,6 +43,9 @@ public class StatusPane {
         ui.add(attackValueLabel, 1, 1);
         ui.add(inventoryTextLabel, 0, 2);
         ui.add(inventoryValueLabel, 0, 3);
+        ui.add(friendTextLabel, 0, 4);
+        ui.add(friendValueLabel, 0, 5);
+
 
         BorderPane borderPane = new BorderPane();
         borderPane.setRight(ui);
@@ -48,6 +57,8 @@ public class StatusPane {
     }
     public void setAttackValue(String text) {attackValueLabel.setText(text);}
     public void setInventoryValue(String text) {inventoryValueLabel.setText(text);}
+    public void setFriendValue(String text) {friendValueLabel.setText(text);}
+
 
 
 }
