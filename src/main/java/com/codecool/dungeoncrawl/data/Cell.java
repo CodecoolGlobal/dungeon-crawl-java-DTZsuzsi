@@ -4,6 +4,8 @@ import com.codecool.dungeoncrawl.data.actors.Actor;
 import com.codecool.dungeoncrawl.data.actors.npc.NPC;
 import com.codecool.dungeoncrawl.data.items.Item;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Cell implements Drawable {
@@ -44,6 +46,20 @@ public class Cell implements Drawable {
 
     public Cell getNeighbor(int dx, int dy) {
         return gameMap.getCell(x + dx, y + dy);
+    }
+
+    public List<Cell> getNeighbors() {
+        Cell cell=this;
+        List<Cell> neighbors=new ArrayList<>();
+        neighbors.add(cell.getNeighbor(-1,-1));
+        neighbors.add(cell.getNeighbor(0,-1));
+        neighbors.add(cell.getNeighbor(0,1));
+        neighbors.add(cell.getNeighbor(1,1));
+        neighbors.add(cell.getNeighbor(1,-1));
+        neighbors.add(cell.getNeighbor(-1,0));
+        neighbors.add(cell.getNeighbor(1,0));
+        neighbors.add(cell.getNeighbor(-1,1));
+        return neighbors;
     }
 
     public Item getItem() {

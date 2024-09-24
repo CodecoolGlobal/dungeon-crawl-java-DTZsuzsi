@@ -49,6 +49,7 @@ public class Tiles {
         tileMap.put("bossWall", new Tile(19, 17));
         tileMap.put("bossFloor", new Tile(12, 18));
         tileMap.put("bossSkeleton", new Tile(24,7));
+        tileMap.put("friend", new Tile(19,9));
 
 
     }

@@ -4,6 +4,7 @@ import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.CellType;
 import com.codecool.dungeoncrawl.data.GameMap;
 import com.codecool.dungeoncrawl.data.actors.*;
+import com.codecool.dungeoncrawl.data.actors.npc.allies.Friend;
 import com.codecool.dungeoncrawl.data.actors.npc.allies.Yoda;
 import com.codecool.dungeoncrawl.data.actors.npc.monsters.*;
 import com.codecool.dungeoncrawl.data.items.*;
@@ -50,6 +51,7 @@ public class MapLoader {
                             else{
                                 map.setPlayer(player);
                                 player.setCell(cell);
+                                player.getFriend().setCell(cell.getNeighbor(-1,0));
                             }
                             break;
                         case 'D':
@@ -108,6 +110,10 @@ public class MapLoader {
                         case 'c':
                             cell.setType(CellType.FLOOR);
                             new Crown(cell, true);
+                            break;
+                        case 'F':
+                            cell.setType(CellType.FLOOR);
+                            new Friend(cell);
                             break;
                         case 'G':
                             cell.setType(CellType.BOSSWALL);

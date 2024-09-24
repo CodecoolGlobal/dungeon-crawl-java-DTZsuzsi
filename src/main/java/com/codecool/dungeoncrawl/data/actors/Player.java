@@ -1,6 +1,7 @@
 package com.codecool.dungeoncrawl.data.actors;
 
 import com.codecool.dungeoncrawl.data.Cell;
+import com.codecool.dungeoncrawl.data.actors.npc.allies.Friend;
 import com.codecool.dungeoncrawl.data.items.Inventory;
 import com.codecool.dungeoncrawl.data.items.Item;
 
@@ -10,10 +11,16 @@ import java.util.List;
 public class Player extends Actor {
 
     private Inventory inventory;
+    private Friend friend;
+    private final static int BASIC_HEALTH=10;
+    private final static int BASIC_ATTACK=5;
+
 
     public Player(Cell cell) {
-        super(cell, 10, 5);
+        super(cell, BASIC_HEALTH, BASIC_ATTACK);
         inventory = new Inventory();
+        this.friend = null;
+
     }
 
     public String getTileName() {
@@ -46,6 +53,15 @@ public class Player extends Actor {
 
             action.pickUpItem(this);
 
+            if (friend != null) {
+//                Cell nextCellFriend=friend.getCell().getNeighbor(dx, dy);
+//                if (nextCellFriend.isWalkable()) {
+//                    friend.getCell().setActor(null);
+//                    nextCellFriend.setActor(friend);
+//                    friend.setCell(nextCellFriend);
+//                }
+                friend.follow(this, dx, dy);
+            }
         }
     }
 
@@ -57,5 +73,14 @@ public class Player extends Actor {
 
     public void receiveAttackPlus(int attackPlus){
         this.attack+=attackPlus;
+    }
+
+    public void meetFriend(Friend friend) {
+        this.friend = friend;
+        System.out.println("hi friend");
+    }
+
+    public Friend getFriend(){
+        return friend;
     }
 }
