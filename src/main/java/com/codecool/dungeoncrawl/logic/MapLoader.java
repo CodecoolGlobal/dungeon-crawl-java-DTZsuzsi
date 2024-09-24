@@ -58,7 +58,9 @@ public class MapLoader {
                             else{
                                 map.setPlayer(player);
                                 player.setCell(cell);
-                                player.getFriend().setCell(cell.getNeighbor(-1,0));
+                                if (player.getFriend()!=null) {
+                                    player.getFriend().setCell(cell.getNeighbor(-1, 0));
+                                }
                             }
                             break;
                         case 'D':
