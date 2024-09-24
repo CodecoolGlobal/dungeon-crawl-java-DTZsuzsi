@@ -25,22 +25,18 @@ public class Action {
     }
 
 
-    public void pickUpItem(Player player) {
+    public void pickUpItem(Player player){
         Cell currentCell = player.getCell();
         Item item = currentCell.getItem();
 
-        if (item != null && item.isPickable()) {
-            if (item instanceof Mace) {
-                player.setAttack(player.getAttack() + 5);
-            } else if (item instanceof Helmet || item instanceof Potion) {
-                player.setHealth(player.getHealth() + 3);
-
-
+        if (item != null && item.isPickable()){
+            if (item instanceof HealthPlus){
+                ((HealthPlus) item).heal(player);
             }
-            player.addPickedUpItem(item);
-            currentCell.setItem(null);
-        }
-    }
+
+            if (item instanceof AttackPlus) {
+                ((AttackPlus) item).attackPlus(player);
+            }
 
 
     public void meetingOtherActor(Cell nextCell) {
