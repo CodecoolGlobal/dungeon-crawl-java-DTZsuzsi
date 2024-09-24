@@ -52,7 +52,7 @@ private SoundPlayer gameNewMapLoaderSound;
     }
 
     public String getPlayerInventory() {
-        return map.getPlayer().displayInventoryItems();
+        return map.getPlayer().getInventory().displayInventoryItems();
     }
 
     public void enemyMovingAutomatically() {

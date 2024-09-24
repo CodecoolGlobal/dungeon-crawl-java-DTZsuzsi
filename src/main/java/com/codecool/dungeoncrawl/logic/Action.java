@@ -29,15 +29,15 @@ public class Action {
         Cell currentCell = player.getCell();
         Item item = currentCell.getItem();
 
-        if (item != null && item.isPickable()){
-            if (item instanceof HealthPlus){
+        if (item != null && item.isPickable()) {
+            if (item instanceof HealthPlus) {
                 ((HealthPlus) item).heal(player);
             }
 
             if (item instanceof AttackPlus) {
                 ((AttackPlus) item).attackPlus(player);
             }
-
+        }}
 
     public void meetingOtherActor(Cell nextCell) {
 
@@ -66,13 +66,13 @@ public class Action {
         timeline.play();
     }
 
-    public void findADoor(Cell nextCell) {
-        if (nextCell.getItem() != null && nextCell.getItem().getTileName().equals("door") && actor instanceof Player) {
-            Item key = new Key();
-            Player player = (Player) actor;
-            if (player.isItemInInventory(key)) {
-                player.removeItem(key);
-            }
-        }
-    }
+//    public void findADoor(Cell nextCell) {
+//        if (nextCell.getItem() != null && nextCell.getItem().getTileName().equals("door") && actor instanceof Player) {
+//            Item key = new Key();
+//            Player player = (Player) actor;
+//            if (player.isItemInInventory(key)) {
+//                player.removeItem(key);
+//            }
+//        }
+//    }
 }

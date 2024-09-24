@@ -97,17 +97,17 @@ public class GameMap {
     return neighbors;
     }
     public void nextToDoor(){
-        List<Item> inventory=player.getInventory();
+        List<Item> inventory=player.getInventory().getItems();
         Item key=null;
         if (player.hasKey()){
         List<Cell> neighbors=getNeighbors();
         for (Cell cell: neighbors) {
             if (cell.getType().equals(CellType.CLOSED_DOOR))
             {cell.setType(CellType.OPEN_DOOR);
-            key=inventory.stream().filter(item -> item.getTileName()=="key").findFirst().get();}
-            player.removeItem(key);
+
             }
         }
-
+            key=inventory.stream().filter(item -> item.getTileName()=="key").findFirst().get();}
+        player.getInventory().removeItem(key);
     }
 }
