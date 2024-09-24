@@ -1,10 +1,12 @@
-package com.codecool.dungeoncrawl.data.items;
+package com.codecool.dungeoncrawl.data.items.attacking;
 
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.actors.PLAYER_FORM_TYPES;
 import com.codecool.dungeoncrawl.data.actors.Player;
+import com.codecool.dungeoncrawl.data.items.ChangingPlayerForm;
+import com.codecool.dungeoncrawl.data.items.Item;
 
-public class Mace extends Item implements AttackPlus, ChangingPlayerForm{
+public class Mace extends Item implements AttackPlus, ChangingPlayerForm {
 private int attackPlus;
 private static final int BASIC_ATTACK_PLUS=20;
     public Mace(Cell cell) {

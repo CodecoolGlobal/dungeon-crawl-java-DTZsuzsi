@@ -56,6 +56,7 @@ public class Tiles {
         tileMap.put("bossSkeleton", new Tile(24,7));
         tileMap.put("friend", new Tile(19,9));
         tileMap.put("shield", new Tile(6,25));
+        tileMap.put("superSword", new Tile(4, 30));
 
 
 

@@ -1,8 +1,11 @@
-package com.codecool.dungeoncrawl.data.items;
+package com.codecool.dungeoncrawl.data.items.Healers;
 
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.actors.PLAYER_FORM_TYPES;
 import com.codecool.dungeoncrawl.data.actors.Player;
+import com.codecool.dungeoncrawl.data.items.ChangingPlayerForm;
+import com.codecool.dungeoncrawl.data.items.HealthPlus;
+import com.codecool.dungeoncrawl.data.items.Item;
 
 public class Crown extends Item implements HealthPlus, ChangingPlayerForm {
     private int healthPlus;

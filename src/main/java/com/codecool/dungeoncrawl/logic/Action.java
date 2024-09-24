@@ -6,6 +6,7 @@ import com.codecool.dungeoncrawl.data.actors.Player;
 import com.codecool.dungeoncrawl.data.actors.npc.NPC;
 
 import com.codecool.dungeoncrawl.data.items.Item;
+import com.codecool.dungeoncrawl.data.items.attacking.AttackPlus;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.control.Alert;

@@ -8,6 +8,12 @@ import com.codecool.dungeoncrawl.data.actors.npc.allies.Friend;
 import com.codecool.dungeoncrawl.data.actors.npc.allies.Yoda;
 import com.codecool.dungeoncrawl.data.actors.npc.monsters.*;
 import com.codecool.dungeoncrawl.data.items.*;
+import com.codecool.dungeoncrawl.data.items.Healers.Crown;
+import com.codecool.dungeoncrawl.data.items.Healers.Helmet;
+import com.codecool.dungeoncrawl.data.items.Healers.Potion;
+import com.codecool.dungeoncrawl.data.items.Healers.Shield;
+import com.codecool.dungeoncrawl.data.items.attacking.BigSword;
+import com.codecool.dungeoncrawl.data.items.attacking.Mace;
 
 import java.io.InputStream;
 import java.util.Scanner;
@@ -128,6 +134,10 @@ public class MapLoader {
                         case '!':
                             cell.setType(CellType.FLOOR);
                             new Boss(cell);
+                            break;
+                        case '-':
+                            cell.setType(CellType.FLOOR);
+                            new BigSword(cell);
                             break;
                         default:
                             throw new RuntimeException("Unrecognized character: '" + line.charAt(x) + "'");
