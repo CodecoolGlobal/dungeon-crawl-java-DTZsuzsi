@@ -6,8 +6,10 @@ import com.codecool.dungeoncrawl.data.actors.Player;
 import java.util.Random;
 
 public class DogFighter extends Monsters {
+    private static final int BASIC_HEALTH=8;
+    private static final int BASIC_ATTACK=5;
     public DogFighter(Cell cell) {
-        super(cell,8,5);
+        super(cell,BASIC_HEALTH, BASIC_ATTACK);
 
     }
 
@@ -16,24 +18,6 @@ public class DogFighter extends Monsters {
         return "dogFighter";
     }
 
-    @Override
-    public void interact(Player player) {
-
-        while(this.getHealth()>=0&&player.getHealth()>=0){
-            this.setHealth(this.getHealth()-player.getAttack());
-            player.setHealth(player.getHealth()-this.getAttack());
-            System.out.println(player.getHealth());
-            System.out.println(this.getHealth());
-        }
-        if (player.getHealth()<=0){
-            this.action.showPopup("Game over", "Sorry, you've died! Game over!");        }
-
-        if (this.getHealth()<0){
-            this.getCell().setActor(null);
-
-
-        }
-    }
 
     @Override
     public void automaticMove() {

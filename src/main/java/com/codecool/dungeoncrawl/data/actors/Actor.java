@@ -6,10 +6,10 @@ import com.codecool.dungeoncrawl.data.items.Key;
 import com.codecool.dungeoncrawl.logic.Action;
 
 public abstract class Actor implements Drawable {
-    private Cell cell;
-    private int health ;
+    protected Cell cell;
+    protected int health ;
     protected Action action;
-    private int attack;
+    protected int attack;
 
     public int getAttack(){
         return attack;
@@ -25,45 +25,6 @@ public abstract class Actor implements Drawable {
         this.health = health;
         this.attack=attack;
 
-    }
-
-    public void move(int dx, int dy) {
-
-     Cell nextCell = cell.getNeighbor(dx, dy);
-       if(nextCell.getActor()!=null) {
-           action.meetingOtherActor(nextCell);
-       }
-
-        if (checkIfYouCanMoveToNextCell(dx, dy)){
-            cell.setActor(null);
-            nextCell.setActor(this);
-            cell = nextCell;
-
-            if (this instanceof Player) {
-                Player player = (Player) this;
-                action.findADoor(nextCell);
-                action.pickUpItem(player);
-
-            }
-        }
-    }
-
-    public boolean checkIfYouCanMoveToNextCell(int dx, int dy) {
-        Cell nextCell = cell.getNeighbor(dx, dy);
-
-
-        if (nextCell.getType().getTileName() == "wall"||nextCell.getType().getTileName()=="forest") {
-            return false;
-        } else if (nextCell.getActor() != null) {
-            return false;
-        } else if (nextCell.getTileName().equals("door") && this instanceof Player) {
-            Player player = (Player) this;
-            Key key = new Key();
-            if (!player.isItemInInventory(key)) {
-                return false;
-            }
-        }
-        return true;
     }
 
 

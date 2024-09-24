@@ -13,12 +13,14 @@ public class Cell implements Drawable {
     private int x, y;
 
     private Item item;
+    private boolean isWalkable;
 
     public Cell(GameMap gameMap, int x, int y, CellType type) {
         this.gameMap = gameMap;
         this.x = x;
         this.y = y;
         this.type = type;
+        this.isWalkable = type.isWalkable();
     }
 
     public CellType getType() {
@@ -72,7 +74,10 @@ public class Cell implements Drawable {
     }
 
 
-
+public boolean isWalkable(){
+        return this.isWalkable=type.isWalkable()&&
+                actor==null;
+}
 
     @Override
     public boolean equals(Object o) {

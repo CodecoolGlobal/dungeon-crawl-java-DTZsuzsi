@@ -3,8 +3,8 @@ package com.codecool.dungeoncrawl.logic;
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.actors.Actor;
 import com.codecool.dungeoncrawl.data.actors.Player;
-import com.codecool.dungeoncrawl.data.actors.npc.allies.Ally;
-import com.codecool.dungeoncrawl.data.actors.npc.monsters.Monsters;
+import com.codecool.dungeoncrawl.data.actors.npc.NPC;
+
 import com.codecool.dungeoncrawl.data.items.Item;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -14,9 +14,10 @@ import javafx.util.Duration;
 
 
 public class Action {
-    private Actor actor;
-    private Cell cell;
-    private WinnerSound winnerSound;
+
+   private Actor actor;
+   private Cell cell;
+
 
     public Action(Cell cell) {
         this.cell = cell;
@@ -33,8 +34,7 @@ public class Action {
                 player.setAttack(player.getAttack() + 5);
             } else if (item instanceof Helmet || item instanceof Potion) {
                 player.setHealth(player.getHealth() + 3);
-            } else if (item instanceof Crown) {
-                showPopup("Winning", "Congratulations! You won!");
+
 
             }
             player.addPickedUpItem(item);
@@ -48,12 +48,10 @@ public class Action {
 
         if (actor instanceof Player && nextCell.getActor() != null) {
             Player player = (Player) actor;
-            if (nextCell.getActor() instanceof Ally) {
-                ((Ally) nextCell.getActor()).interact(player);
+            if (nextCell.getActor() instanceof NPC ) {
+                ((NPC) nextCell.getActor()).interact(player);
             }
-            if (nextCell.getActor() instanceof Monsters) {
-                ((Monsters) nextCell.getActor()).interact(player);
-            }
+
         }
     }
 
@@ -63,16 +61,13 @@ public class Action {
         alert.setHeaderText(null);
         alert.setContentText(text);
         alert.showAndWait();
-        winnerSound = new WinnerSound("/sound/free-music-in-my-mind-remake-26367.mp3");
-        winnerSound.play();
-        // Create a Timeline to delay the exit, giving the sound time to play
         Timeline timeline = new Timeline(new KeyFrame(
-                Duration.seconds(14),  // Adjust the duration based on how long you want to wait
-                event -> System.exit(0)  // Exit the program after the sound plays
+                Duration.seconds(14),
+                event -> System.exit(0)
         ));
 
-        timeline.setCycleCount(1);  // Play the timeline only once
-        timeline.play();  // Start the timer
+        timeline.setCycleCount(1);
+        timeline.play();
     }
 
     public void findADoor(Cell nextCell) {

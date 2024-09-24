@@ -2,6 +2,8 @@ package com.codecool.dungeoncrawl.data;
 
 import com.codecool.dungeoncrawl.data.actors.Actor;
 import com.codecool.dungeoncrawl.data.actors.Player;
+import com.codecool.dungeoncrawl.data.items.Item;
+import com.codecool.dungeoncrawl.data.items.Key;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,5 +68,46 @@ public class GameMap {
         if (player.getCell().getType()==CellType.STAIRS)
             return true;
         else{return false;}
+    }
+
+    public boolean isPlayerNextClosedDoor(){
+       List<Cell> neighbors=getNeighbors();
+       for (Cell cell: neighbors) {
+           if ( cell.getType()==CellType.CLOSED_DOOR){
+               System.out.println("hi door");
+               return true;
+           }
+       }
+
+        return false;
+    }
+
+
+    public List<Cell> getNeighbors() {
+        Cell cell=player.getCell();
+        List<Cell> neighbors=new ArrayList<>();
+        neighbors.add(cell.getNeighbor(-1,-1));
+        neighbors.add(cell.getNeighbor(0,-1));
+        neighbors.add(cell.getNeighbor(0,1));
+        neighbors.add(cell.getNeighbor(1,1));
+        neighbors.add(cell.getNeighbor(1,-1));
+        neighbors.add(cell.getNeighbor(-1,0));
+        neighbors.add(cell.getNeighbor(1,0));
+        neighbors.add(cell.getNeighbor(-1,1));
+    return neighbors;
+    }
+    public void nextToDoor(){
+        List<Item> inventory=player.getInventory();
+        Item key=null;
+        if (player.hasKey()){
+        List<Cell> neighbors=getNeighbors();
+        for (Cell cell: neighbors) {
+            if (cell.getType().equals(CellType.CLOSED_DOOR))
+            {cell.setType(CellType.OPEN_DOOR);
+            key=inventory.stream().filter(item -> item.getTileName()=="key").findFirst().get();}
+            player.removeItem(key);
+            }
+        }
+
     }
 }

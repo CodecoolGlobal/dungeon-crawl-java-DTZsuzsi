@@ -34,8 +34,10 @@ public class Tiles {
         tileMap.put("bat", new Tile(26, 8));
         tileMap.put("mace", new Tile(4, 26));
         tileMap.put("key", new Tile(16, 23));
-        tileMap.put("door", new Tile(3, 9));
-//        tileMap.put("helmet", new Tile(5, 22));
+        tileMap.put("closedDoor", new Tile(3, 9));
+        tileMap.put("openDoor", new Tile(6, 9));
+        tileMap.put("helmet", new Tile(5, 22));
+
         tileMap.put("stairs", new Tile(2, 6));
         tileMap.put("forest", new Tile(5, 1));
         tileMap.put("bear", new Tile(30, 8));
@@ -43,7 +45,11 @@ public class Tiles {
         tileMap.put("helmet", new Tile(4, 22));
         tileMap.put("potion", new Tile(26, 23));
         tileMap.put("crown", new Tile(12,24));
-       
+        tileMap.put("boss", new Tile(28, 6));
+        tileMap.put("bossWall", new Tile(19, 17));
+        tileMap.put("bossFloor", new Tile(12, 18));
+        tileMap.put("bossSkeleton", new Tile(24,7));
+
 
     }
 
