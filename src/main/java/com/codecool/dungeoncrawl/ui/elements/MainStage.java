@@ -31,4 +31,5 @@ public class MainStage {
     }
     public void setAttackLabelText(String text) {this.statusPane.setAttackValue(text);}
     public void setInventoryLabelText(String text) {this.statusPane.setInventoryValue(text);}
+    public void setFriendLabelText(String text) {this.statusPane.setFriendValue(text);}
 }

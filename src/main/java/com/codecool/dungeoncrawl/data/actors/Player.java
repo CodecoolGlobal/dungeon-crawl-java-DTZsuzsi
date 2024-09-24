@@ -77,4 +77,5 @@ public class Player extends Actor {
     public Friend getFriend(){
         return friend;
     }
+
 }
