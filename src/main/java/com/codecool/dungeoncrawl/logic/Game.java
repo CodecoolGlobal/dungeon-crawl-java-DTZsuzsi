@@ -1,5 +1,6 @@
 package com.codecool.dungeoncrawl.logic;
 
+import com.codecool.dungeoncrawl.configuration.DatabaseManager;
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.CellType;
 import com.codecool.dungeoncrawl.data.GameMap;
@@ -8,15 +9,16 @@ import com.codecool.dungeoncrawl.ui.keyeventhandler.*;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
+import java.sql.SQLException;
 import java.util.Set;
 
 public class Game extends Application {
     private UI ui;
     private GameLogic logic;
     private Set<KeyHandler> keyHandlers;
-  private Cell cell;
-  private GameMap gameMap;
-
+    private Cell cell;
+    private GameMap gameMap;
+    private DatabaseManager databaseManager;
 
     public static void main(String[] args) {
         launch(args);
@@ -27,7 +29,19 @@ public class Game extends Application {
         this.keyHandlers = Set.of(new Up(), new Down(), new Left(), new Right());
         this.gameMap=new GameMap(25,25,CellType.FLOOR);
         this.cell=new Cell(gameMap, 5,5, CellType.FLOOR);
-        this.logic = new GameLogic();
+        this.databaseManager = new DatabaseManager();
+        this.logic = new GameLogic(databaseManager.getGameStateDao());
+        this.ui = new UI(logic, keyHandlers);
+        ui.setUpPain(primaryStage);
+
+        try {
+            this.databaseManager.setup();
+        } catch (SQLException e) {
+            System.out.println("Failed to connect to database");
+            return;
+        }
+
+        this.logic = new GameLogic(databaseManager.getGameStateDao());
         this.ui = new UI(logic, keyHandlers);
         ui.setUpPain(primaryStage);
 

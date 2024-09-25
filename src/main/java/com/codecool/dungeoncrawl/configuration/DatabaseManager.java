@@ -11,7 +11,7 @@ public class DatabaseManager {
     GameStateDao gameStateDao;
     DataSource dataSource;
 
-    private void setup() throws SQLException {
+    public void setup() throws SQLException {
         this.dataSource = connect();
         this.gameStateDao = new GameStateDaoJdbc(dataSource);
     }

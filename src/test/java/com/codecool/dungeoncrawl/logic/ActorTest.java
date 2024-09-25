@@ -5,6 +5,7 @@ import com.codecool.dungeoncrawl.data.CellType;
 import com.codecool.dungeoncrawl.data.GameMap;
 import com.codecool.dungeoncrawl.data.actors.Player;
 import com.codecool.dungeoncrawl.data.actors.npc.monsters.Skeleton;
+import com.codecool.dungeoncrawl.data.saveloadgame.dao.GameStateDao;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -12,7 +13,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class ActorTest {
     GameMap gameMap = new GameMap(3, 3, CellType.FLOOR);
     Cell cell = new Cell(gameMap,1,1,CellType.FLOOR);
-    GameLogic gameLogic = new GameLogic();
+    GameStateDao gameStateDao = mock(GameStateDao.class);
+    GameLogic gameLogic = new GameLogic(gameStateDao);
 
     @Test
     void moveUpdatesCells() {

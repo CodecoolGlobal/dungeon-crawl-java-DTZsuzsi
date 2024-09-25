@@ -2,14 +2,14 @@ package com.codecool.dungeoncrawl.data.items;
 
 import com.codecool.dungeoncrawl.data.Cell;
 
-public class LoadGame extends Item {
+public class SaveGameTile extends Item {
 
-    public LoadGame(Cell cell) {
+    public SaveGameTile(Cell cell) {
         super(cell, false);
     }
 
     @Override
     public String getTileName() {
-        return "loadGame";
+        return "saveGame";
     }
 }

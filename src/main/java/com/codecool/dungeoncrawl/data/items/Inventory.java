@@ -1,6 +1,8 @@
 package com.codecool.dungeoncrawl.data.items;
 
 
+import com.codecool.dungeoncrawl.data.Cell;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,5 +37,24 @@ public List<Item> getItems() {
 
     public boolean isItemInInventory(Item item) {
         return items.contains(item);
+    }
+
+    public List<String> convetItemsToString() {
+        List<String> itemNames = new ArrayList<>();
+        for (Item itemName : items) {
+            itemNames.add(itemName.getTileName());
+        }
+        return itemNames;
+    }
+
+    public void loadItemsFromString(List<String> itemNames, Cell cell) {
+        items.clear();
+        for (String itemName : itemNames) {
+            items.add(ItemFactory.createItem(itemName, cell));
+        }
+    }
+
+    public void setItems(List<Item> items) {
+    this.items = items;
     }
 }

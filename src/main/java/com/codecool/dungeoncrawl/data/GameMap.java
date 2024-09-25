@@ -38,6 +38,7 @@ public class GameMap {
     public List<Actor> getActors() {
 
         for (Cell cell: cellsList) {
+//            actors.clear();
             if (cell.getActor()!=null) {
                 actors.add(cell.getActor());
             };

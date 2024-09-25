@@ -90,8 +90,11 @@ public class Cell implements Drawable {
         return y;
     }
 
+    public GameMap getMap() {
+        return gameMap;
+    }
 
-public boolean isWalkable(){
+    public boolean isWalkable(){
         if (this.isWalkable=type.isWalkable()&&
                 actor instanceof Follow){
             return true;
