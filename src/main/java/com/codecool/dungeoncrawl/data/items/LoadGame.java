@@ -1,7 +1,6 @@
-package com.codecool.dungeoncrawl.data.items.saveloadgame;
+package com.codecool.dungeoncrawl.data.items;
 
 import com.codecool.dungeoncrawl.data.Cell;
-import com.codecool.dungeoncrawl.data.items.Item;
 
 public class LoadGame extends Item {
 
