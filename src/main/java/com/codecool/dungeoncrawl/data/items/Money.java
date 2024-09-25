@@ -31,6 +31,6 @@ private int BASIC_AMOUNT=1000;
         return amount;
     }
     public void setAmount(int amount) {
-
+this.amount = amount;
     }
 }
