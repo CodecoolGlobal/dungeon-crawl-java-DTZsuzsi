@@ -49,4 +49,10 @@ public List<Item> getItems() {
     Necklace necklace=(Necklace)items.stream().filter(item->item instanceof Necklace).findFirst().get();
 return necklace;
 }
+
+public <T extends Item> T getItemByType(Class<T> itemClass){
+    return (T) items.stream().filter(item->itemClass.isAssignableFrom(item.getClass())).findFirst().get();
+}
+
+
 }
