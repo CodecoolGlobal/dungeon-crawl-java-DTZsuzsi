@@ -24,7 +24,7 @@ public class GameStateDaoJdbc implements GameStateDao {
             st.setString(1, gameState.getMapName());
             st.setInt(2, gameState.getPlayerX());
             st.setInt(3, gameState.getPlayerY());
-            st.setString(4, gameState.getPlayerForm());
+            st.setString(4, gameState.getPlayerForm().getTileName());
             st.executeUpdate();
             ResultSet rs = st.getGeneratedKeys(); //After executing the INSERT query, this retrieves the ID (or other auto-generated values) from the database. In this case, it retrieves the newly generated game state id from the author table.
             rs.next(); //ResultSet (rs) is a cursor-like structure that holds the result of a database query. Initially, the cursor is positioned before the first result, so you need to move it to the first row using rs.next().
@@ -47,8 +47,6 @@ public class GameStateDaoJdbc implements GameStateDao {
         } catch (SQLException throwables) {
             throw new RuntimeException("Failed to save gameState", throwables);
         }
-
-
     }
 
     @Override

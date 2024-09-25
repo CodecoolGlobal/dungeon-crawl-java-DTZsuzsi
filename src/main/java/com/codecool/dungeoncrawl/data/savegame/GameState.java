@@ -1,15 +1,17 @@
 package com.codecool.dungeoncrawl.data.savegame;
 
+import com.codecool.dungeoncrawl.data.actors.PLAYER_FORM_TYPES;
+
 import java.util.List;
 
 public class GameState {
     private String mapName;
     private int playerX;
     private int playerY;
-    private String playerForm;
+    private PLAYER_FORM_TYPES playerForm;
     private List<String> inventoryItems;
 
-    public GameState(String mapName, int playerX, int playerY, String playerForm, List<String> inventoryItems) {
+    public GameState(String mapName, int playerX, int playerY, PLAYER_FORM_TYPES playerForm, List<String> inventoryItems) {
         this.mapName = mapName;
         this.playerX = playerX;
         this.playerY = playerY;
@@ -29,7 +31,7 @@ public class GameState {
         return playerY;
     }
 
-    public String getPlayerForm() {
+    public PLAYER_FORM_TYPES getPlayerForm() {
         return playerForm;
     }
 
