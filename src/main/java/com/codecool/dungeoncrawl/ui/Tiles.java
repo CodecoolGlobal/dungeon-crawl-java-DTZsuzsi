@@ -59,6 +59,8 @@ public class Tiles {
         tileMap.put("superSword", new Tile(4, 30));
         tileMap.put("house", new Tile(19, 10));
         tileMap.put("shopKeeper", new Tile(26, 9));
+        tileMap.put("saveGame", new Tile(25, 28));
+        tileMap.put("loadGame", new Tile(26, 28));
 
 
 
