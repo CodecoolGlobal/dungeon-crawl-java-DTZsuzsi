@@ -1,7 +1,7 @@
 package com.codecool.dungeoncrawl.configuration;
 
-import com.codecool.dungeoncrawl.data.savegame.dao.GameStateDao;
-import com.codecool.dungeoncrawl.data.savegame.dao.GameStateDaoJdbc;
+import com.codecool.dungeoncrawl.data.saveloadgame.dao.GameStateDao;
+import com.codecool.dungeoncrawl.data.saveloadgame.dao.GameStateDaoJdbc;
 import org.postgresql.ds.PGSimpleDataSource;
 
 import javax.sql.DataSource;
