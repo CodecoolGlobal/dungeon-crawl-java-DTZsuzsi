@@ -2,7 +2,6 @@ package com.codecool.dungeoncrawl.data.items.Healers;
 
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.actors.Player;
-import com.codecool.dungeoncrawl.data.items.HealthPlus;
 import com.codecool.dungeoncrawl.data.items.Item;
 
 public class Potion extends Item implements HealthPlus {

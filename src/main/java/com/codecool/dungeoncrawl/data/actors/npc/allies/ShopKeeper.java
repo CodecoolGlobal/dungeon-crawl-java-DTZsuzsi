@@ -52,6 +52,8 @@ public class ShopKeeper extends Ally {
                   Cell currentCell=  this.cell;
                     Cell nextCell=currentCell.getNeighbor(0,2);
                     nextCell.setItem(new SuperPotion(true));
+                    player.getMoney().setAmount(player.getMoney().getAmount()-100);
+                        System.out.println(player.getMoney().getAmount());
                     }
 
                     popupStage.close(); // Close the pop-up when done

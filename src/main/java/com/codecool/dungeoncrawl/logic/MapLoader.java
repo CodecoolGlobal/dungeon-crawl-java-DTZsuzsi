@@ -149,6 +149,10 @@ public class MapLoader {
                             cell.setType(CellType.FLOOR);
                             new ShopKeeper(cell);
                             break;
+                        case 'Z':
+                            cell.setType(CellType.FLOOR);
+                            new Money(cell, true);
+                            break;
                         default:
                             throw new RuntimeException("Unrecognized character: '" + line.charAt(x) + "'");
                     }

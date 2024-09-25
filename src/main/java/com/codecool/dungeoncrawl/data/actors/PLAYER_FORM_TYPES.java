@@ -9,7 +9,7 @@ PLAYER_SHIELD_SWORD("playerShieldSword"),
     PLAYER_SWORD_SHIELD_HELMET("playerSwordShieldHelmet"),
     PLAYER_SUPERSWORD_SHIELD_HELMET("playerSuperSwordShieldHelmet"),
     PLAYER_HELMET ("playerHelmet"),
-    PLAYER_SUPER("playerSuper"),;
+    PLAYER_SUPER("playerSuper");
 
 private String tileName;
 

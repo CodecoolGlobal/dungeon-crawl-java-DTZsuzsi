@@ -1,4 +1,4 @@
-package com.codecool.dungeoncrawl.data.items;
+package com.codecool.dungeoncrawl.data.items.Healers;
 
 import com.codecool.dungeoncrawl.data.actors.Player;
 
