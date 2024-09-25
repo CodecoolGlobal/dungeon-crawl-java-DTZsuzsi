@@ -9,9 +9,10 @@ import java.sql.SQLException;
 
 public class DatabaseManager {
     GameStateDao gameStateDao;
+    DataSource dataSource;
 
     private void setup() throws SQLException {
-        DataSource dataSource = connect();
+        this.dataSource = connect();
         this.gameStateDao = new GameStateDaoJdbc(dataSource);
     }
 
@@ -24,5 +25,13 @@ public class DatabaseManager {
         dataSource.getConnection().close(); //dataSource.getConnection() is the key method here. It actually opens a connection to the database using the DataSource object we set up earlier. .close() closes the connection immediately after it’s opened, which is a simple way to check if the connection is successful. If no exceptions are thrown, the connection was established properly. If there is a problem (wrong credentials, database not found, etc.), an exception will be thrown.
         return dataSource; // returns a DataSource object, which manages the connection to the database. The method throws an SQLException in case something goes wrong while setting up the connection.
         //After testing the connection, the method returns the DataSource object so that other parts of the program can use it to interact with the database.
+    }
+
+    public GameStateDao getGameStateDao() {
+        return gameStateDao;
+    }
+
+    public DataSource getDataSource() {
+        return dataSource;
     }
 }
