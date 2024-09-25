@@ -2,7 +2,6 @@ package com.codecool.dungeoncrawl.data.items.shopkeeper;
 
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.actors.Player;
-import com.codecool.dungeoncrawl.data.items.Item;
 
 public class Necklace extends ShopKeeperItems implements Teleport {
     private static final int BASIC_PRICE = 1000;
@@ -19,8 +18,8 @@ public class Necklace extends ShopKeeperItems implements Teleport {
 
     @Override
     public void teleport(Player player) {
-     Cell nextToDoor=player.getCell().getGameMap().getDoor();
-     player.setCell(nextToDoor);
+     Cell stairsCell=player.getCell().getGameMap().getStairPlace();
+     player.setCell(stairsCell);
      player.getInventory().removeItem(this);
     }
 }
