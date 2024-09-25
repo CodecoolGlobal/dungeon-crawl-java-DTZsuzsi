@@ -1,9 +1,12 @@
-package com.codecool.dungeoncrawl.data.savegame.dao;
+package com.codecool.dungeoncrawl.data.saveloadgame.dao;
 
-import com.codecool.dungeoncrawl.data.savegame.GameState;
+import com.codecool.dungeoncrawl.data.actors.PLAYER_FORM_TYPES;
+import com.codecool.dungeoncrawl.data.saveloadgame.GameState;
 
 import javax.sql.DataSource;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GameStateDaoJdbc implements GameStateDao {
 
@@ -16,10 +19,10 @@ public class GameStateDaoJdbc implements GameStateDao {
     @Override
     public void save(GameState gameState) {
         try (Connection connection = dataSource.getConnection()) { //this uses try-with-resources, which automatically closes the connection after the block of code is executed.
-            String gameStateSql = "INSERT INTO game_state(map_name, player, player_y, player_form)" +
+            String gameStateSql = "INSERT INTO game_state(map_name, player_x, player_y, player_form)" +
                          "VALUES (?, ?, ?, ?)" +
-                         "ON CONFLICT (id) DO UPDATE" +
-                         "SET map_name = ?, player = ?, player_y = ?, player_form = ?";
+                         "ON CONFLICT (id) DO UPDATE" +                 //if we save the game based on user, it needs to be changed to user_id
+                         "SET map_name = ?, player_x = ?, player_y = ?, player_form = ?";
             PreparedStatement st = connection.prepareStatement(gameStateSql, Statement.RETURN_GENERATED_KEYS);
             st.setString(1, gameState.getMapName());
             st.setInt(2, gameState.getPlayerX());
@@ -31,7 +34,7 @@ public class GameStateDaoJdbc implements GameStateDao {
             int gameStateId = rs.getInt(1);
 
             //Deletes existing inventory
-            String deleteInventorySql = "DELETE FROM inventory WHERE id = ?";
+            String deleteInventorySql = "DELETE FROM inventory WHERE game_state_id = ?";
             PreparedStatement deleteInventory = connection.prepareStatement(deleteInventorySql);
             deleteInventory.setInt(1, gameStateId);
             deleteInventory.executeUpdate();
@@ -51,6 +54,33 @@ public class GameStateDaoJdbc implements GameStateDao {
 
     @Override
     public GameState load() {
+        try (Connection connection = dataSource.getConnection()) {
+            String gameStateSql = "SELECT * FROM game_state LIMIT 1"; // instead of limit WHERE id = ? or WHERE user_id could be used if we save game by user
+            PreparedStatement st = connection.prepareStatement(gameStateSql);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                String mapName = rs.getString("map_name");
+                int playerX = rs.getInt("player_x");
+                int playerY = rs.getInt("player_y");
+                String playerForm = rs.getString("player_form");
+
+                //load inventory
+                String inventorySql = "SELECT item_name FROM inventory WHERE game_state_id = ?";
+                PreparedStatement inventorySt = connection.prepareStatement(inventorySql);
+                inventorySt.setInt(1, rs.getInt("game_state_id"));
+                ResultSet inventoryRs = inventorySt.executeQuery();
+
+                List<String> inventoryItems = new ArrayList<>();
+                while (inventoryRs.next()) {
+                    inventoryItems.add(inventoryRs.getString("item_name"));
+                }
+                String tileName = rs.getString("player_form");
+                PLAYER_FORM_TYPES playerFormToLoad = PLAYER_FORM_TYPES.getEnumByTileName(tileName);
+                return new GameState(mapName, playerX, playerY, playerFormToLoad, inventoryItems);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         return null;
     }
 }

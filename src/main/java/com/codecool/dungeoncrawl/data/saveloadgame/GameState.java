@@ -1,4 +1,4 @@
-package com.codecool.dungeoncrawl.data.savegame;
+package com.codecool.dungeoncrawl.data.saveloadgame;
 
 import com.codecool.dungeoncrawl.data.actors.PLAYER_FORM_TYPES;
 
