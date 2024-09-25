@@ -82,7 +82,10 @@ public class GameMap {
         return false;
     }
 
-
+public Cell getDoor(){
+        Cell doorCell=cellsList.stream().filter(cell -> cell.getType().equals("DOOR")).findFirst().get();
+        return doorCell.getNeighbor(-1,0);
+}
 
     public void nextToDoor(){
         List<Item> inventory=player.getInventory().getItems();

@@ -43,6 +43,10 @@ public class Player extends Actor {
         return inventory;
     }
 
+    public List<Cell> getNeighbourCells() {
+     return   this.cell.getNeighbors();
+    }
+
 
 
     public void receiveHealth(int healthPlus) {

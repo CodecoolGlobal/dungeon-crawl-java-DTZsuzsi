@@ -63,6 +63,8 @@ public class Tiles {
         tileMap.put("shopKeeper", new Tile(26, 9));
         tileMap.put("superPotion", new Tile(18,25));
         tileMap.put("1000 gold", new Tile(9, 25));
+        tileMap.put("bomb press K to use", new Tile(13, 31));
+        tileMap.put("necklace press N to use", new Tile(14, 30));
 
 
 

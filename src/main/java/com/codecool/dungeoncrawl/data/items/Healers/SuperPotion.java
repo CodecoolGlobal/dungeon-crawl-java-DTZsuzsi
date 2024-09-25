@@ -1,21 +1,28 @@
 package com.codecool.dungeoncrawl.data.items.Healers;
 
-import com.codecool.dungeoncrawl.data.Cell;
+import com.codecool.dungeoncrawl.data.actors.Player;
+import com.codecool.dungeoncrawl.data.items.shopkeeper.ShopKeeperItems;
 
-public class SuperPotion extends Potion  {
+public class SuperPotion extends ShopKeeperItems implements HealthPlus {
 private static final int BASIC_HEALTH_PLUS=200;
-    public SuperPotion(Cell cell, boolean isPickable) {
-        super(cell, isPickable);
-        super.healthPlus = BASIC_HEALTH_PLUS;
-    }
+private int healthPlus;
+    private static final int BASIC_PRICE = 100;
 
     public SuperPotion(boolean isPickable) {
-        super(false);
-
+        super(false, BASIC_PRICE);
+        healthPlus = BASIC_HEALTH_PLUS;
     }
+
+
 
     @Override
     public String getTileName() {
         return "superPotion";
+    }
+
+    @Override
+    public void heal(Player player) {
+        player.receiveHealth(healthPlus);
+
     }
 }

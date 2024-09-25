@@ -4,7 +4,8 @@ import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.actors.Player;
 import com.codecool.dungeoncrawl.data.items.Healers.SuperPotion;
 import com.codecool.dungeoncrawl.data.items.Inventory;
-import com.codecool.dungeoncrawl.logic.PopUpInput;
+import com.codecool.dungeoncrawl.data.items.shopkeeper.Bomb;
+import com.codecool.dungeoncrawl.data.items.shopkeeper.Necklace;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -21,6 +22,8 @@ public class ShopKeeper extends Ally {
         super(cell, BASIC_HEALTH, BASIC_ATTACK);
         inventory = new Inventory();
         inventory.addItem(new SuperPotion(false));
+        inventory.addItem(new Bomb(true));
+        inventory.addItem(new Necklace(true));
     }
 
     @Override
@@ -36,11 +39,16 @@ public class ShopKeeper extends Ally {
                 // Create a new Stage (pop-up)
                 Stage popupStage = new Stage();
                 popupStage.initModality(Modality.APPLICATION_MODAL); // Block interaction with other windows
-                popupStage.setTitle("NPC Interaction");
+                popupStage.setTitle("Shopkeeper");
 
                 // Add a label and text field to simulate input (e.g., player response)
                 Label label = new Label("Hello traveler, I'm the famous shopkeeper.\n " +
-                        " Do you want my potion? (yes/no)");
+                        " I have three wonderful object for you: \n"+
+                        "The famous super potion, get you 200 health, price: 100 gold\n"+
+                        "A bomb, which you can use to kill (press K) all your enemies\n" +
+                        "in the neighbor, price: 500 gold.\n"+
+                        "A necklace, which teleport (press N) you to the door. 1000 gold."
+                );
                 TextField inputField = new TextField();
                 Button submitButton = new Button("Submit");
 
@@ -48,12 +56,17 @@ public class ShopKeeper extends Ally {
                 submitButton.setOnAction(e -> {
                     String answer = inputField.getText();
 
-                    if (answer.equals("yes")) {
+                    if (answer.equals("superpotion")) {
                   Cell currentCell=  this.cell;
                     Cell nextCell=currentCell.getNeighbor(0,2);
-                    nextCell.setItem(new SuperPotion(true));
-                    player.getMoney().setAmount(player.getMoney().getAmount()-100);
+                    SuperPotion superPotion;
+                        superPotion =(SuperPotion) inventory.getItems().stream().filter( item-> item instanceof  SuperPotion).findFirst().get();
+                        nextCell.setItem(new SuperPotion(false));
+                    player.getMoney().setAmount(player.getMoney().getAmount()-superPotion.getPrice());
+                    inventory.removeItem(superPotion);
                     }
+
+                    if (answer.equals("bomb")){}
 
                     popupStage.close(); // Close the pop-up when done
                 });

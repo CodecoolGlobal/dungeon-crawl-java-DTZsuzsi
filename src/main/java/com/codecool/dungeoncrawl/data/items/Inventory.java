@@ -1,6 +1,9 @@
 package com.codecool.dungeoncrawl.data.items;
 
 
+import com.codecool.dungeoncrawl.data.items.shopkeeper.Bomb;
+import com.codecool.dungeoncrawl.data.items.shopkeeper.Necklace;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,4 +39,14 @@ public List<Item> getItems() {
     public boolean isItemInInventory(Item item) {
         return items.contains(item);
     }
+
+    public Bomb  getBomb(){
+    Bomb bomb=(Bomb)items.stream().filter(item->item instanceof Bomb).findFirst().get();
+    return bomb;
+    }
+
+    public Necklace getNecklace(){
+    Necklace necklace=(Necklace)items.stream().filter(item->item instanceof Necklace).findFirst().get();
+return necklace;
+}
 }
