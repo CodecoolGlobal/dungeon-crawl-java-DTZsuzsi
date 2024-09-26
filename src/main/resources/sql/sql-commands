@@ -1,0 +1,28 @@
+CREATE TABLE game_state (
+    id SERIAL PRIMARY KEY,
+    map_name VARCHAR(50),      
+    player_x INT,              
+    player_y INT, 
+    inventory TEXT
+);
+
+
+INSERT INTO game_state (map_name, player_x, player_y, inventory)
+VALUES ('map1', 10, 15, 'sword');
+DELETE FROM game_state WHERE id=1;
+
+CREATE TABLE inventory (
+id SERIAL PRIMARY KEY,
+game_state_id INT,
+item_name VARCHAR(50),
+FOREIGN KEY (game_state_id) REFERENCES game_state(id) ON DELETE CASCADE
+);
+
+CREATE TABLE player_state (
+id SERIAL PRIMARY KEY,
+game_state_id INT,
+form VARCHAR(50),
+health INT,
+attack INT,
+FOREIGN KEY (game_state_id) REFERENCES game_state(id) ON DELETE CASCADE
+);

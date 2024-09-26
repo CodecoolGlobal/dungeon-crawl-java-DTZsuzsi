@@ -15,7 +15,8 @@ import com.codecool.dungeoncrawl.data.items.Healers.Potion;
 import com.codecool.dungeoncrawl.data.items.Healers.Shield;
 import com.codecool.dungeoncrawl.data.items.attacking.BigSword;
 import com.codecool.dungeoncrawl.data.items.attacking.Mace;
-
+import com.codecool.dungeoncrawl.data.items.LoadGame;
+import com.codecool.dungeoncrawl.data.items.SaveGame;
 import java.io.InputStream;
 import java.util.Scanner;
 
@@ -153,6 +154,14 @@ public class MapLoader {
                             cell.setType(CellType.FLOOR);
                             new Money(cell, true);
                             break;
+                        case 'S':
+                            cell.setType(CellType.FLOOR);
+                            new SaveGame(cell);
+                            break;
+                        case 'L':
+                            cell.setType(CellType.FLOOR);
+                            new LoadGame(cell);
+
                         default:
                             throw new RuntimeException("Unrecognized character: '" + line.charAt(x) + "'");
                     }
