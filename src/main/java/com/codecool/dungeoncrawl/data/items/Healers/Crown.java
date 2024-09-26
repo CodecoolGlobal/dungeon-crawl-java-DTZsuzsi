@@ -15,6 +15,11 @@ public class Crown extends Item implements HealthPlus, ChangingPlayerForm {
         healthPlus = BASIC_HEALTH_PLUS;
     }
 
+    public Crown() {}
+
+    public Crown(Cell cell) {
+    }
+
     @Override
     public String getTileName() {
         return "crown";

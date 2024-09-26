@@ -33,7 +33,6 @@ private SoundPlayer gameNewMapLoaderSound;
         gameStartSound.play();
         this.gameNewMapLoaderSound = new SoundPlayer(SOUND_TYPES.NEW_MAP);
         this.databaseManager = new DatabaseManager();
-       // this.gameStateDao=new GameStateDaoJdbc(databaseManager.getDataSource());
 
 
 
@@ -128,6 +127,9 @@ if (getMap().isPlayerNextClosedDoor()){
         if (gameState != null) {
             Player player = map.getPlayer();
             player.setForm(gameState.getPlayerForm());
+            String mapFileNameLoaded=gameState.getMapName();
+            System.out.println(mapFileNameLoaded);
+            this.map=MapLoader.loadMap(mapFileNameLoaded, player);
             player.setPosition(gameState.getPlayerX(), gameState.getPlayerY());
 
             List<String> itemNames = gameState.getInventoryItems();

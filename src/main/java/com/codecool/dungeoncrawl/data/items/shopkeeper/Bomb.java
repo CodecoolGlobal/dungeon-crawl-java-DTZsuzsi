@@ -15,6 +15,11 @@ public class Bomb extends ShopKeeperItems implements killer {
 
     }
 
+//    public Bomb(Cell cell) {
+//        super(cell,true);
+//
+//    }
+
     @Override
     public String getTileName() {
         return "bomb press K to use";

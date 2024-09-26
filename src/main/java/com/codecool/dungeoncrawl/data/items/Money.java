@@ -19,6 +19,9 @@ private int BASIC_AMOUNT=1000;
         super(pickable);
     }
 
+    public Money(Cell cell) {
+    }
+
     @Override
     public String getTileName() {
         return amount + " gold";

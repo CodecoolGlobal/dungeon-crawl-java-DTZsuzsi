@@ -7,6 +7,7 @@ import com.codecool.dungeoncrawl.data.items.Healers.Potion;
 import com.codecool.dungeoncrawl.data.items.Healers.Shield;
 import com.codecool.dungeoncrawl.data.items.attacking.BigSword;
 import com.codecool.dungeoncrawl.data.items.attacking.Mace;
+import com.codecool.dungeoncrawl.data.items.shopkeeper.Bomb;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,9 +21,13 @@ public class ItemFactory {
         itemMap.put("key", Key::new);
         itemMap.put("superSword", BigSword::new);
         itemMap.put("mace", Mace::new);
-//        itemMap.put("crown", Crown::new);
         itemMap.put("helmet", Helmet::new);
         itemMap.put("shield", Shield::new);
+        itemMap.put("crown", Crown::new);
+        itemMap.put("1000 gold", Money::new);
+//        itemMap.put("bomb press K to use", Bomb::new);
+
+
     }
 
     public static Item createItem(String itemName, Cell cell) {

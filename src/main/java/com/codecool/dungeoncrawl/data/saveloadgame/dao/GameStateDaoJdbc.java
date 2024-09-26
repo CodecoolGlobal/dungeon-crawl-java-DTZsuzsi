@@ -23,7 +23,7 @@ public class GameStateDaoJdbc implements GameStateDao {
             String gameStateSql = "INSERT INTO game_state(map_name, player_x, player_y, player_form)" +
                          "VALUES (?, ?, ?, ?)" +
 
-                    "ON CONFLICT (id) DO UPDATE " + // Handle conflicts on 'id' column
+                    "ON CONFLICT (game_state_id) DO UPDATE " + // Handle conflicts on 'id' column
                     "SET map_name = EXCLUDED.map_name, " +
                     "player_x = EXCLUDED.player_x, " +
                     "player_y = EXCLUDED.player_y, " +
