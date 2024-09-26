@@ -1,5 +1,6 @@
 package com.codecool.dungeoncrawl.data.items.Healers;
 
+import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.actors.Player;
 import com.codecool.dungeoncrawl.data.items.shopkeeper.ShopKeeperItems;
 
@@ -13,6 +14,9 @@ private int healthPlus;
         healthPlus = BASIC_HEALTH_PLUS;
     }
 
+    public SuperPotion(Cell cell) {
+        super(cell);
+    }
 
 
     @Override

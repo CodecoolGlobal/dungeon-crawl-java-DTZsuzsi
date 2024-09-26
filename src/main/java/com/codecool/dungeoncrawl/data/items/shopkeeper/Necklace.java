@@ -10,6 +10,10 @@ public class Necklace extends ShopKeeperItems implements Teleport {
         super(true, BASIC_PRICE);
     }
 
+    public Necklace(Cell cell) {
+        super(cell);
+    }
+
     @Override
     public String getTileName() {
         return "necklace press N to use";
