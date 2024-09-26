@@ -8,6 +8,7 @@ import com.codecool.dungeoncrawl.data.items.Item;
 import com.codecool.dungeoncrawl.data.items.shopkeeper.Bomb;
 import com.codecool.dungeoncrawl.data.items.shopkeeper.Necklace;
 import com.codecool.dungeoncrawl.data.items.shopkeeper.ShopKeeperItems;
+import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -15,8 +16,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.application.Platform;
-
 
 import java.util.Optional;
 
@@ -97,7 +96,7 @@ public class ShopKeeper extends Ally {
                 .findFirst();
 
         if (optionalItem.isPresent()) {
-            ShopKeeperItems item =(ShopKeeperItems) optionalItem.get();
+            ShopKeeperItems item = (ShopKeeperItems) optionalItem.get();
             if (player.hasEnoughMoney(item)) {
                 Cell currentCell = this.cell;
                 Cell nextCell = currentCell.getNeighbor(0, 2);

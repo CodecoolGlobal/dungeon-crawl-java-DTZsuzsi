@@ -34,13 +34,14 @@ public class Cell implements Drawable {
         this.type = type;
     }
 
+    public Actor getActor() {
+        return actor;
+    }
+
     public void setActor(Actor actor) {
         this.actor = actor;
     }
 
-    public Actor getActor() {
-        return actor;
-    }
     public NPC getNPC() {
         return (NPC) actor;
     }
@@ -50,16 +51,16 @@ public class Cell implements Drawable {
     }
 
     public List<Cell> getNeighbors() {
-        Cell cell=this;
-        List<Cell> neighbors=new ArrayList<>();
-        neighbors.add(cell.getNeighbor(-1,-1));
-        neighbors.add(cell.getNeighbor(0,-1));
-        neighbors.add(cell.getNeighbor(0,1));
-        neighbors.add(cell.getNeighbor(1,1));
-        neighbors.add(cell.getNeighbor(1,-1));
-        neighbors.add(cell.getNeighbor(-1,0));
-        neighbors.add(cell.getNeighbor(1,0));
-        neighbors.add(cell.getNeighbor(-1,1));
+        Cell cell = this;
+        List<Cell> neighbors = new ArrayList<>();
+        neighbors.add(cell.getNeighbor(-1, -1));
+        neighbors.add(cell.getNeighbor(0, -1));
+        neighbors.add(cell.getNeighbor(0, 1));
+        neighbors.add(cell.getNeighbor(1, 1));
+        neighbors.add(cell.getNeighbor(1, -1));
+        neighbors.add(cell.getNeighbor(-1, 0));
+        neighbors.add(cell.getNeighbor(1, 0));
+        neighbors.add(cell.getNeighbor(-1, 1));
         return neighbors;
     }
 
@@ -94,16 +95,15 @@ public class Cell implements Drawable {
         return gameMap;
     }
 
-    public boolean isWalkable(){
-        if (this.isWalkable=type.isWalkable()&&
-                actor instanceof Follow){
+    public boolean isWalkable() {
+        if (this.isWalkable = type.isWalkable() &&
+                actor instanceof Follow) {
+            return true;
+        } else if (this.isWalkable = type.isWalkable() && actor == null) {
             return true;
         }
-       else if (this.isWalkable=type.isWalkable()&& actor==null){
-           return true;
-        }
         return false;
-}
+    }
 
     @Override
     public boolean equals(Object o) {

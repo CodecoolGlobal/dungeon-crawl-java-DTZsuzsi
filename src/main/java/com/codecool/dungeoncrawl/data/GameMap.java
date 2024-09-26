@@ -16,15 +16,11 @@ public class GameMap {
     private List<Actor> actors;
     private List<Cell> cellsList;
 
-    public Cell[][] getCells() {
-        return cells;
-    }
-
     public GameMap(int width, int height, CellType defaultCellType) {
         this.width = width;
         this.height = height;
-        this.cellsList=new ArrayList<>();
-        this.actors=new ArrayList<>();
+        this.cellsList = new ArrayList<>();
+        this.actors = new ArrayList<>();
         cells = new Cell[width][height];
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
@@ -34,25 +30,31 @@ public class GameMap {
         }
     }
 
+    public Cell[][] getCells() {
+        return cells;
+    }
+
     public List<Actor> getActors() {
 
-        for (Cell cell: cellsList) {
-            if (cell.getActor()!=null) {
+        for (Cell cell : cellsList) {
+            if (cell.getActor() != null) {
                 actors.add(cell.getActor());
-            };
+            }
+            ;
         }
         return actors;
     }
+
     public Cell getCell(int x, int y) {
         return cells[x][y];
     }
 
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
-
     public Player getPlayer() {
         return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 
     public int getWidth() {
@@ -75,36 +77,37 @@ public class GameMap {
         return player.getCell().getType() == CellType.LOAD_GAME;
     }
 
-    public boolean isPlayerNextClosedDoor(){
-       List<Cell> neighbors=player.getCell().getNeighbors();
-       for (Cell cell: neighbors) {
-           if ( cell.getType()==CellType.CLOSED_DOOR){
-               System.out.println("hi door");
-               return true;
-           }
-       }
+    public boolean isPlayerNextClosedDoor() {
+        List<Cell> neighbors = player.getCell().getNeighbors();
+        for (Cell cell : neighbors) {
+            if (cell.getType() == CellType.CLOSED_DOOR) {
+                System.out.println("hi door");
+                return true;
+            }
+        }
 
         return false;
     }
 
-public Cell getStairPlace(){
-    System.out.println("hi im here");
+    public Cell getStairPlace() {
+        System.out.println("hi im here");
         return cellsList.stream().filter(cell -> cell.getType().equals(CellType.STAIRS)).findFirst().get();
 
-}
+    }
 
-    public void nextToDoor(){
-        List<Item> inventory=player.getInventory().getItems();
-        Item key=null;
-        if (player.hasKey()){
-        List<Cell> neighbors=player.getCell().getNeighbors();
-        for (Cell cell: neighbors) {
-            if (cell.getType().equals(CellType.CLOSED_DOOR))
-            {cell.setType(CellType.OPEN_DOOR);
+    public void nextToDoor() {
+        List<Item> inventory = player.getInventory().getItems();
+        Item key = null;
+        if (player.hasKey()) {
+            List<Cell> neighbors = player.getCell().getNeighbors();
+            for (Cell cell : neighbors) {
+                if (cell.getType().equals(CellType.CLOSED_DOOR)) {
+                    cell.setType(CellType.OPEN_DOOR);
 
+                }
             }
+            key = inventory.stream().filter(item -> item.getTileName() == "key").findFirst().get();
         }
-            key=inventory.stream().filter(item -> item.getTileName()=="key").findFirst().get();}
         player.getInventory().removeItem(key);
     }
 }

@@ -5,8 +5,8 @@ import com.codecool.dungeoncrawl.data.Cell;
 import java.util.Random;
 
 public class Wizard extends Monsters {
-    private static final int BASIC_HEALTH=20;
-    private static final int BASIC_ATTACK=10;
+    private static final int BASIC_HEALTH = 20;
+    private static final int BASIC_ATTACK = 10;
 
     public Wizard(Cell cell) {
         super(cell, BASIC_HEALTH, BASIC_ATTACK);
@@ -18,11 +18,11 @@ public class Wizard extends Monsters {
     }
 
 
-
     @Override
     public void automaticMove() {
-        if (this.getHealth()>=0){
-        Random random = new Random();
-        this.monsterMove(random.nextInt(3) - 1, 0);}
+        if (this.getHealth() >= 0) {
+            Random random = new Random();
+            this.monsterMove(random.nextInt(3) - 1, 0);
+        }
     }
 }

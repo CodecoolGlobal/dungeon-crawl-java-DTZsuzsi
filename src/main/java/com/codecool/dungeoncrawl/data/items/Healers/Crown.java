@@ -7,15 +7,16 @@ import com.codecool.dungeoncrawl.data.items.ChangingPlayerForm;
 import com.codecool.dungeoncrawl.data.items.Item;
 
 public class Crown extends Item implements HealthPlus, ChangingPlayerForm {
+    private final static int BASIC_HEALTH_PLUS = 100;
     private int healthPlus;
-    private final static int BASIC_HEALTH_PLUS=100;
 
     public Crown(Cell cell, boolean isPickable) {
         super(cell, isPickable);
         healthPlus = BASIC_HEALTH_PLUS;
     }
 
-    public Crown() {}
+    public Crown() {
+    }
 
     public Crown(Cell cell) {
     }

@@ -78,7 +78,7 @@ public class Player extends Actor {
 //                int playerDx = cell.getX();
 //                int playerDy = cell.getY();
 
-                friend.follow(this, dx , dy);
+                friend.follow(this, dx, dy);
             }
         }
     }
