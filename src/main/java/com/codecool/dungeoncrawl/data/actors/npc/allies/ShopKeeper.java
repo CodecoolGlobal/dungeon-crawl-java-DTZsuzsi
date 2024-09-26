@@ -20,7 +20,7 @@ public class ShopKeeper extends Ally {
     private Inventory inventory;
 
     public ShopKeeper(Cell cell) {
-        super(cell, BASIC_HEALTH, BASIC_ATTACK);
+        super(cell, BASIC_HEALTH, BASIC_ATTACK, "I'm the shopkeeper. Come and I'll help.");
         inventory = new Inventory();
         inventory.addItem(new SuperPotion(false));
         inventory.addItem(new Bomb(true));
@@ -34,6 +34,7 @@ public class ShopKeeper extends Ally {
 
     @Override
     public void interact(Player player) {
+        player.addAlly(this);
 
 
         Stage popupStage = new Stage();
