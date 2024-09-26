@@ -3,6 +3,11 @@ package com.codecool.dungeoncrawl.data.actors.npc.monsters;
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.CellType;
 import com.codecool.dungeoncrawl.data.actors.Player;
+import com.codecool.dungeoncrawl.logic.SOUND_TYPES;
+import com.codecool.dungeoncrawl.logic.SoundPlayer;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.util.Duration;
 
 public class Boss extends Monsters {
     private static final int BASIC_HEALTH=250;
@@ -27,6 +32,15 @@ public class Boss extends Monsters {
             this.getCell().setActor(null);
             this.getCell().setType(CellType.BOSSFLOOR);
             action.showPopup("Winning", "Congratulations! You won!");
+            SoundPlayer winnerSound = new SoundPlayer(SOUND_TYPES.WINNER);
+            winnerSound.play();
+            Timeline timeline = new Timeline(new KeyFrame(
+                    Duration.seconds(14),
+                    event -> System.exit(0)
+            ));
+
+            timeline.setCycleCount(1);
+            timeline.play();
 
         }
     }
