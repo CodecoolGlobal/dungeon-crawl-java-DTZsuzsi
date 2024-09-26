@@ -10,8 +10,9 @@ import javafx.animation.Timeline;
 import javafx.util.Duration;
 
 public class Boss extends Monsters {
-    private static final int BASIC_HEALTH=250;
-    private static final int BASIC_ATTACK=158;
+    private static final int BASIC_HEALTH = 250;
+    private static final int BASIC_ATTACK = 158;
+
     public Boss(Cell cell) {
         super(cell, BASIC_HEALTH, BASIC_ATTACK);
     }

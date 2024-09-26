@@ -7,6 +7,7 @@ import java.util.Objects;
 
 public abstract class Ally extends NPC {
     protected String message;
+
     public Ally(Cell cell, int health, int attack, String message) {
         super(cell, health, attack);
         this.message = message;

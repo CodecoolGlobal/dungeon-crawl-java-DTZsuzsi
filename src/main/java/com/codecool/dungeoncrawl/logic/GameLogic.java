@@ -10,8 +10,6 @@ import com.codecool.dungeoncrawl.data.actors.npc.monsters.Monsters;
 import com.codecool.dungeoncrawl.data.items.Item;
 import com.codecool.dungeoncrawl.data.items.ItemFactory;
 import com.codecool.dungeoncrawl.data.saveloadgame.GameState;
-import com.codecool.dungeoncrawl.data.saveloadgame.dao.GameStateDao;
-import com.codecool.dungeoncrawl.data.saveloadgame.dao.GameStateDaoJdbc;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,17 +22,16 @@ public class GameLogic {
     private SoundPlayer gameStartSound;
     private SoundPlayer gameNewMapLoaderSound;
     private List<String> mapFileNames = List.of("/map1.txt", "/map2.txt", "/map3.txt", "/map4.txt");
-   // private GameStateDao gameStateDao;
+    // private GameStateDao gameStateDao;
     private DatabaseManager databaseManager;
 
     public GameLogic() {
         this.mapFileName = "/map1.txt";
         this.map = MapLoader.loadMap(mapFileName, null);
-        this. gameStartSound = new SoundPlayer(SOUND_TYPES.START);
+        this.gameStartSound = new SoundPlayer(SOUND_TYPES.START);
         gameStartSound.play();
         this.gameNewMapLoaderSound = new SoundPlayer(SOUND_TYPES.NEW_MAP);
         this.databaseManager = new DatabaseManager();
-
 
 
     }
@@ -63,22 +60,23 @@ public class GameLogic {
         return Integer.toString(map.getPlayer().getAttack());
     }
 
-    public String getHearts(){
+    public String getHearts() {
         int amount = map.getPlayer().howManyHeartHas();
-        String message="";
-        String heart="❤\uFE0F";
-        for (int i=0; i<amount; i++) {
-            message+=heart;
+        String message = "";
+        String heart = "❤\uFE0F";
+        for (int i = 0; i < amount; i++) {
+            message += heart;
         }
         return message;
     }
 
-    public String getFriendMessages(){
-       String message="";
-        if (map.getPlayer().getAllies().size()!=0)
-        { for (Ally ally : map.getPlayer().getAllies()) {
-            message+=ally.getMessage();
-        }}
+    public String getFriendMessages() {
+        String message = "";
+        if (map.getPlayer().getAllies().size() != 0) {
+            for (Ally ally : map.getPlayer().getAllies()) {
+                message += ally.getMessage();
+            }
+        }
         return message;
     }
 
@@ -144,9 +142,9 @@ public class GameLogic {
         if (gameState != null) {
             Player player = map.getPlayer();
             player.setForm(gameState.getPlayerForm());
-            String mapFileNameLoaded=gameState.getMapName();
+            String mapFileNameLoaded = gameState.getMapName();
             System.out.println(mapFileNameLoaded);
-            this.map=MapLoader.loadMap(mapFileNameLoaded, player);
+            this.map = MapLoader.loadMap(mapFileNameLoaded, player);
             player.setPosition(gameState.getPlayerX(), gameState.getPlayerY());
             player.setHealth(gameState.getHealth());
             player.setAttack(gameState.getAttack());

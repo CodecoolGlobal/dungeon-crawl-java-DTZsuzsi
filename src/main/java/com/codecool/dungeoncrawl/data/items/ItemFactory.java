@@ -3,11 +3,12 @@ package com.codecool.dungeoncrawl.data.items;
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.items.Healers.Crown;
 import com.codecool.dungeoncrawl.data.items.Healers.Helmet;
-import com.codecool.dungeoncrawl.data.items.Healers.Potion;
 import com.codecool.dungeoncrawl.data.items.Healers.Shield;
+import com.codecool.dungeoncrawl.data.items.Healers.SuperPotion;
 import com.codecool.dungeoncrawl.data.items.attacking.BigSword;
 import com.codecool.dungeoncrawl.data.items.attacking.Mace;
 import com.codecool.dungeoncrawl.data.items.shopkeeper.Bomb;
+import com.codecool.dungeoncrawl.data.items.shopkeeper.Necklace;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,7 +26,9 @@ public class ItemFactory {
         itemMap.put("shield", Shield::new);
         itemMap.put("crown", Crown::new);
         itemMap.put("1000 gold", Money::new);
-//        itemMap.put("bomb press K to use", Bomb::new);
+        itemMap.put("bomb press K to use", Bomb::new);
+        itemMap.put("necklace press N to use", Necklace::new);
+        itemMap.put("superPotion", SuperPotion::new);
 
 
     }

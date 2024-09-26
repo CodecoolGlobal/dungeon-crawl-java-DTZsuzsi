@@ -15,10 +15,10 @@ public class Bomb extends ShopKeeperItems implements killer {
 
     }
 
-//    public Bomb(Cell cell) {
-//        super(cell,true);
-//
-//    }
+    public Bomb(Cell cell) {
+        super(cell);
+    }
+
 
     @Override
     public String getTileName() {

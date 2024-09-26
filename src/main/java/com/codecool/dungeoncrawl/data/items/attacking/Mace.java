@@ -7,11 +7,12 @@ import com.codecool.dungeoncrawl.data.items.ChangingPlayerForm;
 import com.codecool.dungeoncrawl.data.items.Item;
 
 public class Mace extends Item implements AttackPlus, ChangingPlayerForm {
-private int attackPlus;
-private static final int BASIC_ATTACK_PLUS=20;
+    private static final int BASIC_ATTACK_PLUS = 20;
+    private int attackPlus;
+
     public Mace(Cell cell) {
         super(cell, true);
-        this.attackPlus=BASIC_ATTACK_PLUS;
+        this.attackPlus = BASIC_ATTACK_PLUS;
     }
 
     @Override
@@ -26,7 +27,7 @@ private static final int BASIC_ATTACK_PLUS=20;
 
     @Override
     public void changePlayer(Player player) {
-        PLAYER_FORM_TYPES playerForm=player.getForm();
+        PLAYER_FORM_TYPES playerForm = player.getForm();
         switch (playerForm) {
             case PLAYER_BASIC:
                 player.setForm(PLAYER_FORM_TYPES.PLAYER_SWORD);

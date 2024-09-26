@@ -6,7 +6,7 @@ import com.codecool.dungeoncrawl.data.items.Item;
 
 public class Potion extends Item implements HealthPlus {
     protected int healthPlus;
-    private int BASIC_HEALTH_PLUS=10;
+    private int BASIC_HEALTH_PLUS = 10;
 
     public Potion(Cell cell, boolean isPickable) {
         super(cell, false);
@@ -16,6 +16,7 @@ public class Potion extends Item implements HealthPlus {
     public Potion(boolean isPickable) {
         super(false);
     }
+
     @Override
     public String getTileName() {
         return "potion";
