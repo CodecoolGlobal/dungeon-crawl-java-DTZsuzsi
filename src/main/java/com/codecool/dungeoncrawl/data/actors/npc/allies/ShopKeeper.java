@@ -37,96 +37,15 @@ public class ShopKeeper extends Ally {
     }
 
     @Override
-//    public void interact(Player player) {
-//        player.addAlly(this);
 //
-//
-//        Stage popupStage = new Stage();
-//        popupStage.initModality(Modality.APPLICATION_MODAL);
-//        popupStage.setTitle("Shopkeeper");
-//
-//        Label label = new Label("Hello traveler, I'm the famous shopkeeper.\n " +
-//                " I have three wonderful objects for you: \n" +
-//                "The famous super potion, get you 200 health, price: 100 gold\n" +
-//                "A bomb, which you can use to kill (press K) all your enemies\n" +
-//                "in the neighbor, price: 500 gold.\n" +
-//                "A necklace, which teleport (press N) you to the next stairs. 1000 gold.\n"+
-//                "Which one do you choose? Necklace, bomb or superpotion?"
-//        );
-//        TextField inputField = new TextField();
-//        Button submitButton = new Button("Submit");
-//
-//        submitButton.setOnAction(e -> {
-//            String answer = inputField.getText();
-//
-//            if (answer.equals("superpotion")) {
-//                Cell currentCell = this.cell;
-//                Cell nextCell = currentCell.getNeighbor(0, 2);
-//                SuperPotion superPotion;
-//                superPotion = (SuperPotion) inventory.getItems().stream().filter(item -> item instanceof SuperPotion).findFirst().get();
-//                if (player.hasEnoughMoney(superPotion)) {
-//                    nextCell.setItem(superPotion);
-//                    player.getMoney().setAmount(player.getMoney().getAmount() - superPotion.getPrice());
-//                    inventory.removeItem(superPotion);
-//                }
-//                else {
-//                    popupStage.close();
-//                    action.showPopup("nomoney", "Sorry, you don't have enough money!");
-//                }
-//            }
-//
-//            if (answer.equals("bomb")) {
-//                Cell currentCell = this.cell;
-//                Cell nextCell = currentCell.getNeighbor(0, 2);
-//                Bomb bomb = (Bomb) inventory.getItems().stream().filter(item -> item instanceof Bomb).findFirst().get();
-//                if (player.hasEnoughMoney(bomb)) {
-//                    nextCell.setItem(bomb);
-//                    player.getMoney().setAmount(player.getMoney().getAmount() - bomb.getPrice());
-//                    inventory.removeItem(bomb);
-//                }
-//                else {
-//                    popupStage.close();
-//                    action.showPopup("nomoney", "Sorry, you don't have enough money!");
-//                }
-//            }
-//
-//            if (answer.equals("necklace")) {
-//                Cell currentCell = this.cell;
-//                Cell nextCell = currentCell.getNeighbor(0, 2);
-//                Necklace necklace=(Necklace) inventory.getItems().stream().filter(item -> item instanceof Necklace).findFirst().get();
-//                if (player.hasEnoughMoney(necklace)) {
-//                nextCell.setItem(necklace);
-//                player.getMoney().setAmount(player.getMoney().getAmount() - necklace.getPrice());
-//                inventory.removeItem(necklace);}
-//                else {
-//                    popupStage.close();
-//                    action.showPopup("nomoney", "Sorry, not enough money!");
-//                }
-//            }
-//
-//            popupStage.close();
-//        });
-//
-//
-//        // Layout for the pop-up window
-//        VBox layout = new VBox(10, label, inputField, submitButton);
-//        layout.setStyle("-fx-padding: 20; -fx-alignment: center;");
-//        Scene popupScene = new Scene(layout, 400, 300);
-//
-//        // Show the pop-up window
-//        popupStage.setScene(popupScene);
-//        popupStage.showAndWait(); // Show pop-up and wait for the user to close it
-//    }
 
     public void interact(Player player) {
         player.addAlly(this);
 
-        // Create the popup stage
         Stage popupStage = new Stage();
         popupStage.initModality(Modality.APPLICATION_MODAL);
         popupStage.setTitle("Shopkeeper");
 
-        // Create a label with shopkeeper's message
         Label label = new Label("Hello traveler, I'm the famous shopkeeper.\n " +
                 "I have three wonderful objects for you: \n" +
                 "1. Super potion (200 health), price: 100 gold.\n" +
@@ -157,17 +76,14 @@ public class ShopKeeper extends Ally {
             }
         });
 
-        // Layout for the pop-up window
         VBox layout = new VBox(10, label, inputField, submitButton);
         layout.setStyle("-fx-padding: 20; -fx-alignment: center;");
         Scene popupScene = new Scene(layout, 400, 300);
 
-        // Show the pop-up window
         popupStage.setScene(popupScene);
-        popupStage.showAndWait(); // Show pop-up and wait for the user to close it
+        popupStage.showAndWait();
     }
 
-    // Helper method to handle purchase logic
     private void processPurchase(Player player, String itemType, Stage popupStage) {
         Optional<Item> optionalItem = inventory.getItems().stream()
                 .filter(item -> item.getClass().getSimpleName().equals(itemType))
@@ -176,7 +92,6 @@ public class ShopKeeper extends Ally {
         if (optionalItem.isPresent()) {
             ShopKeeperItems item =(ShopKeeperItems) optionalItem.get();
             if (player.hasEnoughMoney(item)) {
-                // Place item in next cell and deduct money
                 Cell currentCell = this.cell;
                 Cell nextCell = currentCell.getNeighbor(0, 2);
                 nextCell.setItem(item);
