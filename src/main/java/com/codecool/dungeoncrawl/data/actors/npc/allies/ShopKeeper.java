@@ -35,25 +35,22 @@ public class ShopKeeper extends Ally {
     @Override
     public void interact(Player player) {
 
-        // When this method is called, show a custom popup
 
-        // Create a new Stage (pop-up)
         Stage popupStage = new Stage();
-        popupStage.initModality(Modality.APPLICATION_MODAL); // Block interaction with other windows
+        popupStage.initModality(Modality.APPLICATION_MODAL);
         popupStage.setTitle("Shopkeeper");
 
-        // Add a label and text field to simulate input (e.g., player response)
         Label label = new Label("Hello traveler, I'm the famous shopkeeper.\n " +
-                " I have three wonderful object for you: \n" +
+                " I have three wonderful objects for you: \n" +
                 "The famous super potion, get you 200 health, price: 100 gold\n" +
                 "A bomb, which you can use to kill (press K) all your enemies\n" +
                 "in the neighbor, price: 500 gold.\n" +
-                "A necklace, which teleport (press N) you to the door. 1000 gold."
+                "A necklace, which teleport (press N) you to the next stairs. 1000 gold.\n"+
+                "Which one do you choose? Necklace, bomb or superpotion?"
         );
         TextField inputField = new TextField();
         Button submitButton = new Button("Submit");
 
-        // When the player submits their name, you can process it
         submitButton.setOnAction(e -> {
             String answer = inputField.getText();
 
@@ -92,7 +89,7 @@ public class ShopKeeper extends Ally {
         // Layout for the pop-up window
         VBox layout = new VBox(10, label, inputField, submitButton);
         layout.setStyle("-fx-padding: 20; -fx-alignment: center;");
-        Scene popupScene = new Scene(layout, 300, 150);
+        Scene popupScene = new Scene(layout, 400, 300);
 
         // Show the pop-up window
         popupStage.setScene(popupScene);
