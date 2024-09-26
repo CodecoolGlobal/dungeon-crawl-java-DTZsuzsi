@@ -1,5 +1,6 @@
 package com.codecool.dungeoncrawl.logic;
 
+import com.codecool.dungeoncrawl.configuration.DatabaseManager;
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.GameMap;
 import com.codecool.dungeoncrawl.data.actors.Actor;
@@ -9,6 +10,7 @@ import com.codecool.dungeoncrawl.data.items.Item;
 import com.codecool.dungeoncrawl.data.items.ItemFactory;
 import com.codecool.dungeoncrawl.data.saveloadgame.GameState;
 import com.codecool.dungeoncrawl.data.saveloadgame.dao.GameStateDao;
+import com.codecool.dungeoncrawl.data.saveloadgame.dao.GameStateDaoJdbc;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,14 +23,19 @@ public class GameLogic {
 private SoundPlayer gameStartSound;
 private SoundPlayer gameNewMapLoaderSound;
     private List<String> mapFileNames = List.of("/map1.txt", "/map2.txt", "/map3.txt", "/map4.txt");
-    private GameStateDao gameStateDao;
+   // private GameStateDao gameStateDao;
+    private DatabaseManager databaseManager;
 
-    public GameLogic(GameStateDao gameStateDao) {
+    public GameLogic() {
         this.mapFileName = "/map1.txt";
         this.map = MapLoader.loadMap(mapFileName, null);
         this. gameStartSound = new SoundPlayer(SOUND_TYPES.START);
         gameStartSound.play();
         this.gameNewMapLoaderSound = new SoundPlayer(SOUND_TYPES.NEW_MAP);
+        this.databaseManager = new DatabaseManager();
+       // this.gameStateDao=new GameStateDaoJdbc(databaseManager.getDataSource());
+
+
 
     }
 
@@ -111,12 +118,12 @@ if (getMap().isPlayerNextClosedDoor()){
                 player.getForm(),
                 itemNames
         );
-        gameStateDao.save(gameState);
+        databaseManager.getGameStateDao().save(gameState);
         System.out.println("Game saved");
     }
 
     public void loadGame() {
-        GameState gameState = gameStateDao.load();
+        GameState gameState = databaseManager.getGameStateDao().load();
 
         if (gameState != null) {
             Player player = map.getPlayer();
@@ -133,5 +140,9 @@ if (getMap().isPlayerNextClosedDoor()){
         } else {
             System.out.println("No game found");
         }
+    }
+
+    public DatabaseManager getDatabaseManager() {
+        return databaseManager;
     }
 }

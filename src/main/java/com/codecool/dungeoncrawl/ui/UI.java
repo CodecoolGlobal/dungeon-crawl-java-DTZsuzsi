@@ -53,7 +53,6 @@ public class UI {
         if (logic.getMap().isPlayerNextClosedDoor()){
             logic.meetDoor();
         }
-        logic.enemyMovingAutomatically();
 
         if (logic.getMap().isPlayerOnSaveTile()) {
             System.out.println("Player save tile");
@@ -62,6 +61,9 @@ public class UI {
         if (logic.getMap().isPlayerOnLoadTile()) {
             logic.loadGame();
         }
+
+        logic.enemyMovingAutomatically();
+
         refresh();
     }
 

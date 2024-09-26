@@ -22,8 +22,16 @@ public class GameStateDaoJdbc implements GameStateDao {
         try (Connection connection = dataSource.getConnection()) { //this uses try-with-resources, which automatically closes the connection after the block of code is executed.
             String gameStateSql = "INSERT INTO game_state(map_name, player_x, player_y, player_form)" +
                          "VALUES (?, ?, ?, ?)" +
-                         "ON CONFLICT (id) DO UPDATE" +                 //if we save the game based on user, it needs to be changed to user_id
-                         "SET map_name = ?, player_x = ?, player_y = ?, player_form = ?";
+
+                    "ON CONFLICT (id) DO UPDATE " + // Handle conflicts on 'id' column
+                    "SET map_name = EXCLUDED.map_name, " +
+                    "player_x = EXCLUDED.player_x, " +
+                    "player_y = EXCLUDED.player_y, " +
+                    "player_form = EXCLUDED.player_form";
+
+
+                    //if we save the game based on user, it needs to be changed to user_id
+                    //     "SET map_name = ?, player_x = ?, player_y = ?, player_form = ?";
             PreparedStatement st = connection.prepareStatement(gameStateSql, Statement.RETURN_GENERATED_KEYS);
             st.setString(1, gameState.getMapName());
             st.setInt(2, gameState.getPlayerX());
