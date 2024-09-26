@@ -15,6 +15,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.application.Platform;
+
 
 import java.util.Optional;
 
@@ -37,8 +39,6 @@ public class ShopKeeper extends Ally {
     }
 
     @Override
-//
-
     public void interact(Player player) {
         player.addAlly(this);
 
@@ -51,31 +51,38 @@ public class ShopKeeper extends Ally {
                 "1. Super potion (200 health), price: 100 gold.\n" +
                 "2. Bomb (Press 'K' to kill all enemies nearby), price: 500 gold.\n" +
                 "3. Necklace (Press 'N' to teleport to next stairs), price: 1000 gold.\n" +
-                "Which one do you choose? Type 'superpotion', 'bomb', or 'necklace'."
+                "Which one do you choose? Type 'superpotion, \n'" +
+                " 'bomb' or 'necklace'."
         );
 
         TextField inputField = new TextField();
         Button submitButton = new Button("Submit");
 
         submitButton.setOnAction(e -> {
-            String answer = inputField.getText().toLowerCase();  // Lowercase to ignore case sensitivity
+            try {
+                String answer = inputField.getText().toLowerCase();  // Lowercase to ignore case sensitivity
 
-            switch (answer) {
-                case "superpotion":
-                    processPurchase(player, "SuperPotion", popupStage);
-                    break;
-                case "bomb":
-                    processPurchase(player, "Bomb", popupStage);
-                    break;
-                case "necklace":
-                    processPurchase(player, "Necklace", popupStage);
-                    break;
-                default:
-                    action.showPopup("error", "Invalid choice! Please type 'superpotion', 'bomb', or 'necklace'.");
-                    break;
+                switch (answer) {
+                    case "superpotion":
+                        processPurchase(player, "SuperPotion", popupStage);
+                        break;
+                    case "bomb":
+                        processPurchase(player, "Bomb", popupStage);
+                        break;
+                    case "necklace":
+                        processPurchase(player, "Necklace", popupStage);
+                        break;
+                    default:
+                        Platform.runLater(() -> action.showPopup("error", "Invalid choice! Please type 'superpotion', 'bomb', or 'necklace'."));
+                        break;
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                Platform.runLater(() -> action.showPopup("error", "An unexpected error occurred."));
             }
         });
 
+        // Layout for the pop-up window
         VBox layout = new VBox(10, label, inputField, submitButton);
         layout.setStyle("-fx-padding: 20; -fx-alignment: center;");
         Scene popupScene = new Scene(layout, 400, 300);
@@ -97,16 +104,19 @@ public class ShopKeeper extends Ally {
                 nextCell.setItem(item);
                 player.getMoney().setAmount(player.getMoney().getAmount() - item.getPrice());
                 inventory.removeItem(item);
-                popupStage.close();
-                action.showPopup("success", "You have successfully purchased the " + itemType + "!");
+
+                Platform.runLater(() -> {
+                    action.showPopup("success", "You have successfully purchased the " + itemType + "!");
+                    popupStage.close();
+                });
             } else {
-                // Not enough money
-                action.showPopup("nomoney", "Sorry, you don't have enough money for the " + itemType + "!");
+                Platform.runLater(() -> action.showPopup("nomoney", "Sorry, you don't have enough money for the " + itemType + "!"));
             }
         } else {
-            // Item not found in inventory
-            action.showPopup("error", "Sorry, the shopkeeper doesn't have a " + itemType + "!");
+            Platform.runLater(() -> action.showPopup("error", "Sorry, the shopkeeper doesn't have a " + itemType + "!"));
         }
     }
 
+
+//
 }
