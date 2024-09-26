@@ -119,4 +119,24 @@ public class Player extends Actor {
       else {
         return item.getPrice()>this.money.getAmount();}
     }
+
+    public int howManyHeartHas(){
+        if (health<=BASIC_HEALTH) {
+            return 1;
+        }
+        if (health<=30){
+            return 2;
+        }
+        if (health<=50){
+            return 3;
+        }
+        if (health<=100){
+            return 4;
+        }
+        if (health<=300){
+            return 5;
+        }
+        return 0;
+        }
+
 }
