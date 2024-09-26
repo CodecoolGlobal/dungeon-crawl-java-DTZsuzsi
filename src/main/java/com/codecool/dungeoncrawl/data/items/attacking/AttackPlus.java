@@ -4,4 +4,5 @@ import com.codecool.dungeoncrawl.data.actors.Player;
 
 public interface AttackPlus {
 
-void attackPlus(Player player);}
+    void attackPlus(Player player);
+}

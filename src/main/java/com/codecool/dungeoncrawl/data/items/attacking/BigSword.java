@@ -6,13 +6,13 @@ import com.codecool.dungeoncrawl.data.actors.Player;
 import com.codecool.dungeoncrawl.data.items.ChangingPlayerForm;
 import com.codecool.dungeoncrawl.data.items.Item;
 
-public class BigSword extends Item  implements ChangingPlayerForm, AttackPlus {
-   private int attackPlus;
-   private final static int BASIC_ATTACK_PLUS=100;
+public class BigSword extends Item implements ChangingPlayerForm, AttackPlus {
+    private final static int BASIC_ATTACK_PLUS = 100;
+    private int attackPlus;
 
     public BigSword(Cell cell) {
         super(cell, true);
-        this.attackPlus=BASIC_ATTACK_PLUS;
+        this.attackPlus = BASIC_ATTACK_PLUS;
     }
 
     @Override

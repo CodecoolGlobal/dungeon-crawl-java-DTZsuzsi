@@ -3,20 +3,20 @@ package com.codecool.dungeoncrawl.logic;
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.CellType;
 import com.codecool.dungeoncrawl.data.GameMap;
-import com.codecool.dungeoncrawl.data.actors.*;
+import com.codecool.dungeoncrawl.data.actors.Player;
 import com.codecool.dungeoncrawl.data.actors.npc.allies.Friend;
 import com.codecool.dungeoncrawl.data.actors.npc.allies.ShopKeeper;
 import com.codecool.dungeoncrawl.data.actors.npc.allies.Yoda;
 import com.codecool.dungeoncrawl.data.actors.npc.monsters.*;
-import com.codecool.dungeoncrawl.data.items.*;
 import com.codecool.dungeoncrawl.data.items.Healers.Crown;
 import com.codecool.dungeoncrawl.data.items.Healers.Helmet;
 import com.codecool.dungeoncrawl.data.items.Healers.Potion;
 import com.codecool.dungeoncrawl.data.items.Healers.Shield;
+import com.codecool.dungeoncrawl.data.items.Key;
+import com.codecool.dungeoncrawl.data.items.Money;
 import com.codecool.dungeoncrawl.data.items.attacking.BigSword;
 import com.codecool.dungeoncrawl.data.items.attacking.Mace;
-import com.codecool.dungeoncrawl.data.items.LoadGameTile;
-import com.codecool.dungeoncrawl.data.items.SaveGameTile;
+
 import java.io.InputStream;
 import java.util.Scanner;
 

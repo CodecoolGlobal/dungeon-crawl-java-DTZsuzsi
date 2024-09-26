@@ -5,9 +5,9 @@ import com.codecool.dungeoncrawl.data.actors.Player;
 import com.codecool.dungeoncrawl.data.items.shopkeeper.ShopKeeperItems;
 
 public class SuperPotion extends ShopKeeperItems implements HealthPlus {
-private static final int BASIC_HEALTH_PLUS=200;
-private int healthPlus;
+    private static final int BASIC_HEALTH_PLUS = 200;
     private static final int BASIC_PRICE = 100;
+    private int healthPlus;
 
     public SuperPotion(boolean isPickable) {
         super(false, BASIC_PRICE);

@@ -22,7 +22,6 @@ public class Shield extends Item implements ChangingPlayerForm, HealthPlus {
             case PLAYER_SWORD:
                 player.setForm(PLAYER_FORM_TYPES.PLAYER_SHIELD_SWORD);
                 break;
-
         }
     }
 

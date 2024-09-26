@@ -6,8 +6,8 @@ import com.codecool.dungeoncrawl.data.Drawable;
 import java.util.Objects;
 
 public abstract class Item implements Drawable {
-    private Cell cell;
     protected boolean isPickable;
+    private Cell cell;
 
     public Item(Cell cell, boolean isPickable) {
         this.cell = cell;
@@ -17,17 +17,17 @@ public abstract class Item implements Drawable {
         this.isPickable = isPickable;
     }
 
-   public Item(boolean pickable) {
+    public Item(boolean pickable) {
         this.isPickable = pickable;
-   }
-   public Item() {
+    }
 
-   }
+    public Item() {
+
+    }
 
     public Cell getCell() {
         return cell;
     }
-
 
 
     public abstract String getTileName();
