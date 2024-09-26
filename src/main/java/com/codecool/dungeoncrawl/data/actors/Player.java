@@ -125,7 +125,7 @@ public class Player extends Actor {
           return false;
       }
       else {
-        return item.getPrice()>this.money.getAmount();}
+        return item.getPrice()<this.money.getAmount();}
     }
 
     public int howManyHeartHas(){
