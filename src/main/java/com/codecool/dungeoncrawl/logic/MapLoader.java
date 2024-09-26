@@ -17,7 +17,6 @@ import com.codecool.dungeoncrawl.data.items.attacking.BigSword;
 import com.codecool.dungeoncrawl.data.items.attacking.Mace;
 import com.codecool.dungeoncrawl.data.items.LoadGame;
 import com.codecool.dungeoncrawl.data.items.SaveGame;
-
 import java.io.InputStream;
 import java.util.Scanner;
 
@@ -54,12 +53,13 @@ public class MapLoader {
                             break;
                         case '@':
                             cell.setType(CellType.FLOOR);
-                            if (player == null) {
+                            if (player==null) {
                                 map.setPlayer(new Player(cell));
-                            } else {
+                            }
+                            else{
                                 map.setPlayer(player);
                                 player.setCell(cell);
-                                if (player.getFriend() != null) {
+                                if (player.getFriend()!=null) {
                                     player.getFriend().setCell(cell.getNeighbor(-1, 0));
                                 }
                             }
@@ -150,6 +150,10 @@ public class MapLoader {
                             cell.setType(CellType.FLOOR);
                             new ShopKeeper(cell);
                             break;
+                        case 'Z':
+                            cell.setType(CellType.FLOOR);
+                            new Money(cell, true);
+                            break;
                         case 'S':
                             cell.setType(CellType.FLOOR);
                             new SaveGame(cell);
@@ -166,6 +170,7 @@ public class MapLoader {
         }
         return map;
     }
+
 
 
 }

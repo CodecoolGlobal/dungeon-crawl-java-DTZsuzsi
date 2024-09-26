@@ -114,4 +114,8 @@ public boolean isWalkable(){
     public int hashCode() {
         return Objects.hash(type, actor, gameMap, x, y);
     }
+
+    public GameMap getGameMap() {
+        return gameMap;
+    }
 }

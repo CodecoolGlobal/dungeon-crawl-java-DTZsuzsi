@@ -4,6 +4,7 @@ import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.actors.npc.allies.Friend;
 import com.codecool.dungeoncrawl.data.items.Inventory;
 import com.codecool.dungeoncrawl.data.items.Item;
+import com.codecool.dungeoncrawl.data.items.Money;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +16,7 @@ public class Player extends Actor {
     private final static int BASIC_HEALTH=10;
     private final static int BASIC_ATTACK=5;
     private PLAYER_FORM_TYPES form;
+    private Money money;
 
 
     public Player(Cell cell) {
@@ -22,6 +24,7 @@ public class Player extends Actor {
         inventory = new Inventory();
         this.friend = null;
         this.form=PLAYER_FORM_TYPES.PLAYER_BASIC;
+        this.money=null;
 
     }
 
@@ -29,10 +32,19 @@ public class Player extends Actor {
         return form.getTileName();
     }
 
-
+    public Money getMoney() {
+        return money;
+    }
+    public void setMoney(Money money) {
+        this.money = money;
+    }
 
     public Inventory getInventory() {
         return inventory;
+    }
+
+    public List<Cell> getNeighbourCells() {
+     return   this.cell.getNeighbors();
     }
 
 

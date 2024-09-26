@@ -3,7 +3,6 @@ package com.codecool.dungeoncrawl.data;
 import com.codecool.dungeoncrawl.data.actors.Actor;
 import com.codecool.dungeoncrawl.data.actors.Player;
 import com.codecool.dungeoncrawl.data.items.Item;
-import com.codecool.dungeoncrawl.data.items.Key;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -82,7 +81,11 @@ public class GameMap {
         return false;
     }
 
+public Cell getStairPlace(){
+    System.out.println("hi im here");
+        return cellsList.stream().filter(cell -> cell.getType().equals(CellType.STAIRS)).findFirst().get();
 
+}
 
     public void nextToDoor(){
         List<Item> inventory=player.getInventory().getItems();
