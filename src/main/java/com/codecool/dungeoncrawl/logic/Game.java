@@ -30,17 +30,13 @@ public class Game extends Application {
         this.gameMap=new GameMap(25,25,CellType.FLOOR);
         this.cell=new Cell(gameMap, 5,5, CellType.FLOOR);
         this.databaseManager = new DatabaseManager();
-        this.logic = new GameLogic(databaseManager.getGameStateDao());
-        this.ui = new UI(logic, keyHandlers);
-        ui.setUpPain(primaryStage);
-
         try {
             this.databaseManager.setup();
         } catch (SQLException e) {
-            System.out.println("Failed to connect to database");
+            System.out.println("Failed to setup database");
+            e.printStackTrace();
             return;
         }
-
         this.logic = new GameLogic(databaseManager.getGameStateDao());
         this.ui = new UI(logic, keyHandlers);
         ui.setUpPain(primaryStage);
