@@ -9,7 +9,7 @@ public class Teleport implements KeyHandler{
 
     @Override
     public void perform(KeyEvent event, GameMap map) {
-        if (code.equals(event.getCode())) {
+        if (code.equals(event.getCode())&&map.getPlayer().getInventory().getNecklace()!=null) {
             map.getPlayer().getInventory().getNecklace().teleport(map.getPlayer());
 
     }}
