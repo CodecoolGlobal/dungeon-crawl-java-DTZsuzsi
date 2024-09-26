@@ -59,30 +59,47 @@ public class ShopKeeper extends Ally {
                 Cell nextCell = currentCell.getNeighbor(0, 2);
                 SuperPotion superPotion;
                 superPotion = (SuperPotion) inventory.getItems().stream().filter(item -> item instanceof SuperPotion).findFirst().get();
-                nextCell.setItem(superPotion);
-                player.getMoney().setAmount(player.getMoney().getAmount() - superPotion.getPrice());
-                inventory.removeItem(superPotion);
+                if (player.hasEnoughMoney(superPotion)) {
+                    nextCell.setItem(superPotion);
+                    player.getMoney().setAmount(player.getMoney().getAmount() - superPotion.getPrice());
+                    inventory.removeItem(superPotion);
+                }
+                else {
+                    popupStage.close();
+                    action.showPopup("nomoney", "Sorry, you don't have enough money!");
+                }
             }
 
             if (answer.equals("bomb")) {
                 Cell currentCell = this.cell;
                 Cell nextCell = currentCell.getNeighbor(0, 2);
                 Bomb bomb = (Bomb) inventory.getItems().stream().filter(item -> item instanceof Bomb).findFirst().get();
-                nextCell.setItem(bomb);
-                player.getMoney().setAmount(player.getMoney().getAmount() - bomb.getPrice());
-                inventory.removeItem(bomb);
+                if (player.hasEnoughMoney(bomb)) {
+                    nextCell.setItem(bomb);
+                    player.getMoney().setAmount(player.getMoney().getAmount() - bomb.getPrice());
+                    inventory.removeItem(bomb);
+                }
+                else {
+                    popupStage.close();
+                    action.showPopup("nomoney", "Sorry, you don't have enough money!");
+                }
             }
 
             if (answer.equals("necklace")) {
                 Cell currentCell = this.cell;
                 Cell nextCell = currentCell.getNeighbor(0, 2);
                 Necklace necklace=(Necklace) inventory.getItems().stream().filter(item -> item instanceof Necklace).findFirst().get();
+                if (player.hasEnoughMoney(necklace)) {
                 nextCell.setItem(necklace);
                 player.getMoney().setAmount(player.getMoney().getAmount() - necklace.getPrice());
-                inventory.removeItem(necklace);
+                inventory.removeItem(necklace);}
+                else {
+                    popupStage.close();
+                    action.showPopup("nomoney", "Sorry, not enough money!");
+                }
             }
 
-            popupStage.close(); // Close the pop-up when done
+            popupStage.close();
         });
 
 
