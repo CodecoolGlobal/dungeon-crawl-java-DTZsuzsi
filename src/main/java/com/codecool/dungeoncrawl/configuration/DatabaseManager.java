@@ -20,7 +20,7 @@ public class DatabaseManager {
         PGSimpleDataSource dataSource = new PGSimpleDataSource(); //creates a new instance of PGSimpleDataSource, a class that provides simple configuration for PostgreSQL connections. It’s used to establish the connection parameters like database name, username, and password.
         dataSource.setDatabaseName("dungeoncrawl"); //this tells the dataSource which database to connect to
         dataSource.setUser("postgres");
-        dataSource.setPassword("Syabolcs"); //PostgreSQL@123
+        dataSource.setPassword("PostgreSQL@123"); //PostgreSQL@123. Syabolcs
         dataSource.setServerNames(new String[] {"localhost"});  // Replace with your actual server
         dataSource.setPortNumbers(new int[] {5432});  // Replace with your actual port if different
         System.out.println("Trying to connect to PostgreSQL database");

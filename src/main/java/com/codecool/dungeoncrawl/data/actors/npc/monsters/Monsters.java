@@ -4,6 +4,11 @@ import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.actors.Interaction;
 import com.codecool.dungeoncrawl.data.actors.Player;
 import com.codecool.dungeoncrawl.data.actors.npc.NPC;
+import com.codecool.dungeoncrawl.logic.SOUND_TYPES;
+import com.codecool.dungeoncrawl.logic.SoundPlayer;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.util.Duration;
 
 public abstract class Monsters extends NPC implements Interaction {
 
@@ -24,6 +29,16 @@ public abstract class Monsters extends NPC implements Interaction {
         }
         if (player.getHealth() <= 0) {
             this.action.showPopup("Game over", "Sorry, you've died! Game over!");
+            SoundPlayer gameOver = new SoundPlayer(SOUND_TYPES.GAME_OVER);
+            gameOver.play();
+            System.out.println("winner sound");
+            Timeline timeline = new Timeline(new KeyFrame(
+                    Duration.seconds(14),
+                    event -> System.exit(0)
+            ));
+
+            timeline.setCycleCount(1);
+            timeline.play();
         }
         if (health <= 0) {
             cell.setActor(null);

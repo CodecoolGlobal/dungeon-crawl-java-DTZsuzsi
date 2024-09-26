@@ -100,12 +100,26 @@ public class GameLogic {
     }
 
     public void loadNextMap() {
+//        Player myPlayer = map.getPlayer();
+//        gameStartSound.stop();
+//        int currentIndex = mapFileNames.indexOf(mapFileName);
+//        mapFileName = mapFileNames.get(currentIndex + 1);
+//        this.map = MapLoader.loadMap(mapFileName, myPlayer);
+//        gameNewMapLoaderSound.play();
+
         Player myPlayer = map.getPlayer();
         gameStartSound.stop();
+
         int currentIndex = mapFileNames.indexOf(mapFileName);
-        mapFileName = mapFileNames.get(currentIndex + 1);
-        this.map = MapLoader.loadMap(mapFileName, myPlayer);
-        gameNewMapLoaderSound.play();
+        if (currentIndex + 1 < mapFileNames.size()) {
+            mapFileName = mapFileNames.get(currentIndex + 1);
+            this.map = MapLoader.loadMap(mapFileName, myPlayer);
+
+            gameNewMapLoaderSound.stop();
+            gameNewMapLoaderSound.play();
+        } else {
+            System.out.println("No more maps to load.");
+        }
     }
 
     public void meetDoor() {
@@ -114,6 +128,9 @@ public class GameLogic {
         }
     }
 
+    public String getMapFileName() {
+        return mapFileName;
+    }
 
     public void saveGame(Player player) {
         List<String> itemNames = player.getInventory().getItems().stream()

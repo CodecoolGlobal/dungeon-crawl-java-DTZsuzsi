@@ -72,13 +72,6 @@ public class Action {
         alert.setHeaderText(null);
         alert.setContentText(text);
         alert.showAndWait();
-        Timeline timeline = new Timeline(new KeyFrame(
-                Duration.seconds(14),
-                event -> System.exit(0)
-        ));
-
-        timeline.setCycleCount(1);
-        timeline.play();
     }
 
 //    public void findADoor(Cell nextCell) {
