@@ -84,6 +84,7 @@ public class UI {
         mainStage.setAttackLabelText(logic.getPlayerAttack());
         mainStage.setInventoryLabelText(logic.getPlayerInventory());
         mainStage.setFriendLabelText(logic.getFriendMessages());
+        mainStage.setHealthBarText(logic.getHearts());
 
     }
 }

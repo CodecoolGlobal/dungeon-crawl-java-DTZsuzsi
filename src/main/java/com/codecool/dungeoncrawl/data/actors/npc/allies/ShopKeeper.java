@@ -35,25 +35,22 @@ public class ShopKeeper extends Ally {
     @Override
     public void interact(Player player) {
 
-        // When this method is called, show a custom popup
 
-        // Create a new Stage (pop-up)
         Stage popupStage = new Stage();
-        popupStage.initModality(Modality.APPLICATION_MODAL); // Block interaction with other windows
+        popupStage.initModality(Modality.APPLICATION_MODAL);
         popupStage.setTitle("Shopkeeper");
 
-        // Add a label and text field to simulate input (e.g., player response)
         Label label = new Label("Hello traveler, I'm the famous shopkeeper.\n " +
-                " I have three wonderful object for you: \n" +
+                " I have three wonderful objects for you: \n" +
                 "The famous super potion, get you 200 health, price: 100 gold\n" +
                 "A bomb, which you can use to kill (press K) all your enemies\n" +
                 "in the neighbor, price: 500 gold.\n" +
-                "A necklace, which teleport (press N) you to the door. 1000 gold."
+                "A necklace, which teleport (press N) you to the next stairs. 1000 gold.\n"+
+                "Which one do you choose? Necklace, bomb or superpotion?"
         );
         TextField inputField = new TextField();
         Button submitButton = new Button("Submit");
 
-        // When the player submits their name, you can process it
         submitButton.setOnAction(e -> {
             String answer = inputField.getText();
 
@@ -62,37 +59,54 @@ public class ShopKeeper extends Ally {
                 Cell nextCell = currentCell.getNeighbor(0, 2);
                 SuperPotion superPotion;
                 superPotion = (SuperPotion) inventory.getItems().stream().filter(item -> item instanceof SuperPotion).findFirst().get();
-                nextCell.setItem(superPotion);
-                player.getMoney().setAmount(player.getMoney().getAmount() - superPotion.getPrice());
-                inventory.removeItem(superPotion);
+                if (player.hasEnoughMoney(superPotion)) {
+                    nextCell.setItem(superPotion);
+                    player.getMoney().setAmount(player.getMoney().getAmount() - superPotion.getPrice());
+                    inventory.removeItem(superPotion);
+                }
+                else {
+                    popupStage.close();
+                    action.showPopup("nomoney", "Sorry, you don't have enough money!");
+                }
             }
 
             if (answer.equals("bomb")) {
                 Cell currentCell = this.cell;
                 Cell nextCell = currentCell.getNeighbor(0, 2);
                 Bomb bomb = (Bomb) inventory.getItems().stream().filter(item -> item instanceof Bomb).findFirst().get();
-                nextCell.setItem(bomb);
-                player.getMoney().setAmount(player.getMoney().getAmount() - bomb.getPrice());
-                inventory.removeItem(bomb);
+                if (player.hasEnoughMoney(bomb)) {
+                    nextCell.setItem(bomb);
+                    player.getMoney().setAmount(player.getMoney().getAmount() - bomb.getPrice());
+                    inventory.removeItem(bomb);
+                }
+                else {
+                    popupStage.close();
+                    action.showPopup("nomoney", "Sorry, you don't have enough money!");
+                }
             }
 
             if (answer.equals("necklace")) {
                 Cell currentCell = this.cell;
                 Cell nextCell = currentCell.getNeighbor(0, 2);
                 Necklace necklace=(Necklace) inventory.getItems().stream().filter(item -> item instanceof Necklace).findFirst().get();
+                if (player.hasEnoughMoney(necklace)) {
                 nextCell.setItem(necklace);
                 player.getMoney().setAmount(player.getMoney().getAmount() - necklace.getPrice());
-                inventory.removeItem(necklace);
+                inventory.removeItem(necklace);}
+                else {
+                    popupStage.close();
+                    action.showPopup("nomoney", "Sorry, not enough money!");
+                }
             }
 
-            popupStage.close(); // Close the pop-up when done
+            popupStage.close();
         });
 
 
         // Layout for the pop-up window
         VBox layout = new VBox(10, label, inputField, submitButton);
         layout.setStyle("-fx-padding: 20; -fx-alignment: center;");
-        Scene popupScene = new Scene(layout, 300, 150);
+        Scene popupScene = new Scene(layout, 400, 300);
 
         // Show the pop-up window
         popupStage.setScene(popupScene);

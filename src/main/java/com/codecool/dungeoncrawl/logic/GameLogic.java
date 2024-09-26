@@ -62,6 +62,16 @@ private SoundPlayer gameNewMapLoaderSound;
         return Integer.toString(map.getPlayer().getAttack());
     }
 
+    public String getHearts(){
+        int amount = map.getPlayer().howManyHeartHas();
+        String message="";
+        String heart="❤\uFE0F";
+        for (int i=0; i<amount; i++) {
+            message+=heart;
+        }
+        return message;
+    }
+
     public String getFriendMessages(){
         if (map.getPlayer().getFriend()!=null)
         {return map.getPlayer().getFriend().getMessage();}
@@ -71,6 +81,7 @@ private SoundPlayer gameNewMapLoaderSound;
     public String getPlayerInventory() {
         return map.getPlayer().getInventory().displayInventoryItems();
     }
+
 
     public void enemyMovingAutomatically() {
 

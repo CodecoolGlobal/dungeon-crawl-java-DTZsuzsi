@@ -2,9 +2,11 @@ package com.codecool.dungeoncrawl.data.actors;
 
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.actors.npc.allies.Friend;
+import com.codecool.dungeoncrawl.data.actors.npc.allies.ShopKeeper;
 import com.codecool.dungeoncrawl.data.items.Inventory;
 import com.codecool.dungeoncrawl.data.items.Item;
 import com.codecool.dungeoncrawl.data.items.Money;
+import com.codecool.dungeoncrawl.data.items.shopkeeper.ShopKeeperItems;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -109,4 +111,32 @@ public class Player extends Actor {
         newCell.setActor(this);
         cell = newCell;
     }
+
+    public boolean hasEnoughMoney(ShopKeeperItems item){
+      if (this.money == null) {
+          return false;
+      }
+      else {
+        return item.getPrice()>this.money.getAmount();}
+    }
+
+    public int howManyHeartHas(){
+        if (health<=BASIC_HEALTH) {
+            return 1;
+        }
+        if (health<=30){
+            return 2;
+        }
+        if (health<=50){
+            return 3;
+        }
+        if (health<=100){
+            return 4;
+        }
+        if (health<=300){
+            return 5;
+        }
+        return 0;
+        }
+
 }
