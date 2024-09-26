@@ -1,6 +1,7 @@
 package com.codecool.dungeoncrawl.data.actors;
 
 import com.codecool.dungeoncrawl.data.Cell;
+import com.codecool.dungeoncrawl.data.actors.npc.allies.Ally;
 import com.codecool.dungeoncrawl.data.actors.npc.allies.Friend;
 import com.codecool.dungeoncrawl.data.actors.npc.allies.ShopKeeper;
 import com.codecool.dungeoncrawl.data.items.Inventory;
@@ -9,11 +10,14 @@ import com.codecool.dungeoncrawl.data.items.Money;
 import com.codecool.dungeoncrawl.data.items.shopkeeper.ShopKeeperItems;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Player extends Actor {
 
     private Inventory inventory;
+    private Set<Ally> allies;
     private Friend friend;
     private final static int BASIC_HEALTH=10;
     private final static int BASIC_ATTACK=5;
@@ -24,7 +28,8 @@ public class Player extends Actor {
     public Player(Cell cell) {
         super(cell, BASIC_HEALTH, BASIC_ATTACK);
         inventory = new Inventory();
-        this.friend = null;
+        this.allies = new HashSet<>();
+        this.friend=null;
         this.form=PLAYER_FORM_TYPES.PLAYER_BASIC;
         this.money=null;
 
@@ -49,7 +54,9 @@ public class Player extends Actor {
      return   this.cell.getNeighbors();
     }
 
-
+    public Set<Ally> getAllies() {
+        return allies;
+    }
 
     public void receiveHealth(int healthPlus) {
         this.health += healthPlus;
@@ -96,11 +103,12 @@ public class Player extends Actor {
 
     public void setForm(PLAYER_FORM_TYPES newForm) {
         this.form = newForm;
-//        this.cell.setActor(this);
-
 
     }
 
+    public void addAlly(Ally ally){
+        allies.add(ally);
+    }
     public PLAYER_FORM_TYPES getForm() {
         return form;
     }
@@ -117,7 +125,7 @@ public class Player extends Actor {
           return false;
       }
       else {
-        return item.getPrice()>this.money.getAmount();}
+        return item.getPrice()<this.money.getAmount();}
     }
 
     public int howManyHeartHas(){

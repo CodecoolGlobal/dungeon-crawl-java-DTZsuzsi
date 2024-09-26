@@ -44,9 +44,9 @@ public class StatusPane {
         ui.add(attackTextLabel, 0, 2);
         ui.add(attackValueLabel, 1, 2);
         ui.add(inventoryTextLabel, 0, 3);
-        ui.add(inventoryValueLabel, 1, 3);
-        ui.add(friendTextLabel, 0, 4);
-        ui.add(friendValueLabel, 0, 5);
+        ui.add(inventoryValueLabel, 0, 4);
+        ui.add(friendTextLabel, 0, 5);
+        ui.add(friendValueLabel, 0, 6);
 
 
         BorderPane borderPane = new BorderPane();

@@ -11,7 +11,8 @@ public class Yoda extends Ally {
 
     public Yoda(Cell cell)
     {
-        super(cell,BASIC_HEALTH,BASIC_ATTACK);
+        super(cell,BASIC_HEALTH,BASIC_ATTACK, "Dark the path, but walk it, you will.\n" +
+                "Victory awaits, if patient, you are.\n");
         this.healthPlus = BASIC_HEALTH_PLUS;
     }
 
@@ -24,6 +25,9 @@ public class Yoda extends Ally {
 
     @Override
     public void interact(Player player) {
+        player.addAlly(this);
         player.receiveHealth(this.healthPlus);
     }
+
+
 }
