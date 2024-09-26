@@ -5,6 +5,7 @@ import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.GameMap;
 import com.codecool.dungeoncrawl.data.actors.Actor;
 import com.codecool.dungeoncrawl.data.actors.Player;
+import com.codecool.dungeoncrawl.data.actors.npc.allies.Ally;
 import com.codecool.dungeoncrawl.data.actors.npc.monsters.Monsters;
 import com.codecool.dungeoncrawl.data.items.Item;
 import com.codecool.dungeoncrawl.data.items.ItemFactory;
@@ -73,9 +74,12 @@ private SoundPlayer gameNewMapLoaderSound;
     }
 
     public String getFriendMessages(){
-        if (map.getPlayer().getFriend()!=null)
-        {return map.getPlayer().getFriend().getMessage();}
-        return " ";
+       String message="";
+        if (map.getPlayer().getAllies().size()!=0)
+        { for (Ally ally : map.getPlayer().getAllies()) {
+            message+=ally.getMessage();
+        }}
+        return message;
     }
 
     public String getPlayerInventory() {
@@ -112,9 +116,6 @@ if (getMap().isPlayerNextClosedDoor()){
 }
     }
 
-    public String getMapFileName() {
-        return mapFileName;
-    }
 
     public void saveGame(Player player) {
         List<String> itemNames = player.getInventory().getItems().stream()
