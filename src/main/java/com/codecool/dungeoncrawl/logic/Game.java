@@ -29,15 +29,17 @@ public class Game extends Application {
         this.keyHandlers = Set.of(new Up(), new Down(), new Left(), new Right(), new Teleport(), new UseBomb());
         this.gameMap=new GameMap(25,25,CellType.FLOOR);
         this.cell=new Cell(gameMap, 5,5, CellType.FLOOR);
-        this.databaseManager = new DatabaseManager();
+        this.logic = new GameLogic();
+        this.databaseManager = this.logic.getDatabaseManager();
         try {
             this.databaseManager.setup();
+            System.out.println("succes with database");
         } catch (SQLException e) {
             System.out.println("Failed to setup database");
             e.printStackTrace();
             return;
         }
-        this.logic = new GameLogic(databaseManager.getGameStateDao());
+
         this.ui = new UI(logic, keyHandlers);
         ui.setUpPain(primaryStage);
 

@@ -154,12 +154,10 @@ public class MapLoader {
                             new Money(cell, true);
                             break;
                         case 'S':
-                            cell.setType(CellType.FLOOR);
-                            new SaveGameTile(cell);
+                            cell.setType(CellType.SAVE_GAME);
                             break;
                         case 'L':
-                            cell.setType(CellType.FLOOR);
-                            new LoadGameTile(cell);
+                            cell.setType(CellType.LOAD_GAME);
                             break;
                         default:
                             throw new RuntimeException("Unrecognized character: '" + line.charAt(x) + "'");
