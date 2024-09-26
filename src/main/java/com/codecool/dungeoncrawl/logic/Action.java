@@ -72,6 +72,8 @@ public class Action {
         alert.setHeaderText(null);
         alert.setContentText(text);
         alert.showAndWait();
+        SoundPlayer winnerSound = new SoundPlayer(SOUND_TYPES.WINNER);
+        winnerSound.play();
         Timeline timeline = new Timeline(new KeyFrame(
                 Duration.seconds(14),
                 event -> System.exit(0)

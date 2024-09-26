@@ -12,7 +12,7 @@ public class SoundPlayer {
            this.sound_type = sound_type;
             try {
                 // Load the sound file from the resources folder
-                 sound = new Media(getClass().getResource(sound_type.getSource()).toString());
+                sound = new Media(getClass().getResource(sound_type.getSource()).toString());
                 mediaPlayer = new MediaPlayer(sound);
             } catch (Exception e) {
                 System.out.println("Error loading sound file: " + e.getMessage());

@@ -20,20 +20,19 @@ public class GameLogic {
     private String mapFileName;
 
 
-private SoundPlayer gameStartSound;
-private SoundPlayer gameNewMapLoaderSound;
+    private SoundPlayer gameStartSound;
+    private SoundPlayer gameNewMapLoaderSound;
     private List<String> mapFileNames = List.of("/map1.txt", "/map2.txt", "/map3.txt", "/map4.txt");
-   // private GameStateDao gameStateDao;
+    // private GameStateDao gameStateDao;
     private DatabaseManager databaseManager;
 
     public GameLogic() {
         this.mapFileName = "/map1.txt";
         this.map = MapLoader.loadMap(mapFileName, null);
-        this. gameStartSound = new SoundPlayer(SOUND_TYPES.START);
+        this.gameStartSound = new SoundPlayer(SOUND_TYPES.START);
         gameStartSound.play();
         this.gameNewMapLoaderSound = new SoundPlayer(SOUND_TYPES.NEW_MAP);
         this.databaseManager = new DatabaseManager();
-
 
 
     }
@@ -62,19 +61,20 @@ private SoundPlayer gameNewMapLoaderSound;
         return Integer.toString(map.getPlayer().getAttack());
     }
 
-    public String getHearts(){
+    public String getHearts() {
         int amount = map.getPlayer().howManyHeartHas();
-        String message="";
-        String heart="❤\uFE0F";
-        for (int i=0; i<amount; i++) {
-            message+=heart;
+        String message = "";
+        String heart = "❤\uFE0F";
+        for (int i = 0; i < amount; i++) {
+            message += heart;
         }
         return message;
     }
 
-    public String getFriendMessages(){
-        if (map.getPlayer().getFriend()!=null)
-        {return map.getPlayer().getFriend().getMessage();}
+    public String getFriendMessages() {
+        if (map.getPlayer().getFriend() != null) {
+            return map.getPlayer().getFriend().getMessage();
+        }
         return " ";
     }
 
@@ -106,10 +106,10 @@ private SoundPlayer gameNewMapLoaderSound;
         gameNewMapLoaderSound.play();
     }
 
-    public void meetDoor(){
-if (getMap().isPlayerNextClosedDoor()){
-    getMap().nextToDoor();
-}
+    public void meetDoor() {
+        if (getMap().isPlayerNextClosedDoor()) {
+            getMap().nextToDoor();
+        }
     }
 
     public String getMapFileName() {
@@ -140,9 +140,9 @@ if (getMap().isPlayerNextClosedDoor()){
         if (gameState != null) {
             Player player = map.getPlayer();
             player.setForm(gameState.getPlayerForm());
-            String mapFileNameLoaded=gameState.getMapName();
+            String mapFileNameLoaded = gameState.getMapName();
             System.out.println(mapFileNameLoaded);
-            this.map=MapLoader.loadMap(mapFileNameLoaded, player);
+            this.map = MapLoader.loadMap(mapFileNameLoaded, player);
             player.setPosition(gameState.getPlayerX(), gameState.getPlayerY());
             player.setHealth(gameState.getHealth());
             player.setAttack(gameState.getAttack());
