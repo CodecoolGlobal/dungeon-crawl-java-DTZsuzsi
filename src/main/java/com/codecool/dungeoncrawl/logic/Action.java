@@ -46,13 +46,6 @@ public class Action {
             if (item instanceof ChangingPlayerForm){
                 ((ChangingPlayerForm) item).changePlayer(player);
             }
-            if (item instanceof SaveGameTile) {
-                gameLogic.saveGame(player);
-                System.out.println("game saved");
-            } else if (item instanceof LoadGameTile) {
-                gameLogic.loadGame();
-                System.out.println("game loaded");
-            }
             currentCell.setItem(null);
         }}
 

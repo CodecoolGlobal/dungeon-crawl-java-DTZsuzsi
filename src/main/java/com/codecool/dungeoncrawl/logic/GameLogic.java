@@ -112,6 +112,7 @@ if (getMap().isPlayerNextClosedDoor()){
                 itemNames
         );
         gameStateDao.save(gameState);
+        System.out.println("Game saved");
     }
 
     public void loadGame() {

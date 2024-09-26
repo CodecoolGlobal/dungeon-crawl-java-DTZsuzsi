@@ -63,7 +63,7 @@ public class GameStateDaoJdbc implements GameStateDao {
                 String mapName = rs.getString("map_name");
                 int playerX = rs.getInt("player_x");
                 int playerY = rs.getInt("player_y");
-                String playerForm = rs.getString("player_form");
+//                String playerForm = rs.getString("player_form");
 
                 //load inventory
                 String inventorySql = "SELECT item_name FROM inventory WHERE game_state_id = ?";

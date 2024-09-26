@@ -157,7 +157,7 @@ public class MapLoader {
                         case 'L':
                             cell.setType(CellType.FLOOR);
                             new LoadGameTile(cell);
-
+                            break;
                         default:
                             throw new RuntimeException("Unrecognized character: '" + line.charAt(x) + "'");
                     }
