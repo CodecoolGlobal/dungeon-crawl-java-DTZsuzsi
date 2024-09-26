@@ -7,7 +7,7 @@ import java.util.Objects;
 
 public abstract class Item implements Drawable {
     private Cell cell;
-    private boolean isPickable;
+    protected boolean isPickable;
 
     public Item(Cell cell, boolean isPickable) {
         this.cell = cell;
@@ -17,9 +17,18 @@ public abstract class Item implements Drawable {
         this.isPickable = isPickable;
     }
 
+   public Item(boolean pickable) {
+        this.isPickable = pickable;
+   }
+   public Item() {
+
+   }
+
     public Cell getCell() {
         return cell;
     }
+
+
 
     public abstract String getTileName();
 

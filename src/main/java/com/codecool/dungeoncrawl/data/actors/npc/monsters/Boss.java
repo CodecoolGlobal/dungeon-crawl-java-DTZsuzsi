@@ -1,6 +1,7 @@
 package com.codecool.dungeoncrawl.data.actors.npc.monsters;
 
 import com.codecool.dungeoncrawl.data.Cell;
+import com.codecool.dungeoncrawl.data.CellType;
 import com.codecool.dungeoncrawl.data.actors.Player;
 
 public class Boss extends Monsters {
@@ -24,6 +25,7 @@ public class Boss extends Monsters {
 
         if (this.getHealth() <= 0) {
             this.getCell().setActor(null);
+            this.getCell().setType(CellType.BOSSFLOOR);
             action.showPopup("Winning", "Congratulations! You won!");
 
         }
