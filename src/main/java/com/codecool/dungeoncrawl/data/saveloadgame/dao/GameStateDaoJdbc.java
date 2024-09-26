@@ -30,18 +30,22 @@ public class GameStateDaoJdbc implements GameStateDao {
             deleteInventorySt.executeUpdate();
 
             // Insert the new game state
-            String gameStateSql = "INSERT INTO game_state(map_name, player_x, player_y, player_form)" +
-                    "VALUES (?, ?, ?, ?)" +
+            String gameStateSql = "INSERT INTO game_state(map_name, player_x, player_y, player_health, player_attack, player_form)" +
+                    "VALUES (?, ?, ?, ?, ?, ?)" +
                     "ON CONFLICT (game_state_id) DO UPDATE " +
                     "SET map_name = EXCLUDED.map_name, " +
                     "player_x = EXCLUDED.player_x, " +
                     "player_y = EXCLUDED.player_y, " +
+                    "player_health = EXCLUDED.player_health, " +
+                    "player_attack = EXCLUDED.player_attack," +
                     "player_form = EXCLUDED.player_form";
             PreparedStatement st = connection.prepareStatement(gameStateSql, Statement.RETURN_GENERATED_KEYS);
             st.setString(1, gameState.getMapName());
             st.setInt(2, gameState.getPlayerX());
             st.setInt(3, gameState.getPlayerY());
-            st.setString(4, gameState.getPlayerForm().getTileName());
+            st.setInt(4, gameState.getHealth());
+            st.setInt(5, gameState.getAttack());
+            st.setString(6, gameState.getPlayerForm().getTileName());
             st.executeUpdate();
             ResultSet rs = st.getGeneratedKeys();
             rs.next();
@@ -70,6 +74,8 @@ public class GameStateDaoJdbc implements GameStateDao {
                 String mapName = rs.getString("map_name");
                 int playerX = rs.getInt("player_x");
                 int playerY = rs.getInt("player_y");
+                int health = rs.getInt("player_health");
+                int attack = rs.getInt("player_attack");
 //                String playerForm = rs.getString("player_form");
 
                 //load inventory
@@ -86,7 +92,7 @@ public class GameStateDaoJdbc implements GameStateDao {
                 PLAYER_FORM_TYPES playerFormToLoad = PLAYER_FORM_TYPES.getEnumByTileName(tileName);
                 Inventory inventory = new Inventory();
                 inventory.loadItemsFromString(inventoryItems, null);
-                return new GameState(mapName, playerX, playerY, playerFormToLoad, inventoryItems);
+                return new GameState(mapName, playerX, playerY, health, attack, playerFormToLoad, inventoryItems);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

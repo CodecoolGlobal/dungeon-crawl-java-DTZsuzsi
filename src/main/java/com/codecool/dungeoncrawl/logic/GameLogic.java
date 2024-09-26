@@ -114,6 +114,8 @@ if (getMap().isPlayerNextClosedDoor()){
                 mapFileName,
                 player.getX(),
                 player.getY(),
+                player.getHealth(),
+                player.getAttack(),
                 player.getForm(),
                 itemNames
         );
@@ -131,6 +133,8 @@ if (getMap().isPlayerNextClosedDoor()){
             System.out.println(mapFileNameLoaded);
             this.map=MapLoader.loadMap(mapFileNameLoaded, player);
             player.setPosition(gameState.getPlayerX(), gameState.getPlayerY());
+            player.setHealth(gameState.getHealth());
+            player.setAttack(gameState.getAttack());
 
             List<String> itemNames = gameState.getInventoryItems();
             List<Item> items = itemNames.stream()
