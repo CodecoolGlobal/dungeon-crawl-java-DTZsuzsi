@@ -8,8 +8,8 @@ import java.util.List;
 
 public class Friend extends Ally implements Follow {
     private static final int BASIC_HEALTHPLUS = 5;
-    private static final int BASIC_HEALTH = 100;
-    private static final int BASIC_ATTACK = 0;
+    private static final int BASIC_HEALTH = 10000;
+    private static final int BASIC_ATTACK = 1;
     private int healthPlus;
     private String message;
     private String BASIC_MESSAGE="Hi. I'm Momo. Here is a fruit to heal";
