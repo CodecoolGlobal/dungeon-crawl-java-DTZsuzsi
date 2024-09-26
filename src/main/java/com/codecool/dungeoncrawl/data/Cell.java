@@ -117,4 +117,8 @@ public class Cell implements Drawable {
     public int hashCode() {
         return Objects.hash(type, actor, gameMap, x, y);
     }
+
+    public GameMap getGameMap() {
+        return gameMap;
+    }
 }

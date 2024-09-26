@@ -5,6 +5,7 @@ import com.codecool.dungeoncrawl.data.actors.Actor;
 import com.codecool.dungeoncrawl.data.actors.Player;
 import com.codecool.dungeoncrawl.data.actors.npc.NPC;
 
+import com.codecool.dungeoncrawl.data.items.Healers.HealthPlus;
 import com.codecool.dungeoncrawl.data.items.Item;
 import com.codecool.dungeoncrawl.data.items.attacking.AttackPlus;
 import javafx.animation.KeyFrame;
@@ -42,6 +43,10 @@ public class Action {
 
             if (item.isPickable()){
                 player.getInventory().addItem(item);
+
+                if (item instanceof Money){
+                    player.setMoney((Money) item);
+                }
             }
             if (item instanceof ChangingPlayerForm){
                 ((ChangingPlayerForm) item).changePlayer(player);

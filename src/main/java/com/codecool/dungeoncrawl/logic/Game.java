@@ -26,7 +26,7 @@ public class Game extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        this.keyHandlers = Set.of(new Up(), new Down(), new Left(), new Right());
+        this.keyHandlers = Set.of(new Up(), new Down(), new Left(), new Right(), new Teleport(), new UseBomb());
         this.gameMap=new GameMap(25,25,CellType.FLOOR);
         this.cell=new Cell(gameMap, 5,5, CellType.FLOOR);
         this.databaseManager = new DatabaseManager();

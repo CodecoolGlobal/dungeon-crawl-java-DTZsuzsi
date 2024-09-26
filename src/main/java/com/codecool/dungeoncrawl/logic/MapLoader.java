@@ -17,7 +17,6 @@ import com.codecool.dungeoncrawl.data.items.attacking.BigSword;
 import com.codecool.dungeoncrawl.data.items.attacking.Mace;
 import com.codecool.dungeoncrawl.data.items.LoadGameTile;
 import com.codecool.dungeoncrawl.data.items.SaveGameTile;
-
 import java.io.InputStream;
 import java.util.Scanner;
 
@@ -149,6 +148,10 @@ public class MapLoader {
                         case 'V':
                             cell.setType(CellType.FLOOR);
                             new ShopKeeper(cell);
+                            break;
+                        case 'Z':
+                            cell.setType(CellType.FLOOR);
+                            new Money(cell, true);
                             break;
                         case 'S':
                             cell.setType(CellType.FLOOR);
