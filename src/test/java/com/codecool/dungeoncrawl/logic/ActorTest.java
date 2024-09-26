@@ -12,9 +12,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ActorTest {
     GameMap gameMap = new GameMap(3, 3, CellType.FLOOR);
-    Cell cell = new Cell(gameMap,1,1,CellType.FLOOR);
-  //  GameStateDao gameStateDao = mock(GameStateDao.class);
-    GameLogic gameLogic = new GameLogic();
+//    Cell cell = new Cell(gameMap,1,1,CellType.FLOOR);
+//    GameLogic gameLogic = new GameLogic();
 
     @Test
     void moveUpdatesCells() {

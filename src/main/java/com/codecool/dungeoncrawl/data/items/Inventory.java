@@ -21,7 +21,7 @@ public Inventory() {
 }
 
 public void addItem(Item item) {
-    if (items.size() < capacity) {
+    if (items.size() < capacity&&item.isPickable()) {
     items.add(item);}
 }
 
@@ -40,18 +40,8 @@ public List<Item> getItems() {
         return inventoryString.toString();
     }
 
-    public boolean isItemInInventory(Item item) {
-        return items.contains(item);
-    }
 
 
-    public List<String> convetItemsToString() {
-        List<String> itemNames = new ArrayList<>();
-        for (Item itemName : items) {
-            itemNames.add(itemName.getTileName());
-        }
-        return itemNames;
-    }
 
     public void loadItemsFromString(List<String> itemNames, Cell cell) {
         items.clear();
@@ -73,10 +63,10 @@ public List<Item> getItems() {
 return necklace;
 }
 
-public <T extends Item> T getItemByType(Class<T> itemClass){
-    return (T) items.stream().filter(item->itemClass.isAssignableFrom(item.getClass())).findFirst().get();
-}
-
+//public <T extends Item> T getItemByType(Class<T> itemClass){
+//    return (T) items.stream().filter(item->itemClass.isAssignableFrom(item.getClass())).findFirst().get();
+//}
+//
 
 
 }
