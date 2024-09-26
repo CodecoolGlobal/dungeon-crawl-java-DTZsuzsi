@@ -12,12 +12,9 @@ private String result;
     public void start(Stage primaryStage) {
         // Create a TextInputDialog
         TextInputDialog dialog = new TextInputDialog();
-//        dialog.setTitle("User Input Dialog");
-//        dialog.setHeaderText("Hi. I'm the famous shopkeeper. I have a lot's of great item for you");
-//        dialog.setContentText("Do you want it?");
-        dialog.setTitle("Shopkeeper's Offer");
-        dialog.setHeaderText("Greetings, brave warrior! I'm the renowned shopkeeper with rare and valuable items.");
-        dialog.setContentText("Would you like to make a purchase?");
+        dialog.setTitle("User Input Dialog");
+        dialog.setHeaderText("Hi. I'm the famous shopkeeper. I have a lot's of great item for you");
+        dialog.setContentText("Do you want it?");
 
         // Show the dialog and capture the input
         Optional<String> result = dialog.showAndWait();
