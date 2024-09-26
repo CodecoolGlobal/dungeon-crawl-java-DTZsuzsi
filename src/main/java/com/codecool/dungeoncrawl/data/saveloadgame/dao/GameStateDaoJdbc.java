@@ -19,36 +19,35 @@ public class GameStateDaoJdbc implements GameStateDao {
 
     @Override
     public void save(GameState gameState) {
-        try (Connection connection = dataSource.getConnection()) { //this uses try-with-resources, which automatically closes the connection after the block of code is executed.
-            String gameStateSql = "INSERT INTO game_state(map_name, player_x, player_y, player_form)" +
-                         "VALUES (?, ?, ?, ?)" +
+        try (Connection connection = dataSource.getConnection()) {
+            // Delete previous game state and inventory
+            String deleteGameStateSql = "DELETE FROM game_state";
+            PreparedStatement deleteGameStateSt = connection.prepareStatement(deleteGameStateSql);
+            deleteGameStateSt.executeUpdate();
 
-                    "ON CONFLICT (game_state_id) DO UPDATE " + // Handle conflicts on 'id' column
+            String deleteInventorySql = "DELETE FROM inventory";
+            PreparedStatement deleteInventorySt = connection.prepareStatement(deleteInventorySql);
+            deleteInventorySt.executeUpdate();
+
+            // Insert the new game state
+            String gameStateSql = "INSERT INTO game_state(map_name, player_x, player_y, player_form)" +
+                    "VALUES (?, ?, ?, ?)" +
+                    "ON CONFLICT (game_state_id) DO UPDATE " +
                     "SET map_name = EXCLUDED.map_name, " +
                     "player_x = EXCLUDED.player_x, " +
                     "player_y = EXCLUDED.player_y, " +
                     "player_form = EXCLUDED.player_form";
-
-
-                    //if we save the game based on user, it needs to be changed to user_id
-                    //     "SET map_name = ?, player_x = ?, player_y = ?, player_form = ?";
             PreparedStatement st = connection.prepareStatement(gameStateSql, Statement.RETURN_GENERATED_KEYS);
             st.setString(1, gameState.getMapName());
             st.setInt(2, gameState.getPlayerX());
             st.setInt(3, gameState.getPlayerY());
             st.setString(4, gameState.getPlayerForm().getTileName());
             st.executeUpdate();
-            ResultSet rs = st.getGeneratedKeys(); //After executing the INSERT query, this retrieves the ID (or other auto-generated values) from the database. In this case, it retrieves the newly generated game state id from the author table.
-            rs.next(); //ResultSet (rs) is a cursor-like structure that holds the result of a database query. Initially, the cursor is positioned before the first result, so you need to move it to the first row using rs.next().
+            ResultSet rs = st.getGeneratedKeys();
+            rs.next();
             int gameStateId = rs.getInt(1);
 
-            //Deletes existing inventory
-            String deleteInventorySql = "DELETE FROM inventory WHERE game_state_id = ?";
-            PreparedStatement deleteInventory = connection.prepareStatement(deleteInventorySql);
-            deleteInventory.setInt(1, gameStateId);
-            deleteInventory.executeUpdate();
-
-            //Insert current inventory
+            // Insert the current inventory
             String inventorySql = "INSERT INTO inventory (game_state_id, item_name) values(?, ?)";
             PreparedStatement inventorySt = connection.prepareStatement(inventorySql);
             for (String item : gameState.getInventoryItems()) {
