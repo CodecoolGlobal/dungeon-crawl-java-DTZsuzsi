@@ -5,8 +5,13 @@ import com.codecool.dungeoncrawl.data.GameMap;
 import com.codecool.dungeoncrawl.data.actors.Actor;
 import com.codecool.dungeoncrawl.data.actors.Player;
 import com.codecool.dungeoncrawl.data.actors.npc.monsters.Monsters;
+import com.codecool.dungeoncrawl.data.items.Item;
+import com.codecool.dungeoncrawl.data.items.ItemFactory;
+import com.codecool.dungeoncrawl.data.saveloadgame.GameState;
+import com.codecool.dungeoncrawl.data.saveloadgame.dao.GameStateDao;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class GameLogic {
     private GameMap map;
@@ -16,9 +21,9 @@ public class GameLogic {
 private SoundPlayer gameStartSound;
 private SoundPlayer gameNewMapLoaderSound;
     private List<String> mapFileNames = List.of("/map1.txt", "/map2.txt", "/map3.txt", "/map4.txt");
+    private GameStateDao gameStateDao;
 
-
-    public GameLogic() {
+    public GameLogic(GameStateDao gameStateDao) {
         this.mapFileName = "/map1.txt";
         this.map = MapLoader.loadMap(mapFileName, null);
         this. gameStartSound = new SoundPlayer(SOUND_TYPES.START);
@@ -88,5 +93,45 @@ private SoundPlayer gameNewMapLoaderSound;
 if (getMap().isPlayerNextClosedDoor()){
     getMap().nextToDoor();
 }
+    }
+
+    public String getMapFileName() {
+        return mapFileName;
+    }
+
+    public void saveGame(Player player) {
+        List<String> itemNames = player.getInventory().getItems().stream()
+                .map(Item::getTileName)
+                .collect(Collectors.toList());
+
+        GameState gameState = new GameState(
+                mapFileName,
+                player.getX(),
+                player.getY(),
+                player.getForm(),
+                itemNames
+        );
+        gameStateDao.save(gameState);
+        System.out.println("Game saved");
+    }
+
+    public void loadGame() {
+        GameState gameState = gameStateDao.load();
+
+        if (gameState != null) {
+            Player player = map.getPlayer();
+            player.setForm(gameState.getPlayerForm());
+            player.setPosition(gameState.getPlayerX(), gameState.getPlayerY());
+
+            List<String> itemNames = gameState.getInventoryItems();
+            List<Item> items = itemNames.stream()
+                    .map(itemName -> ItemFactory.createItem(itemName, player.getCell()))
+                    .collect(Collectors.toList());
+
+            player.getInventory().setItems(items);
+            System.out.println("game loaded");
+        } else {
+            System.out.println("No game found");
+        }
     }
 }

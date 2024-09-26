@@ -102,4 +102,11 @@ public class Player extends Actor {
     public PLAYER_FORM_TYPES getForm() {
         return form;
     }
+
+    public void setPosition(int x, int y) {
+        Cell newCell = cell.getMap().getCell(x,  y);
+        cell.setActor(null);
+        newCell.setActor(this);
+        cell = newCell;
+    }
 }

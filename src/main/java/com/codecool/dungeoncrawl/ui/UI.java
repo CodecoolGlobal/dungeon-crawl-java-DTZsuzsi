@@ -1,6 +1,8 @@
 package com.codecool.dungeoncrawl.ui;
 
 import com.codecool.dungeoncrawl.data.Cell;
+import com.codecool.dungeoncrawl.data.items.LoadGameTile;
+import com.codecool.dungeoncrawl.data.items.SaveGameTile;
 import com.codecool.dungeoncrawl.logic.GameLogic;
 import com.codecool.dungeoncrawl.ui.elements.MainStage;
 import com.codecool.dungeoncrawl.ui.keyeventhandler.KeyHandler;
@@ -52,9 +54,15 @@ public class UI {
             logic.meetDoor();
         }
         logic.enemyMovingAutomatically();
-        refresh();
 
-        //TODO: starts save here
+        if (logic.getMap().isPlayerOnSaveTile()) {
+            System.out.println("Player save tile");
+            logic.saveGame(logic.getMap().getPlayer());
+        }
+        if (logic.getMap().isPlayerOnLoadTile()) {
+            logic.loadGame();
+        }
+        refresh();
     }
 
     public void refresh() {

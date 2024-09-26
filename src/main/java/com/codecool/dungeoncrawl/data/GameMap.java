@@ -63,10 +63,16 @@ public class GameMap {
         return height;
     }
 
-    public boolean isPlayerOnStairs(){
-        if (player.getCell().getType()==CellType.STAIRS)
-            return true;
-        else{return false;}
+    public boolean isPlayerOnStairs() {
+        return player.getCell().getType() == CellType.STAIRS;
+    }
+
+    public boolean isPlayerOnSaveTile() {
+        return player.getCell().getType() == CellType.SAVE_GAME;
+    }
+
+    public boolean isPlayerOnLoadTile() {
+        return player.getCell().getType() == CellType.LOAD_GAME;
     }
 
     public boolean isPlayerNextClosedDoor(){

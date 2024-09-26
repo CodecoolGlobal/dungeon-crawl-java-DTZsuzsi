@@ -1,6 +1,7 @@
 package com.codecool.dungeoncrawl.data.saveloadgame.dao;
 
 import com.codecool.dungeoncrawl.data.actors.PLAYER_FORM_TYPES;
+import com.codecool.dungeoncrawl.data.items.Inventory;
 import com.codecool.dungeoncrawl.data.saveloadgame.GameState;
 
 import javax.sql.DataSource;
@@ -62,7 +63,7 @@ public class GameStateDaoJdbc implements GameStateDao {
                 String mapName = rs.getString("map_name");
                 int playerX = rs.getInt("player_x");
                 int playerY = rs.getInt("player_y");
-                String playerForm = rs.getString("player_form");
+//                String playerForm = rs.getString("player_form");
 
                 //load inventory
                 String inventorySql = "SELECT item_name FROM inventory WHERE game_state_id = ?";
@@ -76,6 +77,8 @@ public class GameStateDaoJdbc implements GameStateDao {
                 }
                 String tileName = rs.getString("player_form");
                 PLAYER_FORM_TYPES playerFormToLoad = PLAYER_FORM_TYPES.getEnumByTileName(tileName);
+                Inventory inventory = new Inventory();
+                inventory.loadItemsFromString(inventoryItems, null);
                 return new GameState(mapName, playerX, playerY, playerFormToLoad, inventoryItems);
             }
         } catch (SQLException e) {

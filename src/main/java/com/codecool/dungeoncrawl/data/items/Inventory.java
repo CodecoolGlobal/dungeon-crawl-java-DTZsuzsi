@@ -1,8 +1,12 @@
 package com.codecool.dungeoncrawl.data.items;
 
 
+<<<<<<< HEAD
+import com.codecool.dungeoncrawl.data.Cell;
+=======
 import com.codecool.dungeoncrawl.data.items.shopkeeper.Bomb;
 import com.codecool.dungeoncrawl.data.items.shopkeeper.Necklace;
+>>>>>>> development
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +44,26 @@ public List<Item> getItems() {
         return items.contains(item);
     }
 
+<<<<<<< HEAD
+    public List<String> convetItemsToString() {
+        List<String> itemNames = new ArrayList<>();
+        for (Item itemName : items) {
+            itemNames.add(itemName.getTileName());
+        }
+        return itemNames;
+    }
+
+    public void loadItemsFromString(List<String> itemNames, Cell cell) {
+        items.clear();
+        for (String itemName : itemNames) {
+            items.add(ItemFactory.createItem(itemName, cell));
+        }
+    }
+
+    public void setItems(List<Item> items) {
+    this.items = items;
+    }
+=======
     public Bomb  getBomb(){
     Bomb bomb=(Bomb)items.stream().filter(item->item instanceof Bomb).findFirst().get();
     return bomb;
@@ -55,4 +79,5 @@ public <T extends Item> T getItemByType(Class<T> itemClass){
 }
 
 
+>>>>>>> development
 }

@@ -19,6 +19,7 @@ public class Action {
 
    private Actor actor;
    private Cell cell;
+   private GameLogic gameLogic;
 
 
     public Action(Cell cell) {
