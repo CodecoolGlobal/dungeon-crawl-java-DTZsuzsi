@@ -53,6 +53,10 @@ public class Inventory {
         return bomb;
     }
 
+    public void setItems(List<Item> items) {
+        this.items = items;
+    }
+
     public Necklace getNecklace() {
         Necklace necklace = (Necklace) items.stream().filter(item -> item instanceof Necklace).findFirst().get();
         return necklace;

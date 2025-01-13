@@ -29,7 +29,7 @@ public class MapLoader {
         int width = scanner.nextInt();
         int height = scanner.nextInt();
 
-        scanner.nextLine(); // empty line
+        scanner.nextLine();
 
         GameMap map = new GameMap(width, height, CellType.EMPTY);
         for (int y = 0; y < height; y++) {
@@ -118,7 +118,7 @@ public class MapLoader {
                             break;
                         case 'p':
                             cell.setType(CellType.FLOOR);
-                            new Potion(cell, true);
+                            new Potion(cell);
                             break;
                         case 'c':
                             cell.setType(CellType.FLOOR);

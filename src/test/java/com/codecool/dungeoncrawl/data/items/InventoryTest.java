@@ -17,7 +17,7 @@ class InventoryTest {
     @Test
     void removeItem() {
         Crown crown = new Crown(gameMap.getCell(1, 1));
-        Potion potion = new Potion(true);
+        Potion potion = new Potion(gameMap.getCell(1,2));
         player.getInventory().addItem(crown);
         player.getInventory().addItem(potion);
         player.getInventory().removeItem(crown);
@@ -28,7 +28,7 @@ class InventoryTest {
 
     @Test
     void addItemNotPickable() {
-        Potion potion = new Potion(false);
+        Potion potion = new Potion(gameMap.getCell(1,2));
         Crown crown = new Crown(gameMap.getCell(1, 1),true);
         player.getInventory().addItem(potion);
         player.getInventory().addItem(crown);
@@ -40,7 +40,7 @@ class InventoryTest {
 
     @Test
     void isItemInInventory() {
-        Potion potion = new Potion(false);
+        Potion potion = new Potion(gameMap.getCell(1,2));
         Crown crown = new Crown(gameMap.getCell(1, 1),true);
         player.getInventory().addItem(potion);
         player.getInventory().addItem(crown);
@@ -51,7 +51,7 @@ class InventoryTest {
     @Test
     void getNecklace() {
         Necklace necklace = new Necklace(gameMap.getCell(1, 1));
-        Potion potion = new Potion(true);
+        Potion potion = new Potion(gameMap.getCell(1,2));
         player.getInventory().addItem(necklace);
         player.getInventory().addItem(potion);
         Necklace result = player.getInventory().getNecklace();

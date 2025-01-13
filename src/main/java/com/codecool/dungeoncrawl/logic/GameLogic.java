@@ -22,7 +22,6 @@ public class GameLogic {
     private SoundPlayer gameStartSound;
     private SoundPlayer gameNewMapLoaderSound;
     private List<String> mapFileNames = List.of("/map1.txt", "/map2.txt", "/map3.txt", "/map4.txt");
-    // private GameStateDao gameStateDao;
     private DatabaseManager databaseManager;
 
     public GameLogic() {
