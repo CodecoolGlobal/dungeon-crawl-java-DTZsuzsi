@@ -3,7 +3,6 @@ package com.codecool.dungeoncrawl.data.items.shopkeeper;
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.actors.Player;
 import com.codecool.dungeoncrawl.data.actors.npc.monsters.Monsters;
-import com.codecool.dungeoncrawl.data.items.Item;
 import com.codecool.dungeoncrawl.data.items.killers.killer;
 
 import java.util.List;

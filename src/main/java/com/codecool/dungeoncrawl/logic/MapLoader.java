@@ -68,7 +68,7 @@ public class MapLoader {
                             new DogFighter(cell);
                             break;
                         case ':':
-                            cell.setType(CellType.BOSSFLOOR);
+                            cell.setType(CellType.BOSS_FLOOR);
                             new BossSkeleton(cell);
                             break;
                         case 'Y':
@@ -129,10 +129,10 @@ public class MapLoader {
                             new Friend(cell);
                             break;
                         case 'G':
-                            cell.setType(CellType.BOSSWALL);
+                            cell.setType(CellType.BOSS_WALL);
                             break;
                         case '_':
-                            cell.setType(CellType.BOSSFLOOR);
+                            cell.setType(CellType.BOSS_FLOOR);
                             break;
                         case '!':
                             cell.setType(CellType.FLOOR);

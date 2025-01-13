@@ -6,6 +6,9 @@ import com.codecool.dungeoncrawl.data.items.Item;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class GameMap {
     private int width;
@@ -30,20 +33,14 @@ public class GameMap {
         }
     }
 
-    public Cell[][] getCells() {
-        return cells;
-    }
 
     public List<Actor> getActors() {
-
-        for (Cell cell : cellsList) {
-            if (cell.getActor() != null) {
-                actors.add(cell.getActor());
-            }
-            ;
-        }
-        return actors;
+        return cellsList.stream()
+                .map(Cell::getActor)
+                .filter(Objects::nonNull)
+                .collect(Collectors.toList());
     }
+
 
     public Cell getCell(int x, int y) {
         return cells[x][y];
@@ -78,36 +75,25 @@ public class GameMap {
     }
 
     public boolean isPlayerNextClosedDoor() {
-        List<Cell> neighbors = player.getCell().getNeighbors();
-        for (Cell cell : neighbors) {
-            if (cell.getType() == CellType.CLOSED_DOOR) {
-                System.out.println("hi door");
-                return true;
-            }
-        }
-
-        return false;
+        return player.getCell().getNeighbors().stream()
+                .anyMatch(cell -> cell.getType() == CellType.CLOSED_DOOR);
     }
 
     public Cell getStairPlace() {
-        System.out.println("hi im here");
-        return cellsList.stream().filter(cell -> cell.getType().equals(CellType.STAIRS)).findFirst().get();
-
+        return cellsList.stream().filter(cell -> cell.getType() == CellType.STAIRS).findFirst().get();
     }
 
     public void nextToDoor() {
-        List<Item> inventory = player.getInventory().getItems();
-        Item key = null;
-        if (player.hasKey()) {
-            List<Cell> neighbors = player.getCell().getNeighbors();
-            for (Cell cell : neighbors) {
-                if (cell.getType().equals(CellType.CLOSED_DOOR)) {
-                    cell.setType(CellType.OPEN_DOOR);
+        Optional<Item> keyOptional = player.getInventory().getItems().stream()
+                .filter(item -> "key".equals(item.getTileName()))
+                .findFirst();
 
-                }
-            }
-            key = inventory.stream().filter(item -> item.getTileName() == "key").findFirst().get();
+        if (player.hasKey() && keyOptional.isPresent()) {
+            player.getCell().getNeighbors().stream()
+                    .filter(cell -> cell.getType() == CellType.CLOSED_DOOR)
+                    .forEach(cell -> cell.setType(CellType.OPEN_DOOR));
+            player.getInventory().removeItem(keyOptional.get());
         }
-        player.getInventory().removeItem(key);
     }
+
 }

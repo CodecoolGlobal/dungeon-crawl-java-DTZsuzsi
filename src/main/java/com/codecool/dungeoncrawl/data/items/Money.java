@@ -15,11 +15,6 @@ public class Money extends Item {
         this.amount = BASIC_AMOUNT;
         super.isPickable = false;
     }
-
-    public Money(boolean pickable) {
-        super(pickable);
-    }
-
     public Money(Cell cell) {
     }
 

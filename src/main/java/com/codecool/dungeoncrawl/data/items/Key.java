@@ -7,9 +7,6 @@ public class Key extends Item {
         super(cell, true);
     }
 
-    public Key() {
-        super(null, true);
-    }
 
     @Override
     public String getTileName() {

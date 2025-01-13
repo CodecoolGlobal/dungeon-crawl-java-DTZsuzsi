@@ -42,10 +42,6 @@ public class Cell implements Drawable {
         this.actor = actor;
     }
 
-    public NPC getNPC() {
-        return (NPC) actor;
-    }
-
     public Cell getNeighbor(int dx, int dy) {
         return gameMap.getCell(x + dx, y + dy);
     }
@@ -53,6 +49,7 @@ public class Cell implements Drawable {
     public List<Cell> getNeighbors() {
         Cell cell = this;
         List<Cell> neighbors = new ArrayList<>();
+
         neighbors.add(cell.getNeighbor(-1, -1));
         neighbors.add(cell.getNeighbor(0, -1));
         neighbors.add(cell.getNeighbor(0, 1));
@@ -96,7 +93,7 @@ public class Cell implements Drawable {
     }
 
     public boolean isWalkable() {
-        if (this.isWalkable = type.isWalkable() &&
+        if (this.isWalkable == type.isWalkable() &&
                 actor instanceof Follow) {
             return true;
         } else if (this.isWalkable = type.isWalkable() && actor == null) {

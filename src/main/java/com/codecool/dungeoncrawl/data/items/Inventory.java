@@ -32,10 +32,6 @@ public class Inventory {
         return items;
     }
 
-    public void setItems(List<Item> items) {
-        this.items = items;
-    }
-
     public String displayInventoryItems() {
         StringBuilder inventoryString = new StringBuilder();
         for (Item item : items) {
@@ -46,6 +42,7 @@ public class Inventory {
 
     public void loadItemsFromString(List<String> itemNames, Cell cell) {
         items.clear();
+
         for (String itemName : itemNames) {
             items.add(ItemFactory.createItem(itemName, cell));
         }
@@ -60,11 +57,5 @@ public class Inventory {
         Necklace necklace = (Necklace) items.stream().filter(item -> item instanceof Necklace).findFirst().get();
         return necklace;
     }
-
-//public <T extends Item> T getItemByType(Class<T> itemClass){
-//    return (T) items.stream().filter(item->itemClass.isAssignableFrom(item.getClass())).findFirst().get();
-//}
-//
-
 
 }

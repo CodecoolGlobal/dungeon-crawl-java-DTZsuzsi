@@ -39,7 +39,7 @@ public class Boss extends Monsters {
 
         if (this.getHealth() <= 0) {
             this.getCell().setActor(null);
-            this.getCell().setType(CellType.BOSSFLOOR);
+            this.getCell().setType(CellType.BOSS_FLOOR);
 
             // Play monster roar first
             SoundPlayer monsterRoar = new SoundPlayer(SOUND_TYPES.MONSTER_ROAR);
