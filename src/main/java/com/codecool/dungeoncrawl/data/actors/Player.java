@@ -66,7 +66,6 @@ public class Player extends Actor {
         if (nextCell.getActor() != null) {
             action.meetingOtherActor(nextCell);
         }
-
         if (nextCell.isWalkable()) {
             cell.setActor(null);
             nextCell.setActor(this);
@@ -75,25 +74,20 @@ public class Player extends Actor {
             action.pickUpItem(this);
 
             if (friend != null) {
-//                int playerDx = cell.getX();
-//                int playerDy = cell.getY();
-
                 friend.follow(this, dx, dy);
             }
         }
     }
 
     public boolean hasKey() {
-        boolean result = inventory.getItems().stream().filter(item -> item.getTileName().equals("key")).findAny().isPresent();
-        return result;
+       return  inventory.getItems().stream().filter(item -> item.getTileName().equals("key")).findAny().isPresent();
     }
-
 
     public void receiveAttackPlus(int attackPlus) {
         this.attack += attackPlus;
     }
 
-    public void meetFriend(Friend friend) {
+    public void acquireFriend(Friend friend) {
         this.friend = friend;
     }
 
@@ -130,6 +124,7 @@ public class Player extends Actor {
     }
 
     public int howManyHeartHas() {
+
         if (health <= BASIC_HEALTH) {
             return 1;
         }

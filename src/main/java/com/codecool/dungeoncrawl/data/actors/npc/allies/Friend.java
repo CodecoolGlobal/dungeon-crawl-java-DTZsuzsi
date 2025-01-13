@@ -23,7 +23,7 @@ public class Friend extends Ally implements Follow {
     public void interact(Player player) {
         player.addAlly(this);
         if (isPlayerNext(player)) {
-            player.meetFriend(this);
+            player.acquireFriend(this);
 
             player.receiveHealth(healthPlus);
         }
