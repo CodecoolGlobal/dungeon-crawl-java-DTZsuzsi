@@ -29,7 +29,7 @@ class InventoryTest {
     @Test
     void addItemNotPickable() {
         Potion potion = new Potion(gameMap.getCell(1,2));
-        Crown crown = new Crown(gameMap.getCell(1, 1),true);
+        Crown crown = new Crown(gameMap.getCell(1, 1));
         player.getInventory().addItem(potion);
         player.getInventory().addItem(crown);
         int expected = 1;
@@ -41,7 +41,7 @@ class InventoryTest {
     @Test
     void isItemInInventory() {
         Potion potion = new Potion(gameMap.getCell(1,2));
-        Crown crown = new Crown(gameMap.getCell(1, 1),true);
+        Crown crown = new Crown(gameMap.getCell(1, 1));
         player.getInventory().addItem(potion);
         player.getInventory().addItem(crown);
     boolean expected = true;

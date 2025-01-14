@@ -1,5 +1,6 @@
 package com.codecool.dungeoncrawl.data.actors;
 
+import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.CellType;
 import com.codecool.dungeoncrawl.data.GameMap;
 import com.codecool.dungeoncrawl.data.items.Money;
@@ -28,7 +29,8 @@ class PlayerTest {
 
     @Test
     void hasEnoughMoney() {
-        Bomb bomb=new Bomb(true);
+        Cell cell = player.getCell();
+        Bomb bomb=new Bomb(cell);
         Money money=new Money();
         player.setMoney(money);
         player.getInventory().addItem(money);

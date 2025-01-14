@@ -6,29 +6,22 @@ import com.codecool.dungeoncrawl.data.actors.Player;
 import com.codecool.dungeoncrawl.data.items.ChangingPlayerForm;
 import com.codecool.dungeoncrawl.data.items.Item;
 
-public class Shield extends Item implements ChangingPlayerForm, HealthPlus {
+public class Shield extends HealerItem {
     private final static int BASIC_HEALTH_PLUS = 10;
-    private int healthPlus;
 
     public Shield(Cell cell) {
-        super(cell, true);
-        healthPlus = BASIC_HEALTH_PLUS;
+        super(cell, true, BASIC_HEALTH_PLUS);
     }
 
     @Override
-    public void changePlayer(Player player) {
+    public void doEffect(Player player) {
+        super.doEffect(player);
         PLAYER_FORM_TYPES form = player.getForm();
         switch (form) {
             case PLAYER_SWORD:
                 player.setForm(PLAYER_FORM_TYPES.PLAYER_SHIELD_SWORD);
                 break;
         }
-    }
-
-    @Override
-    public void heal(Player player) {
-        player.receiveHealth(healthPlus);
-
     }
 
     @Override

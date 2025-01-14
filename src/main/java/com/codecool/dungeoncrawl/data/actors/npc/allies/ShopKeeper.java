@@ -2,12 +2,12 @@ package com.codecool.dungeoncrawl.data.actors.npc.allies;
 
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.actors.Player;
-import com.codecool.dungeoncrawl.data.items.Healers.SuperPotion;
 import com.codecool.dungeoncrawl.data.items.Inventory;
 import com.codecool.dungeoncrawl.data.items.Item;
 import com.codecool.dungeoncrawl.data.items.shopkeeper.Bomb;
 import com.codecool.dungeoncrawl.data.items.shopkeeper.Necklace;
 import com.codecool.dungeoncrawl.data.items.shopkeeper.ShopKeeperItems;
+import com.codecool.dungeoncrawl.data.items.shopkeeper.SuperPotion;
 import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -27,9 +27,9 @@ public class ShopKeeper extends Ally {
     public ShopKeeper(Cell cell) {
         super(cell, BASIC_HEALTH, BASIC_ATTACK, "I'm the shopkeeper. Come and I'll help.");
         inventory = new Inventory();
-        inventory.addItem(new SuperPotion(false));
-        inventory.addItem(new Bomb(true));
-        inventory.addItem(new Necklace(true));
+        inventory.addItem(new SuperPotion(cell));
+        inventory.addItem(new Bomb(cell));
+        inventory.addItem(new Necklace(cell));
     }
 
     @Override

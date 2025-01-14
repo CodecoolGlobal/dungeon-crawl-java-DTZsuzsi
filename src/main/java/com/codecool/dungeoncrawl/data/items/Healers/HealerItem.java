@@ -13,7 +13,7 @@ public class HealerItem extends ItemWithEffect {
     }
 
     @Override
-    protected void doEffect(Player player) {
+    public void doEffect(Player player) {
         player.receiveHealth(healthPlus);
     }
 }

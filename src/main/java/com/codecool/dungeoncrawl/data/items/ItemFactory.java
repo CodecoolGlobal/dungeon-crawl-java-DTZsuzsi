@@ -4,11 +4,11 @@ import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.items.Healers.Crown;
 import com.codecool.dungeoncrawl.data.items.Healers.Helmet;
 import com.codecool.dungeoncrawl.data.items.Healers.Shield;
-import com.codecool.dungeoncrawl.data.items.Healers.SuperPotion;
 import com.codecool.dungeoncrawl.data.items.attacking.BigSword;
 import com.codecool.dungeoncrawl.data.items.attacking.Mace;
 import com.codecool.dungeoncrawl.data.items.shopkeeper.Bomb;
 import com.codecool.dungeoncrawl.data.items.shopkeeper.Necklace;
+import com.codecool.dungeoncrawl.data.items.shopkeeper.SuperPotion;
 
 import java.util.HashMap;
 import java.util.Map;

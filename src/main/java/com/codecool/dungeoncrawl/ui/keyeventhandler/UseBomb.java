@@ -10,7 +10,7 @@ public class UseBomb implements KeyHandler {
     @Override
     public void perform(KeyEvent event, GameMap map) {
         if (code.equals(event.getCode()) && map.getPlayer().getInventory().getBomb() != null) {
-            map.getPlayer().getInventory().getBomb().kill(map.getPlayer());
+            map.getPlayer().getInventory().getBomb().doEffect(map.getPlayer());
         }
 
     }

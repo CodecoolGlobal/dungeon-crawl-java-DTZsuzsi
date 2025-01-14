@@ -18,6 +18,6 @@ public abstract class ItemWithEffect extends Item {
         return "";
     }
 
-  protected  abstract void doEffect(Player player);
+  public  abstract void doEffect(Player player);
 
 }

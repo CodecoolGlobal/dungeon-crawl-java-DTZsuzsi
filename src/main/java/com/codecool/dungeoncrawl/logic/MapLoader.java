@@ -122,7 +122,7 @@ public class MapLoader {
                             break;
                         case 'c':
                             cell.setType(CellType.FLOOR);
-                            new Crown(cell, true);
+                            new Crown(cell);
                             break;
                         case 'F':
                             cell.setType(CellType.FLOOR);

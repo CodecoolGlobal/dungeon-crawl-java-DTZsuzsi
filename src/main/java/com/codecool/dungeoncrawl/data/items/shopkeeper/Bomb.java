@@ -7,16 +7,16 @@ import com.codecool.dungeoncrawl.data.items.killers.killer;
 
 import java.util.List;
 
-public class Bomb extends ShopKeeperItems implements killer {
+public class Bomb extends ShopKeeperItems  {
    private static final int BASIC_PRICE = 500;
-    public Bomb(boolean pickable) {
-        super(true, BASIC_PRICE);
-
-    }
-
     public Bomb(Cell cell) {
-        super(cell);
+        super(cell, BASIC_PRICE);
+
     }
+
+
+
+
 
 
     @Override
@@ -25,7 +25,7 @@ public class Bomb extends ShopKeeperItems implements killer {
     }
 
     @Override
-    public void kill(Player player) {
+    public void doEffect(Player player) {
         List<Cell> playerNeighbors=player.getNeighbourCells();
         playerNeighbors.forEach(cell->{if (cell.getActor() instanceof Monsters) {
             cell.setActor(null);

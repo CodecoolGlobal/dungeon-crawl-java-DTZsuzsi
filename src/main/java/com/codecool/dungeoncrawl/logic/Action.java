@@ -5,9 +5,7 @@ import com.codecool.dungeoncrawl.data.actors.Actor;
 import com.codecool.dungeoncrawl.data.actors.Player;
 import com.codecool.dungeoncrawl.data.actors.npc.NPC;
 
-import com.codecool.dungeoncrawl.data.items.Healers.HealthPlus;
 import com.codecool.dungeoncrawl.data.items.Item;
-import com.codecool.dungeoncrawl.data.items.attacking.AttackPlus;
 
 import javafx.scene.control.Alert;
 import com.codecool.dungeoncrawl.data.items.*;
@@ -30,12 +28,8 @@ public class Action {
         Item item = currentCell.getItem();
 
         if (item != null ) {
-            if (item instanceof HealthPlus) {
-                ((HealthPlus) item).heal(player);
-            }
-
-            if (item instanceof AttackPlus) {
-                ((AttackPlus) item).attackPlus(player);
+            if (item instanceof ItemWithEffect) {
+                ((ItemWithEffect) item).doEffect(player);
             }
 
             if (item.isPickable()){
@@ -44,9 +38,6 @@ public class Action {
                 if (item instanceof Money){
                     player.setMoney((Money) item);
                 }
-            }
-            if (item instanceof ChangingPlayerForm){
-                ((ChangingPlayerForm) item).changePlayer(player);
             }
             currentCell.setItem(null);
         }}

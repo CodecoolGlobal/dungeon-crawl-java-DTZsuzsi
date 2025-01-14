@@ -6,17 +6,16 @@ import com.codecool.dungeoncrawl.data.actors.Player;
 import com.codecool.dungeoncrawl.data.items.ChangingPlayerForm;
 import com.codecool.dungeoncrawl.data.items.Item;
 
-public class BigSword extends Item implements ChangingPlayerForm, AttackPlus {
+public class BigSword extends AttackerItems {
     private final static int BASIC_ATTACK_PLUS = 100;
-    private int attackPlus;
 
     public BigSword(Cell cell) {
-        super(cell, true);
-        this.attackPlus = BASIC_ATTACK_PLUS;
+        super(cell,  BASIC_ATTACK_PLUS);
     }
 
     @Override
-    public void changePlayer(Player player) {
+    public void doEffect(Player player) {
+        super.doEffect(player);
         player.setForm(PLAYER_FORM_TYPES.PLAYER_SUPERSWORD_SHIELD_HELMET);
 
     }
@@ -26,9 +25,5 @@ public class BigSword extends Item implements ChangingPlayerForm, AttackPlus {
         return "superSword";
     }
 
-    @Override
-    public void attackPlus(Player player) {
-        player.receiveAttackPlus(attackPlus);
 
-    }
 }
