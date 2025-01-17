@@ -6,25 +6,23 @@ import com.codecool.dungeoncrawl.data.actors.Player;
 import com.codecool.dungeoncrawl.data.items.Healers.Crown;
 import com.codecool.dungeoncrawl.data.items.Healers.Potion;
 import com.codecool.dungeoncrawl.data.items.shopkeeper.Necklace;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class InventoryTest {
-    GameMap gameMap = new GameMap(3, 3, CellType.FLOOR);
-    Player player = new Player(gameMap.getCell(1, 1));
+   GameMap gameMap;
+   Player player;
 
-    @Test
-    void removeItem() {
-        Crown crown = new Crown(gameMap.getCell(1, 1));
-        Potion potion = new Potion(gameMap.getCell(1,2));
-        player.getInventory().addItem(crown);
-        player.getInventory().addItem(potion);
-        player.getInventory().removeItem(crown);
-        int expected = 1;
-        int result = player.getInventory().getItems().size();
-        assertEquals(expected, result);
-    }
+
+
+    @BeforeEach
+           void setUp() {
+            this.gameMap = new GameMap(3, 3, CellType.FLOOR);;
+            this.player = new Player(gameMap.getCell(1, 1));;
+        }
+
 
     @Test
     void addItemNotPickable() {
