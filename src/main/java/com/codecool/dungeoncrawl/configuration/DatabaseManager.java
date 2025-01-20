@@ -22,7 +22,7 @@ public class DatabaseManager {
         dataSource.setUser(System.getenv("DB_USERNAME"));
         dataSource.setPassword(System.getenv("DB_PASSWORD"));
         dataSource.setServerNames(new String[] {"localhost"});
-        dataSource.setPortNumbers(new int[] {5432});
+        dataSource.setPortNumbers(new int[] {Integer.parseInt(System.getenv("DB_PORT"))});
         System.out.println("Trying to connect to PostgreSQL database");
         dataSource.getConnection().close();
         return dataSource;

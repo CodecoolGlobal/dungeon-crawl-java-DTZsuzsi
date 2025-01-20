@@ -66,12 +66,12 @@ public int dyMove;
         Random random = new Random();
         if (this.getHealth()>=0){
             if(dxMove==0){
-                this.monsterMove(0, random.nextInt(3)-dyMove);
+                this.monsterMove(0, random.nextInt(2)-dyMove);
             }
             if(dyMove==0){
-                this.monsterMove(random.nextInt(3)-dxMove,0);
+                this.monsterMove(random.nextInt(2)-dxMove,0);
             }
-            this.monsterMove(random.nextInt(3)-dxMove, random.nextInt(3)-dyMove);}
+            this.monsterMove(random.nextInt(2)-dxMove, random.nextInt(2)-dyMove);}
     };
 
 

@@ -47,6 +47,7 @@ PostgreSQL Installation Guide: https://www.postgresql.org/docs/current/installat
    export DB_NAME="dungeoncrawl"
    export DB_USERNAME="yourusername"
    export DB_PASSWORD="yourpassword"
+   export DB_PORT="yourportfordatabase"
    ```
    
    Make sure to replace the values with the actual details for your PostgreSQL database.
