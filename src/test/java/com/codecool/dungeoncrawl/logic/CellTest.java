@@ -3,13 +3,18 @@ package com.codecool.dungeoncrawl.logic;
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.CellType;
 import com.codecool.dungeoncrawl.data.GameMap;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class CellTest {
-    GameMap map = new GameMap(3, 3, CellType.FLOOR);
+   private GameMap map;
 
+   @BeforeEach
+           void setUp() {
+       this.map = new GameMap(3, 3, CellType.FLOOR);
+   }
     @Test
     void getNeighbor() {
         Cell cell = map.getCell(1, 1);

@@ -4,22 +4,29 @@ import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.CellType;
 import com.codecool.dungeoncrawl.data.GameMap;
 import com.codecool.dungeoncrawl.data.actors.Player;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 class FriendTest {
-    GameMap gameMap = new GameMap(10, 10, CellType.FLOOR);
-    Player player = new Player(gameMap.getCell(3, 3));
 
+ private   GameMap gameMap;
+ private Player player;
+
+    @BeforeEach
+    void setUp() {
+         this.gameMap = new GameMap(10, 10, CellType.FLOOR);
+        this.player = new Player(gameMap.getCell(3, 3));
+    }
 
     @Test
     void isPlayerNext() {
         Friend friend = new Friend(player.getCell().getNeighbor(1, 0));
         player.move(1, 0);
-        boolean expected = false;
         boolean result = friend.isPlayerNext(player);
-        assertEquals(expected, result);
+        assertFalse(result);
     }
 
     @Test

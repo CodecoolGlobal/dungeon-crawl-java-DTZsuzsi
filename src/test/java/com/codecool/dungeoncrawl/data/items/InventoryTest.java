@@ -12,21 +12,22 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class InventoryTest {
-   GameMap gameMap;
-   Player player;
-
+    GameMap gameMap;
+    Player player;
 
 
     @BeforeEach
-           void setUp() {
-            this.gameMap = new GameMap(3, 3, CellType.FLOOR);;
-            this.player = new Player(gameMap.getCell(1, 1));;
-        }
+    void setUp() {
+        this.gameMap = new GameMap(3, 3, CellType.FLOOR);
+        ;
+        this.player = new Player(gameMap.getCell(1, 1));
+        ;
+    }
 
 
     @Test
     void addItemNotPickable() {
-        Potion potion = new Potion(gameMap.getCell(1,2));
+        Potion potion = new Potion(gameMap.getCell(1, 2));
         Crown crown = new Crown(gameMap.getCell(1, 1));
         player.getInventory().addItem(potion);
         player.getInventory().addItem(crown);
@@ -38,18 +39,19 @@ class InventoryTest {
 
     @Test
     void isItemInInventory() {
-        Potion potion = new Potion(gameMap.getCell(1,2));
+        Potion potion = new Potion(gameMap.getCell(1, 2));
         Crown crown = new Crown(gameMap.getCell(1, 1));
         player.getInventory().addItem(potion);
         player.getInventory().addItem(crown);
-    boolean expected = true;
-    boolean result = player.getInventory().getItems().stream().anyMatch(item -> item.equals(crown));
-    assertEquals(expected, result);}
+        boolean expected = true;
+        boolean result = player.getInventory().getItems().stream().anyMatch(item -> item.equals(crown));
+        assertEquals(expected, result);
+    }
 
     @Test
     void getNecklace() {
         Necklace necklace = new Necklace(gameMap.getCell(1, 1));
-        Potion potion = new Potion(gameMap.getCell(1,2));
+        Potion potion = new Potion(gameMap.getCell(1, 2));
         player.getInventory().addItem(necklace);
         player.getInventory().addItem(potion);
         Necklace result = player.getInventory().getNecklace();

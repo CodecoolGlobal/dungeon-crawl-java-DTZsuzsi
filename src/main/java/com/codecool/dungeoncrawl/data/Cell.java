@@ -49,15 +49,12 @@ public class Cell implements Drawable {
     public List<Cell> getNeighbors() {
         Cell cell = this;
         List<Cell> neighbors = new ArrayList<>();
+        for (int i = -1; i < 2; i++) {
+            for (int j = -1; j < 2; j++) {
+                neighbors.add(cell.getNeighbor(i, j));
+            }
+        }
 
-        neighbors.add(cell.getNeighbor(-1, -1));
-        neighbors.add(cell.getNeighbor(0, -1));
-        neighbors.add(cell.getNeighbor(0, 1));
-        neighbors.add(cell.getNeighbor(1, 1));
-        neighbors.add(cell.getNeighbor(1, -1));
-        neighbors.add(cell.getNeighbor(-1, 0));
-        neighbors.add(cell.getNeighbor(1, 0));
-        neighbors.add(cell.getNeighbor(-1, 1));
         return neighbors;
     }
 
