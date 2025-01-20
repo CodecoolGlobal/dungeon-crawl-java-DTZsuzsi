@@ -18,7 +18,7 @@ public class Player extends Actor {
     private Inventory inventory;
     private Set<Ally> allies;
     private Friend friend;
-    private PLAYER_FORM_TYPES form;
+    private PlayerFormTypes form;
     private Money money;
 
 
@@ -27,7 +27,7 @@ public class Player extends Actor {
         inventory = new Inventory();
         this.allies = new HashSet<>();
         this.friend = null;
-        this.form = PLAYER_FORM_TYPES.PLAYER_BASIC;
+        this.form = PlayerFormTypes.PLAYER_BASIC;
         this.money = null;
 
     }
@@ -68,7 +68,7 @@ public class Player extends Actor {
         }
         if (nextCell.isWalkable()) {
             cell.setActor(null);
-            nextCell.setActor(this);
+            setPosition(nextCell.getX(), nextCell.getY());
             cell = nextCell;
 
             action.pickUpItem(this);
@@ -80,7 +80,7 @@ public class Player extends Actor {
     }
 
     public boolean hasKey() {
-       return  inventory.getItems().stream().filter(item -> item.getTileName().equals("key")).findAny().isPresent();
+        return inventory.getItems().stream().filter(item -> item.getTileName().equals("key")).findAny().isPresent();
     }
 
     public void receiveAttackPlus(int attackPlus) {
@@ -99,11 +99,11 @@ public class Player extends Actor {
         allies.add(ally);
     }
 
-    public PLAYER_FORM_TYPES getForm() {
+    public PlayerFormTypes getForm() {
         return form;
     }
 
-    public void setForm(PLAYER_FORM_TYPES newForm) {
+    public void setForm(PlayerFormTypes newForm) {
         this.form = newForm;
 
     }
@@ -123,7 +123,7 @@ public class Player extends Actor {
         }
     }
 
-    public int howManyHeartHas() {
+    public int countHearts() {
 
         if (health <= BASIC_HEALTH) {
             return 1;

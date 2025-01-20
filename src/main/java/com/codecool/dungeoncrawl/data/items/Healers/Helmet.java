@@ -1,10 +1,8 @@
 package com.codecool.dungeoncrawl.data.items.Healers;
 
 import com.codecool.dungeoncrawl.data.Cell;
-import com.codecool.dungeoncrawl.data.actors.PLAYER_FORM_TYPES;
+import com.codecool.dungeoncrawl.data.actors.PlayerFormTypes;
 import com.codecool.dungeoncrawl.data.actors.Player;
-import com.codecool.dungeoncrawl.data.items.ChangingPlayerForm;
-import com.codecool.dungeoncrawl.data.items.Item;
 
 public class Helmet extends HealerItem
 {
@@ -22,16 +20,16 @@ public class Helmet extends HealerItem
     @Override
     public void doEffect(Player player) {
     super.doEffect(player);
-        PLAYER_FORM_TYPES playerType = player.getForm();
+        PlayerFormTypes playerType = player.getForm();
         switch (playerType) {
             case PLAYER_BASIC:
-                player.setForm(PLAYER_FORM_TYPES.PLAYER_HELMET);
+                player.setForm(PlayerFormTypes.PLAYER_HELMET);
                 break;
             case PLAYER_SHIELD_SWORD:
-                player.setForm(PLAYER_FORM_TYPES.PLAYER_SWORD_SHIELD_HELMET);
+                player.setForm(PlayerFormTypes.PLAYER_SWORD_SHIELD_HELMET);
                 break;
             case PLAYER_SWORD:
-                player.setForm(PLAYER_FORM_TYPES.PLAYER_SHIELD_SWORD);
+                player.setForm(PlayerFormTypes.PLAYER_SHIELD_SWORD);
                 break;
         }
     }

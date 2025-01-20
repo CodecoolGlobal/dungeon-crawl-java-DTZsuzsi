@@ -60,7 +60,7 @@ public class GameLogic {
     }
 
     public String getHearts() {
-        int amount = map.getPlayer().howManyHeartHas();
+        int amount = map.getPlayer().countHearts();
         String message = "";
         String heart = "❤\uFE0F";
         for (int i = 0; i < amount; i++) {

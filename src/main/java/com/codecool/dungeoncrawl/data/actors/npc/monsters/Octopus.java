@@ -7,10 +7,11 @@ import java.util.Random;
 public class Octopus extends Monsters {
     private static final int BASIC_HEALTH = 20;
     private static final int BASIC_ATTACK = 10;
+    private static final int BASIC_MOVE = 1;
 
     public Octopus(Cell cell) {
 
-        super(cell, BASIC_HEALTH, BASIC_ATTACK);
+        super(cell, BASIC_HEALTH, BASIC_ATTACK,0, BASIC_MOVE);
 
     }
 
@@ -22,9 +23,7 @@ public class Octopus extends Monsters {
 
     @Override
     public void automaticMove() {
-        if (this.getHealth() >= 0) {
-            Random random = new Random();
-            this.monsterMove(0, random.nextInt(3) - 1);
-        }
+        super.automaticMove();
+
     }
 }

@@ -7,9 +7,10 @@ import java.util.Random;
 public class DogFighter extends Monsters {
     private static final int BASIC_HEALTH = 8;
     private static final int BASIC_ATTACK = 5;
+    private static final int BASIC_MOVE = 1;
 
     public DogFighter(Cell cell) {
-        super(cell, BASIC_HEALTH, BASIC_ATTACK);
+        super(cell, BASIC_HEALTH, BASIC_ATTACK,0, BASIC_MOVE);
 
     }
 
@@ -21,9 +22,7 @@ public class DogFighter extends Monsters {
 
     @Override
     public void automaticMove() {
-        if (this.getHealth() >= 0) {
-            Random random = new Random();
-            this.monsterMove(0, random.nextInt(3) - 1);
-        }
+        super.automaticMove();
+
     }
 }

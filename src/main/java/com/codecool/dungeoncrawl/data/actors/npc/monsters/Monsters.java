@@ -10,10 +10,15 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.util.Duration;
 
-public abstract class Monsters extends NPC implements Interaction {
+import java.util.Random;
 
-    public Monsters(Cell cell, int health, int attack) {
+public abstract class Monsters extends NPC implements Interaction {
+public int dxMove;
+public int dyMove;
+    public Monsters(Cell cell, int health, int attack, int dxMove, int dyMove) {
         super(cell, health, attack);
+        this.dxMove = dxMove;
+        this.dyMove = dyMove;
     }
 
     @Override
@@ -57,7 +62,17 @@ public abstract class Monsters extends NPC implements Interaction {
         }
     }
 
-    public abstract void automaticMove();
+    public  void automaticMove(){
+        Random random = new Random();
+        if (this.getHealth()>=0){
+            if(dxMove==0){
+                this.monsterMove(0, random.nextInt(3)-dyMove);
+            }
+            if(dyMove==0){
+                this.monsterMove(random.nextInt(3)-dxMove,0);
+            }
+            this.monsterMove(random.nextInt(3)-dxMove, random.nextInt(3)-dyMove);}
+    };
 
 
 }

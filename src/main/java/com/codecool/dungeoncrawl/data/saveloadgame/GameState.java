@@ -1,6 +1,6 @@
 package com.codecool.dungeoncrawl.data.saveloadgame;
 
-import com.codecool.dungeoncrawl.data.actors.PLAYER_FORM_TYPES;
+import com.codecool.dungeoncrawl.data.actors.PlayerFormTypes;
 
 import java.util.List;
 
@@ -10,10 +10,10 @@ public class GameState {
     private int playerY;
     private int health;
     private int attack;
-    private PLAYER_FORM_TYPES playerForm;
+    private PlayerFormTypes playerForm;
     private List<String> inventoryItems;
 
-    public GameState(String mapName, int playerX, int playerY, int health, int attack, PLAYER_FORM_TYPES playerForm, List<String> inventoryItems) {
+    public GameState(String mapName, int playerX, int playerY, int health, int attack, PlayerFormTypes playerForm, List<String> inventoryItems) {
         this.mapName = mapName;
         this.playerX = playerX;
         this.playerY = playerY;
@@ -43,7 +43,7 @@ public class GameState {
         return attack;
     }
 
-    public PLAYER_FORM_TYPES getPlayerForm() {
+    public PlayerFormTypes getPlayerForm() {
         return playerForm;
     }
 

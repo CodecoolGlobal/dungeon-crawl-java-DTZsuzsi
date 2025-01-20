@@ -115,7 +115,4 @@ public class ShopKeeper extends Ally {
             Platform.runLater(() -> action.showPopup("error", "Sorry, the shopkeeper doesn't have a " + itemType + "!"));
         }
     }
-
-
-//
 }

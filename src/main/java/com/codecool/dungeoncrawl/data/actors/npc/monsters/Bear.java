@@ -8,8 +8,9 @@ import java.util.Random;
 public class Bear extends Monsters {
     private static final int BASIC_HEALTH=3;
     private static final int BASIC_ATTACK=1;
+    private static final int BASIC_MOVE=1;
     public Bear(Cell cell) {
-        super(cell, BASIC_HEALTH, BASIC_ATTACK);
+        super(cell, BASIC_HEALTH, BASIC_ATTACK, BASIC_MOVE,0);
     }
 
     @Override
@@ -21,8 +22,7 @@ public class Bear extends Monsters {
 
     @Override
     public void automaticMove() {
-        if (this.getHealth()>=0){
-            Random random = new Random();
-            this.monsterMove(random.nextInt(3) - 1, 0);}
+        super.automaticMove();
+
     }
 }

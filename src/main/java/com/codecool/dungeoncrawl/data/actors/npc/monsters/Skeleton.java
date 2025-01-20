@@ -7,9 +7,10 @@ import java.util.Random;
 public class Skeleton extends Monsters {
     private static final int BASIC_HEALTH = 9;
     private static final int BASIC_ATTACK = 4;
+    private static final int BASIC_MOVE = 1;
 
     public Skeleton(Cell cell) {
-        super(cell, BASIC_HEALTH, BASIC_ATTACK);
+        super(cell, BASIC_HEALTH, BASIC_ATTACK,0, BASIC_MOVE);
 
     }
 
@@ -21,11 +22,7 @@ public class Skeleton extends Monsters {
 
     @Override
     public void automaticMove() {
-        int[] positions = {-1, 0, 1};
-        int random1 = new Random().nextInt(2);
-        int random2 = new Random().nextInt(2);
-        if (this.getHealth() >= 0) {
-            super.monsterMove(positions[random1], positions[random2]);
-        }
+        super.automaticMove();
+
     }
 }

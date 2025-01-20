@@ -23,8 +23,8 @@ class PlayerTest {
 
     @Test
     void setForm() {
-    player.setForm(PLAYER_FORM_TYPES.PLAYER_SWORD);
-    assertEquals(PLAYER_FORM_TYPES.PLAYER_SWORD, player.getForm());
+    player.setForm(PlayerFormTypes.PLAYER_SWORD);
+    assertEquals(PlayerFormTypes.PLAYER_SWORD, player.getForm());
     }
 
     @Test

@@ -8,8 +8,8 @@ import javax.sql.DataSource;
 import java.sql.SQLException;
 
 public class DatabaseManager {
-    GameStateDao gameStateDao;
-    DataSource dataSource;
+   private GameStateDao gameStateDao;
+   private DataSource dataSource;
 
     public void setup() throws SQLException {
         this.dataSource = connect();

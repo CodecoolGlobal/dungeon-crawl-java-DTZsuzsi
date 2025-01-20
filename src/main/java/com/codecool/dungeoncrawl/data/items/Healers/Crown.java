@@ -1,7 +1,7 @@
 package com.codecool.dungeoncrawl.data.items.Healers;
 
 import com.codecool.dungeoncrawl.data.Cell;
-import com.codecool.dungeoncrawl.data.actors.PLAYER_FORM_TYPES;
+import com.codecool.dungeoncrawl.data.actors.PlayerFormTypes;
 import com.codecool.dungeoncrawl.data.actors.Player;
 
 public class Crown extends HealerItem {
@@ -21,6 +21,6 @@ public class Crown extends HealerItem {
     @Override
     public void doEffect(Player player) {
         super.doEffect(player);
-        player.setForm(PLAYER_FORM_TYPES.PLAYER_SUPER);
+        player.setForm(PlayerFormTypes.PLAYER_SUPER);
     }
 }

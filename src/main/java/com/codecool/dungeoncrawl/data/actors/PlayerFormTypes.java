@@ -1,6 +1,6 @@
 package com.codecool.dungeoncrawl.data.actors;
 
-public enum PLAYER_FORM_TYPES {
+public enum PlayerFormTypes {
     PLAYER_SHIELD_SWORD("playerShieldSword"),
     PLAYER_BASIC("playerBasic"),
     PLAYER_SWORD("playerSword"),
@@ -11,12 +11,12 @@ public enum PLAYER_FORM_TYPES {
 
     private String tileName;
 
-    PLAYER_FORM_TYPES(String tileName) {
+    PlayerFormTypes(String tileName) {
         this.tileName = tileName;
     }
 
-    public static PLAYER_FORM_TYPES getEnumByTileName(String tileName) {
-        for (PLAYER_FORM_TYPES value : PLAYER_FORM_TYPES.values()) {
+    public static PlayerFormTypes getEnumByTileName(String tileName) {
+        for (PlayerFormTypes value : PlayerFormTypes.values()) {
             if (value.getTileName().equals(tileName)) {
                 return value;
             }
