@@ -1,41 +1,48 @@
 # dungeon-crawl
 
-DungeonCrawl is a JavaFX-based, rougelike, tile-based game that connects to a PostgreSQL database. This README provides instructions for setting up the project, building it, and running it on your local machine using Maven.
+DungeonCrawl is a JavaFX-based, rougelike, tile-based game that connects to a PostgreSQL database. This README provides
+instructions for setting up the project, building it, and running it on your local machine using Maven.
 
 # Contributors:
-Oláhné Klár Erika
-dr. Ditrói-Tóth Zsuzsa
 
-# Git repository:  
+- Oláhné Klár Erika: https://github.com/o-k-e
+- dr. Ditrói-Tóth Zsuzsa: https://github.com/DTZsuzsi
+
+# Git repository:
+
 https://github.com/CodecoolGlobal/dungeon-crawl-java-DTZsuzsi.git
 
 # Prerequisites
 
 Before running the project, ensure you have the following software installed on your system:
+
 - Java (JDK 8 or above)
 - Maven (for building the project)
 - PostgreSQL (for the database connection)
 
 # Install Java and Maven
+
 To verify that Java and Maven are installed, run the following commands:
+
 ```
 java -version    
-- mvn -v 
+mvn -v 
 ```   
 
 If Java or Maven is not installed, download and install them:
 
-Install Java: https://www.oracle.com/java/technologies/downloads/#java11?er=221886
-Install Maven: https://maven.apache.org/install.html
-Set Up PostgreSQL Database: https://www.postgresql.org/download/
-Ensure you have a PostgreSQL instance running. If you don't have PostgreSQL installed, follow the installation instructions for your platform:
-PostgreSQL Installation Guide: https://www.postgresql.org/docs/current/installation.html
-
+- to install Java follow this link: https://www.oracle.com/java/technologies/downloads/#java11?er=221886
+- to install Maven follow this link: https://maven.apache.org/install.html
+- to set Up PostgreSQL Database follow this link: https://www.postgresql.org/download/
+- Ensure you have a PostgreSQL instance running. If you don't have PostgreSQL installed, follow the installation
+  instructions for your platform:
+  PostgreSQL Installation Guide on this link: https://www.postgresql.org/docs/current/installation.html
 
 # Project Setup
 
 1. Clone the Project
    Clone this project to your local machine using Git:
+
 ```  
    git clone https://github.com/yourusername/dungeoncrawl.git
    cd dungeoncrawl
@@ -49,10 +56,11 @@ PostgreSQL Installation Guide: https://www.postgresql.org/docs/current/installat
    export DB_PASSWORD="yourpassword"
    export DB_PORT="yourportfordatabase"
    ```
-   
+
    Make sure to replace the values with the actual details for your PostgreSQL database.
 
-3. 3. Run the Application
+3.
+    3. Run the Application
 
 The run.sh script automates the setup process, including:
 
@@ -61,15 +69,27 @@ The run.sh script automates the setup process, including:
 - Building the project with Maven
 - Running the application
 
-Maven Dependency Issues
-   If you encounter issues with Maven not picking up the correct dependencies or versions, you can force Maven to update its local cache and download the latest dependencies by running:
-```    
-  mvn clean install -U
- ```
-   If the problem persists, try deleting the cached dependencies from your local Maven repository (usually located at ~/.m2/repository) and re-run the mvn clean install -U command.
+## Troubleshooting
 
-Missing or Outdated Dependencies
-   If a dependency version is not recognized, you can specify the correct version of the dependency in your pom.xml file. For example, to include JavaFX:
+### Maven Dependency Issues
+
+If you encounter dependency issues, try the following:
+
+1. Force Maven to update its local cache and download the latest dependencies:
+
+   ```
+   mvn clean install -U
+   ```
+
+2. If the problem persists, delete the cached dependencies from your local Maven repository (usually located
+   at `~/.m2/repository`) and re-run the above command.
+
+### Missing or Outdated Dependencies
+
+If a dependency version is not recognized, specify the correct version in your `pom.xml`. For example, to include
+JavaFX:
+
+```xml
 
 <dependencies>
     <dependency>
@@ -78,18 +98,30 @@ Missing or Outdated Dependencies
         <version>17.0.2</version>
     </dependency>
 </dependencies>
-
-Run 
-```
-mvn clean install -U 
 ```
 
-to update the dependencies and re-build the project.
+After updating `pom.xml`, run:
 
-# Notes
+```
+mvn clean install -U
+```
 
-JavaFX Support: This project requires JavaFX 11 or higher. If you're using Java 8, JavaFX will be bundled with the JDK. For Java 11 or later, JavaFX must be included as a dependency in the pom.xml.
+### About the program
 
-Database Setup: The run.sh script automates the database creation and user setup for PostgreSQL.
+If you succeeded and the program is running, you should try the game itself. Your main goal is, to survive the monsters attacks,
+and through the stairs go to the final round, fighting against the boss and win the game! You can move with the arrow keys.
+The monsters will attack you if you can't escape. Luckily, you will have helper friends on the way (Yoda, who gives you health, the shopkeeper with fantastic items),
+you can find potions, artifacts to help you. You can always check your inventory, health and attack power on the right side. Good luck!
 
+!![Gameplay Screenshot](ScreenshotOfTheGame.png)
+
+
+
+
+## Notes
+
+- **JavaFX Support:** This project requires JavaFX 11 or higher. If you're using Java 8, JavaFX is bundled with the JDK.
+  For Java 11 or later, JavaFX must be added as a dependency in `pom.xml`.
+- **Database Setup:** The `run.sh` script automates the database creation and user setup if environment variables are
+  set correctly.
 
