@@ -32,8 +32,8 @@ public class Friend extends Ally implements Follow {
         Cell currentCell = getCell();
         List<Cell> neighbors = currentCell.getNeighbors();
 
-        boolean isPlayerThere = neighbors.stream().filter(cell -> cell.getActor() != null && cell.getActor().equals(player)).findAny().isPresent();
-        return isPlayerThere;
+        return neighbors.stream()
+                .anyMatch(cell ->  player.equals(cell.getActor()));
     }
 
 

@@ -47,14 +47,12 @@ public class Cell implements Drawable {
     }
 
     public List<Cell> getNeighbors() {
-        Cell cell = this;
         List<Cell> neighbors = new ArrayList<>();
         for (int i = -1; i < 2; i++) {
             for (int j = -1; j < 2; j++) {
-                neighbors.add(cell.getNeighbor(i, j));
+                neighbors.add(this.getNeighbor(i, j));
             }
         }
-
         return neighbors;
     }
 

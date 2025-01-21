@@ -10,11 +10,7 @@ public abstract class NPC extends Actor implements Interaction {
         super(cell, health, attack);
     }
 
-    @Override
-    public abstract String getTileName();
 
-
-    public abstract void interact(Player player);
 
 
 }

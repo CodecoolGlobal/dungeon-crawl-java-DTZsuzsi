@@ -19,9 +19,7 @@ class InventoryTest {
     @BeforeEach
     void setUp() {
         this.gameMap = new GameMap(3, 3, CellType.FLOOR);
-        ;
         this.player = new Player(gameMap.getCell(1, 1));
-        ;
     }
 
 

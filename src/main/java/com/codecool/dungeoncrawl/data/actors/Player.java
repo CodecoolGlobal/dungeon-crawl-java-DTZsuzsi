@@ -67,9 +67,7 @@ public class Player extends Actor {
             action.meetingOtherActor(nextCell);
         }
         if (nextCell.isWalkable()) {
-            cell.setActor(null);
             setPosition(nextCell.getX(), nextCell.getY());
-            cell = nextCell;
 
             action.pickUpItem(this);
 
