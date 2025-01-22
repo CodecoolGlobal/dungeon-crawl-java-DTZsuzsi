@@ -1,6 +1,7 @@
 package com.codecool.dungeoncrawl.data.actors;
 
 import com.codecool.dungeoncrawl.data.Cell;
+import com.codecool.dungeoncrawl.data.actors.npc.NPC;
 import com.codecool.dungeoncrawl.data.actors.npc.allies.Ally;
 import com.codecool.dungeoncrawl.data.actors.npc.allies.Friend;
 import com.codecool.dungeoncrawl.data.items.Inventory;
@@ -60,11 +61,14 @@ public class Player extends Actor {
         this.health += healthPlus;
     }
 
+
+
     public void move(int dx, int dy) {
 
         Cell nextCell = cell.getNeighbor(dx, dy);
-        if (nextCell.getActor() != null) {
-            action.meetingOtherActor(nextCell);
+        NPC otherNPC = (NPC) nextCell.getActor();
+        if (otherNPC!=null) {
+            otherNPC.interact(this);
         }
         if (nextCell.isWalkable()) {
             setPosition(nextCell.getX(), nextCell.getY());

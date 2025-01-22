@@ -3,12 +3,14 @@ package com.codecool.dungeoncrawl.data.actors;
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.CellType;
 import com.codecool.dungeoncrawl.data.GameMap;
+import com.codecool.dungeoncrawl.data.actors.npc.allies.Yoda;
 import com.codecool.dungeoncrawl.data.items.Money;
 import com.codecool.dungeoncrawl.data.items.shopkeeper.Bomb;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class PlayerTest {
     GameMap gameMap;
@@ -46,5 +48,13 @@ class PlayerTest {
         boolean result = player.hasEnoughMoney(bomb);
         assertEquals(expected, result);
 
+    }
+
+    @Test
+    void interactWithFriend() {
+        int playerHealth = player.getHealth();
+        Yoda yoda = new Yoda(gameMap.getCell(1, 2));
+        player.move(0, 1);
+        assertTrue(playerHealth < player.getHealth());
     }
 }

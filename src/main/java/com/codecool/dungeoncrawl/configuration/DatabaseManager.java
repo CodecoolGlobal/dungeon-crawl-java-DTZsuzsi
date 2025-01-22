@@ -32,7 +32,7 @@ public class DatabaseManager {
         return gameStateDao;
     }
 
-    //ez miért nem kell nekem majd?
+
     public DataSource getDataSource() {
         return dataSource;
     }

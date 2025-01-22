@@ -42,14 +42,7 @@ public class Action {
             currentCell.setItem(null);
         }}
 
-    public void meetingOtherActor(Cell nextCell) {
-        if (actor instanceof Player && nextCell.getActor() != null) {
-            Player player = (Player) actor;
-            if (nextCell.getActor() instanceof NPC ) {
-                ((NPC) nextCell.getActor()).interact(player);
-            }
-        }
-    }
+
     public void showPopup(String title, String text) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);

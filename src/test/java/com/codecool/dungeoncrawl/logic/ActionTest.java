@@ -34,12 +34,6 @@ class ActionTest {
         assertEquals(expectedInventorySize, actualInventorySize);
     }
 
-    @Test
-    void interactWithFriend() {
-        int playerHealth = player.getHealth();
-        Yoda yoda = new Yoda(gameMap.getCell(1, 2));
-        player.move(0, 1);
-        assertTrue(playerHealth < player.getHealth());
-    }
+
 
 }
