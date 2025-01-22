@@ -64,14 +64,15 @@ public int dyMove;
 
     public  void automaticMove(){
         Random random = new Random();
+        int randomMove = random.nextInt(2);
         if (this.getHealth()>=0){
             if(dxMove==0){
-                this.monsterMove(0, random.nextInt(2)-dyMove);
+                this.monsterMove(0, randomMove-dyMove);
             }
             if(dyMove==0){
-                this.monsterMove(random.nextInt(2)-dxMove,0);
+                this.monsterMove(randomMove-dxMove,0);
             }
-            this.monsterMove(random.nextInt(2)-dxMove, random.nextInt(2)-dyMove);}
+            this.monsterMove(randomMove-dxMove, randomMove-dyMove);}
     };
 
 

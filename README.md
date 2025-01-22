@@ -44,7 +44,7 @@ If Java or Maven is not installed, download and install them:
    Clone this project to your local machine using Git:
 
 ```  
-   git clone https://github.com/yourusername/dungeoncrawl.git
+   gh repo clone DTZsuzsi/dungeoncrawl
    cd dungeoncrawl
 ```
 
@@ -113,7 +113,7 @@ and through the stairs go to the final round, fighting against the boss and win 
 The monsters will attack you if you can't escape. Luckily, you will have helper friends on the way (Yoda, who gives you health, the shopkeeper with fantastic items),
 you can find potions, artifacts to help you. You can always check your inventory, health and attack power on the right side. Good luck!
 
-!![Gameplay Screenshot](ScreenshotOfTheGame.png)
+![Gameplay Screenshot](ScreenshotOfTheGame.png)
 
 
 
