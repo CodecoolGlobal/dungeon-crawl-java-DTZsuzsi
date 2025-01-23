@@ -44,8 +44,8 @@ If Java or Maven is not installed, download and install them:
    Clone this project to your local machine using Git:
 
 ```  
-   gh repo clone DTZsuzsi/dungeoncrawl
-   cd dungeoncrawl
+git clone https://github.com/CodecoolGlobal/dungeon-crawl-java-DTZsuzsi.git
+cd dungeoncrawl
 ```
 
 2. Set Environment Variables

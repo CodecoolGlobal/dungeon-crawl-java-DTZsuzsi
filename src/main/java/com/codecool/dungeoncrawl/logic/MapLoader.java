@@ -18,9 +18,11 @@ import com.codecool.dungeoncrawl.data.items.attacking.BigSword;
 import com.codecool.dungeoncrawl.data.items.attacking.Mace;
 
 import java.io.InputStream;
+import java.util.Random;
 import java.util.Scanner;
 
 public class MapLoader {
+  private static Random random = new Random();
     public static GameMap loadMap(String fileName, Player player) {
         InputStream is = MapLoader.class.getResourceAsStream(fileName);
         System.out.println(is);
@@ -49,7 +51,7 @@ public class MapLoader {
                             break;
                         case 's':
                             cell.setType(CellType.FLOOR);
-                            new Skeleton(cell);
+                            new Skeleton(cell,random);
                             break;
                         case '@':
                             cell.setType(CellType.FLOOR);
@@ -65,11 +67,11 @@ public class MapLoader {
                             break;
                         case 'D':
                             cell.setType(CellType.FLOOR);
-                            new DogFighter(cell);
+                            new DogFighter(cell, random);
                             break;
                         case ':':
                             cell.setType(CellType.BOSS_FLOOR);
-                            new BossSkeleton(cell);
+                            new BossSkeleton(cell,random);
                             break;
                         case 'Y':
                             cell.setType(CellType.FLOOR);
@@ -77,11 +79,11 @@ public class MapLoader {
                             break;
                         case 'O':
                             cell.setType(CellType.FLOOR);
-                            new Octopus(cell);
+                            new Octopus(cell,random);
                             break;
                         case 'B':
                             cell.setType(CellType.FLOOR);
-                            new Bat(cell);
+                            new Bat(cell,random);
                             break;
                         case 'M':
                             cell.setType(CellType.FLOOR);
@@ -110,11 +112,11 @@ public class MapLoader {
                             break;
                         case 'b':
                             cell.setType(CellType.FLOOR);
-                            new Bear(cell);
+                            new Bear(cell,random);
                             break;
                         case 'w':
                             cell.setType(CellType.FLOOR);
-                            new Wizard(cell);
+                            new Wizard(cell,random);
                             break;
                         case 'p':
                             cell.setType(CellType.FLOOR);
@@ -136,7 +138,7 @@ public class MapLoader {
                             break;
                         case '!':
                             cell.setType(CellType.FLOOR);
-                            new Boss(cell);
+                            new Boss(cell,random);
                             break;
                         case '-':
                             cell.setType(CellType.FLOOR);

@@ -4,13 +4,13 @@ import com.codecool.dungeoncrawl.data.Cell;
 
 import java.util.Random;
 
-public class DogFighter extends Monsters {
+public class DogFighter extends Monster {
     private static final int BASIC_HEALTH = 8;
     private static final int BASIC_ATTACK = 5;
     private static final int BASIC_MOVE = 1;
 
-    public DogFighter(Cell cell) {
-        super(cell, BASIC_HEALTH, BASIC_ATTACK,0, BASIC_MOVE);
+    public DogFighter(Cell cell, Random random) {
+        super(cell, BASIC_HEALTH, BASIC_ATTACK,0, BASIC_MOVE, random);
 
     }
 

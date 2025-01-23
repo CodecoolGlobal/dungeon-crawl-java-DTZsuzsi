@@ -11,14 +11,14 @@ import javafx.util.Duration;
 
 import java.util.Random;
 
-public class Boss extends Monsters {
+public class Boss extends Monster {
     private static final int BASIC_HEALTH = 250;
     private static final int BASIC_ATTACK = 158;
     private static final int BASIC_MOVE=1;
 
 
-    public Boss(Cell cell) {
-        super(cell, BASIC_HEALTH, BASIC_ATTACK, BASIC_MOVE,0);
+    public Boss(Cell cell, Random random) {
+        super(cell, BASIC_HEALTH, BASIC_ATTACK, BASIC_MOVE,0, random);
     }
 
     @Override

@@ -26,7 +26,7 @@ class MonstersTest {
         int expectedHealth = -1;
         int actualHealth = skeleton.getHealth();
         Actor expectedActor = null;
-        Monsters actualActor = (Monsters) gameMap.getCell(1, 1).getActor();
+        Monster actualActor = (Monster) gameMap.getCell(1, 1).getActor();
         assertEquals(expectedHealth, actualHealth);
         assertEquals(expectedActor, actualActor);
     }

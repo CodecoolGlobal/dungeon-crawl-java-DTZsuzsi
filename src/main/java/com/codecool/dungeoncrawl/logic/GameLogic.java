@@ -6,7 +6,7 @@ import com.codecool.dungeoncrawl.data.GameMap;
 import com.codecool.dungeoncrawl.data.actors.Actor;
 import com.codecool.dungeoncrawl.data.actors.Player;
 import com.codecool.dungeoncrawl.data.actors.npc.allies.Ally;
-import com.codecool.dungeoncrawl.data.actors.npc.monsters.Monsters;
+import com.codecool.dungeoncrawl.data.actors.npc.monsters.Monster;
 import com.codecool.dungeoncrawl.data.items.Item;
 import com.codecool.dungeoncrawl.data.items.ItemFactory;
 import com.codecool.dungeoncrawl.data.saveloadgame.GameState;
@@ -88,8 +88,8 @@ public class GameLogic {
 
         List<Actor> actors = map.getActors();
         for (Actor actor : actors) {
-            if (actor instanceof Monsters) {
-                ((Monsters) actor).automaticMove();
+            if (actor instanceof Monster) {
+                ((Monster) actor).automaticMove();
             }
         }
     }

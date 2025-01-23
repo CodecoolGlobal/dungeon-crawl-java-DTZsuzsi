@@ -2,7 +2,7 @@ package com.codecool.dungeoncrawl.data.items.shopkeeper;
 
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.actors.Player;
-import com.codecool.dungeoncrawl.data.actors.npc.monsters.Monsters;
+import com.codecool.dungeoncrawl.data.actors.npc.monsters.Monster;
 
 import java.util.List;
 
@@ -26,7 +26,7 @@ public class Bomb extends ShopKeeperItems  {
     @Override
     public void doEffect(Player player) {
         List<Cell> playerNeighbors=player.getNeighbourCells();
-        playerNeighbors.forEach(cell->{if (cell.getActor() instanceof Monsters) {
+        playerNeighbors.forEach(cell->{if (cell.getActor() instanceof Monster) {
             cell.setActor(null);
             player.getInventory().removeItem(this);
         }});

@@ -12,13 +12,15 @@ import javafx.util.Duration;
 
 import java.util.Random;
 
-public abstract class Monsters extends NPC implements Interaction {
-public int dxMove;
-public int dyMove;
-    public Monsters(Cell cell, int health, int attack, int dxMove, int dyMove) {
+public abstract class Monster extends NPC implements Interaction {
+protected int dxMove;
+protected int dyMove;
+private Random random;
+    public Monster(Cell cell, int health, int attack, int dxMove, int dyMove, Random random) {
         super(cell, health, attack);
         this.dxMove = dxMove;
         this.dyMove = dyMove;
+        this.random = random;
     }
 
     @Override
@@ -63,7 +65,6 @@ public int dyMove;
     }
 
     public  void automaticMove(){
-        Random random = new Random();
         int randomMove = random.nextInt(2);
         if (this.getHealth()>=0){
             if(dxMove==0){
